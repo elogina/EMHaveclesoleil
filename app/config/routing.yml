@@ -1,0 +1,4 @@
+emhcms_principal:
+    resource: "@emhcmsPrincipalBundle/Resources/config/routing.yml"
+    prefix:   /
+

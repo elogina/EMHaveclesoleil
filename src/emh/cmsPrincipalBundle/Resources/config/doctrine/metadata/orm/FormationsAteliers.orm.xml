@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="FormationsAteliers" table="formations_ateliers">
+    <indexes>
+      <index name="fk_formations_ateliers_sites1_idx" columns="sites_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomFr" type="string" column="nom_fr" length="45" nullable="false"/>
+    <field name="nomEn" type="string" column="nom_en" length="45" nullable="true"/>
+    <field name="descriptionFr" type="text" column="description_fr" nullable="false"/>
+    <field name="descriptionEn" type="string" column="description_en" length="45" nullable="true"/>
+    <field name="prix" type="decimal" column="prix" precision="10" scale="0" nullable="true"/>
+    <field name="date" type="date" column="date" nullable="false"/>
+    <field name="debut" type="date" column="debut" nullable="false"/>
+    <field name="fin" type="date" column="fin" nullable="false"/>
+    <field name="nbmax" type="boolean" column="nbMax" nullable="false"/>
+    <field name="dateinscription" type="date" column="dateInscription" nullable="false"/>
+    <field name="paye" type="blob" column="paye" length="1" nullable="true"/>
+    <many-to-one field="sites" target-entity="Sites">
+      <join-columns>
+        <join-column name="sites_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="membres" target-entity="Membres" mapped-by="formations"/>
+  </entity>
+</doctrine-mapping>
