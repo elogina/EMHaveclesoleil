@@ -1,6 +1,6 @@
 <?php
 
-namespace emh\cmsPrincipalBundle\Entity;
+namespace emh\MembresBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
@@ -22,11 +22,6 @@ class Membres extends BaseUser
      */
     protected $id;
     
-    public function __construct()
-    {
-        parent::__construct();
-        // your own logic
-    }
 
     /**
      * @var string
@@ -73,7 +68,7 @@ class Membres extends BaseUser
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="FormationsAteliers", inversedBy="membres")
+     * @ORM\ManyToMany(targetEntity="emh\MembresBundle\Entity\Membres", inversedBy="membres")
      * @ORM\JoinTable(name="inscription",
      *   joinColumns={
      *     @ORM\JoinColumn(name="membres_id", referencedColumnName="id")

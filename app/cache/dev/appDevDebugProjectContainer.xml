@@ -18,7 +18,7 @@
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="emhcmsPrincipalBundle">emh\cmsPrincipalBundle\emhcmsPrincipalBundle</parameter>
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
-      <parameter key="emhuserBundle">emh\userBundle\emhuserBundle</parameter>
+      <parameter key="emhMembresBundle">emh\MembresBundle\emhMembresBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -514,7 +514,7 @@
     <parameter key="fos_user.storage">orm</parameter>
     <parameter key="fos_user.firewall_name">main</parameter>
     <parameter key="fos_user.model_manager_name">null</parameter>
-    <parameter key="fos_user.model.user.class">emh\userBundle\Entity\Admins</parameter>
+    <parameter key="fos_user.model.user.class">emh\MembresBundle\Entity\Membres</parameter>
     <parameter key="fos_user.template.engine">twig</parameter>
     <parameter key="fos_user.profile.form.type">fos_user_profile</parameter>
     <parameter key="fos_user.profile.form.name">fos_user_profile_form</parameter>
@@ -1720,7 +1720,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>535d3e3f3126e</argument>
+            <argument>535dfe91dd5dd</argument>
           </service>
         </argument>
       </argument>
@@ -1990,7 +1990,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>535d3e3f3126e</argument>
+            <argument>535dfe91dd5dd</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
           </service>
         </argument>
@@ -2443,7 +2443,7 @@
             <argument type="collection">
               <argument key="emhcmsPrincipalBundle">emh\cmsPrincipalBundle\Entity</argument>
               <argument key="FOSUserBundle">FOS\UserBundle\Entity</argument>
-              <argument key="emhuserBundle">emh\userBundle\Entity</argument>
+              <argument key="emhMembresBundle">emh\MembresBundle\Entity</argument>
             </argument>
           </call>
           <call method="setMetadataCacheImpl">
@@ -2482,7 +2482,7 @@
                       <argument type="service" id="annotation_reader"/>
                       <argument type="collection">
                         <argument>C:\wamp\www\EMHaveclesoleil\src\emh\cmsPrincipalBundle\Entity</argument>
-                        <argument>C:\wamp\www\EMHaveclesoleil\src\emh\userBundle\Entity</argument>
+                        <argument>C:\wamp\www\EMHaveclesoleil\src\emh\MembresBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -2494,11 +2494,11 @@
                       <argument type="service" id="annotation_reader"/>
                       <argument type="collection">
                         <argument>C:\wamp\www\EMHaveclesoleil\src\emh\cmsPrincipalBundle\Entity</argument>
-                        <argument>C:\wamp\www\EMHaveclesoleil\src\emh\userBundle\Entity</argument>
+                        <argument>C:\wamp\www\EMHaveclesoleil\src\emh\MembresBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
-                  <argument>emh\userBundle\Entity</argument>
+                  <argument>emh\MembresBundle\Entity</argument>
                 </call>
                 <call method="addDriver">
                   <argument type="service">
@@ -2646,7 +2646,7 @@
     </service>
     <service id="fos_user.profile.form.type" class="FOS\UserBundle\Form\Type\ProfileFormType">
       <tag name="form.type" alias="fos_user_profile"/>
-      <argument>emh\userBundle\Entity\Admins</argument>
+      <argument>emh\MembresBundle\Entity\Membres</argument>
     </service>
     <service id="fos_user.registration.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
       <argument type="service" id="form.factory"/>
@@ -2659,7 +2659,7 @@
     </service>
     <service id="fos_user.registration.form.type" class="FOS\UserBundle\Form\Type\RegistrationFormType">
       <tag name="form.type" alias="fos_user_registration"/>
-      <argument>emh\userBundle\Entity\Admins</argument>
+      <argument>emh\MembresBundle\Entity\Membres</argument>
     </service>
     <service id="fos_user.change_password.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
       <argument type="service" id="form.factory"/>
@@ -2672,7 +2672,7 @@
     </service>
     <service id="fos_user.change_password.form.type" class="FOS\UserBundle\Form\Type\ChangePasswordFormType">
       <tag name="form.type" alias="fos_user_change_password"/>
-      <argument>emh\userBundle\Entity\Admins</argument>
+      <argument>emh\MembresBundle\Entity\Membres</argument>
     </service>
     <service id="fos_user.resetting.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
       <argument type="service" id="form.factory"/>
@@ -2685,7 +2685,7 @@
     </service>
     <service id="fos_user.resetting.form.type" class="FOS\UserBundle\Form\Type\ResettingFormType">
       <tag name="form.type" alias="fos_user_resetting"/>
-      <argument>emh\userBundle\Entity\Admins</argument>
+      <argument>emh\MembresBundle\Entity\Membres</argument>
     </service>
     <service id="fos_user.listener.resetting" class="FOS\UserBundle\EventListener\ResettingListener">
       <tag name="kernel.event_subscriber"/>
@@ -3006,8 +3006,8 @@
         <argument>FOSUser</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp\www\EMHaveclesoleil\src\emh\userBundle/Resources/views</argument>
-        <argument>emhuser</argument>
+        <argument>C:\wamp\www\EMHaveclesoleil\src\emh\MembresBundle/Resources/views</argument>
+        <argument>emhMembres</argument>
       </call>
       <call method="addPath">
         <argument>C:\wamp\www\EMHaveclesoleil\src\Acme\DemoBundle/Resources/views</argument>
@@ -3129,7 +3129,7 @@
           <argument>null</argument>
         </service>
       </argument>
-      <argument>emh\userBundle\Entity\Admins</argument>
+      <argument>emh\MembresBundle\Entity\Membres</argument>
     </service>
     <service id="event_dispatcher" alias="debug.event_dispatcher"/>
     <service id="session.storage" alias="session.storage.native"/>
