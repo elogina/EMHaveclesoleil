@@ -1,3 +1,7 @@
+emh_membres:
+    resource: "@emhMembresBundle/Resources/config/routing.yml"
+    prefix:   /
+
 emhuser:
     resource: "@emhuserBundle/Resources/config/routing.yml"
     prefix:   /

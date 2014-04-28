@@ -2,6 +2,7 @@
 
 namespace emh\cmsPrincipalBundle\Entity;
 
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="membres", uniqueConstraints={@ORM\UniqueConstraint(name="mail_UNIQUE", columns={"mail"}), @ORM\UniqueConstraint(name="mdp_UNIQUE", columns={"mdp"})})
  * @ORM\Entity
  */
-class Membres
+class Membres extends BaseUser
 {
     /**
      * @var integer
@@ -19,7 +20,13 @@ class Membres
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
+    
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
 
     /**
      * @var string
