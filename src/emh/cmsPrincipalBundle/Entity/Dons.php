@@ -52,7 +52,7 @@ class Dons
     /**
      * @var \Membres
      *
-     * @ORM\ManyToOne(targetEntity="Membres")
+     * @ORM\ManyToOne(targetEntity="emh\MembresBundle\Entity\Membres")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="membres_id", referencedColumnName="id")
      * })

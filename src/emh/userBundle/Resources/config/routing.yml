@@ -1,3 +1,0 @@
-emhuser_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: emhuserBundle:Default:index }

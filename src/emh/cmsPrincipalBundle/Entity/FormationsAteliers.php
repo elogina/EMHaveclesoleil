@@ -111,7 +111,7 @@ class FormationsAteliers
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Membres", mappedBy="formations")
+     * @ORM\ManyToMany(targetEntity="emh\MembresBundle\Entity\Membres", mappedBy="formations")
      */
     private $membres;
 
@@ -413,10 +413,10 @@ class FormationsAteliers
     /**
      * Add membres
      *
-     * @param \emh\cmsPrincipalBundle\Entity\Membres $membres
+     * @param \emh\MembresBundle\Entity\Membres $membres
      * @return FormationsAteliers
      */
-    public function addMembre(\emh\cmsPrincipalBundle\Entity\Membres $membres)
+    public function addMembre(\emh\MembresBundle\Entity\Membres $membres)
     {
         $this->membres[] = $membres;
 
@@ -426,9 +426,9 @@ class FormationsAteliers
     /**
      * Remove membres
      *
-     * @param \emh\cmsPrincipalBundle\Entity\Membres $membres
+     * @param \emh\MembresBundle\Entity\Membres $membres
      */
-    public function removeMembre(\emh\cmsPrincipalBundle\Entity\Membres $membres)
+    public function removeMembre(\emh\MembresBundle\Entity\Membres $membres)
     {
         $this->membres->removeElement($membres);
     }

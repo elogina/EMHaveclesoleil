@@ -36,7 +36,7 @@ class Achats
     /**
      * @var \Membres
      *
-     * @ORM\ManyToOne(targetEntity="Membres")
+     * @ORM\ManyToOne(targetEntity="emh\MembresBundle\Entity\Membres")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="membres_id", referencedColumnName="id")
      * })
@@ -129,10 +129,10 @@ class Achats
     /**
      * Set membres
      *
-     * @param \emh\cmsPrincipalBundle\Entity\Membres $membres
+     * @param \emh\MembresBundle\Entity\Membres $membres
      * @return Achats
      */
-    public function setMembres(\emh\cmsPrincipalBundle\Entity\Membres $membres = null)
+    public function setMembres(\emh\MembresBundle\Entity\Membres $membres = null)
     {
         $this->membres = $membres;
 
