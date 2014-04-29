@@ -136,9 +136,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         if (0 === strpos($pathinfo, '/hello')) {
-            // emhuser_homepage
+            // emh_membres_homepage
             if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'emhuser_homepage')), array (  '_controller' => 'emh\\userBundle\\Controller\\DefaultController::indexAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_homepage')), array (  '_controller' => 'emh\\MembresBundle\\Controller\\DefaultController::indexAction',));
             }
 
             // emhcms_principal_homepage
