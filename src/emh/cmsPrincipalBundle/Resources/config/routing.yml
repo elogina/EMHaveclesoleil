@@ -1,2 +1,5 @@
-
+cms_principal_page:
+    pattern:  /{id}
+    defaults: { _controller: emhcmsPrincipalBundle:Rubrique:detail }
+    
 

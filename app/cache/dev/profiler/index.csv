@@ -18,3 +18,4 @@ d35301,::1,GET,http://localhost/EMHaveclesoleil/web/app_dev.php/1,1398931332,4a8
 b0e7b1,::1,GET,http://localhost/EMHaveclesoleil/web/app_dev.php/register/,1398931609,
 b44d51,::1,POST,http://localhost/EMHaveclesoleil/web/app_dev.php/register/,1398931626,
 f3f958,::1,GET,http://localhost/EMHaveclesoleil/web/app_dev.php/register/confirmed,1398931627,
+f670aa,127.0.0.1,GET,http://localhost/EMHaveclesoleil/web/app_dev.php/1,1398943403,
