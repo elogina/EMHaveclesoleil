@@ -135,14 +135,14 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // emh_membres_homepage
-        if (0 === strpos($pathinfo, '/membre/hello') && preg_match('#^/membre/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_homepage')), array (  '_controller' => 'emh\\MembresBundle\\Controller\\DefaultController::indexAction',));
+        // cms_principal_homepage
+        if (preg_match('#^/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_homepage')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::detailAction',));
         }
 
-        // cms_principal_homepage
-        if (0 === strpos($pathinfo, '/principal/principal') && preg_match('#^/principal/principal/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_homepage')), array (  '_controller' => 'emhcmsPrincipalBundle:Rubriques:detail',));
+        // emh_membres_homepage
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_homepage')), array (  '_controller' => 'emh\\MembresBundle\\Controller\\DefaultController::indexAction',));
         }
 
         if (0 === strpos($pathinfo, '/log')) {
