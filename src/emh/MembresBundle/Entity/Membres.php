@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Membres
  *
- * @ORM\Table(name="membres", uniqueConstraints={@ORM\UniqueConstraint(name="mail_UNIQUE", columns={"mail"}), @ORM\UniqueConstraint(name="mdp_UNIQUE", columns={"mdp"})})
+ * @ORM\Table(name="membres")
  * @ORM\Entity
  */
 class Membres extends BaseUser
@@ -22,26 +22,13 @@ class Membres extends BaseUser
      */
     protected $id;
     
+    public function __construct()
+    {
+        parent::__construct();
+        $this->formations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nom", type="string", length=50, nullable=false)
-     */
-    private $nom;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="prenom", type="string", length=50, nullable=false)
-     */
-    private $prenom;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="adresse", type="text", nullable=true)
-     */
+    
     private $adresse;
 
     /**
@@ -50,20 +37,6 @@ class Membres extends BaseUser
      * @ORM\Column(name="telephonne", type="string", length=45, nullable=true)
      */
     private $telephonne;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mail", type="string", length=50, nullable=false)
-     */
-    private $mail;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mdp", type="string", length=45, nullable=false)
-     */
-    private $mdp;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -83,12 +56,7 @@ class Membres extends BaseUser
     /**
      * Constructor
      */
-    public function __construct()
-    {
-        $this->formations = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-
+   
     /**
      * Get id
      *
@@ -189,52 +157,6 @@ class Membres extends BaseUser
     public function getTelephonne()
     {
         return $this->telephonne;
-    }
-
-    /**
-     * Set mail
-     *
-     * @param string $mail
-     * @return Membres
-     */
-    public function setMail($mail)
-    {
-        $this->mail = $mail;
-
-        return $this;
-    }
-
-    /**
-     * Get mail
-     *
-     * @return string 
-     */
-    public function getMail()
-    {
-        return $this->mail;
-    }
-
-    /**
-     * Set mdp
-     *
-     * @param string $mdp
-     * @return Membres
-     */
-    public function setMdp($mdp)
-    {
-        $this->mdp = $mdp;
-
-        return $this;
-    }
-
-    /**
-     * Get mdp
-     *
-     * @return string 
-     */
-    public function getMdp()
-    {
-        return $this->mdp;
     }
 
     /**

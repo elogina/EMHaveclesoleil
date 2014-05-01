@@ -1,3 +1,2 @@
-emhcms_principal_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: emhcmsPrincipalBundle:Default:index }
+
+

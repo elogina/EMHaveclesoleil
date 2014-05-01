@@ -1,11 +1,13 @@
+emhcms_principal:
+    resource: "@emhcmsPrincipalBundle/Resources/config/routing.yml"
+    prefix:   /
+    
 emh_membres:
     resource: "@emhMembresBundle/Resources/config/routing.yml"
     prefix:   /
 
 
-emhcms_principal:
-    resource: "@emhcmsPrincipalBundle/Resources/config/routing.yml"
-    prefix:   /
+
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
