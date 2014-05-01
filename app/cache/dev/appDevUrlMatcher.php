@@ -140,6 +140,15 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_page')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::detailAction',));
         }
 
+        // cms_principal_rubrique_add
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'cms_principal_rubrique_add');
+            }
+
+            return array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::addAction',  '_route' => 'cms_principal_rubrique_add',);
+        }
+
         // emh_membres_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_homepage')), array (  '_controller' => 'emh\\MembresBundle\\Controller\\DefaultController::indexAction',));

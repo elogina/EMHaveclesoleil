@@ -2,4 +2,8 @@ cms_principal_page:
     pattern:  /{id}
     defaults: { _controller: emhcmsPrincipalBundle:Rubrique:detail }
     
+cms_principal_rubrique_add:
+    pattern:  /
+    defaults: { _controller: emhcmsPrincipalBundle:Rubrique:add }  
+    
 

@@ -19,3 +19,10 @@ b0e7b1,::1,GET,http://localhost/EMHaveclesoleil/web/app_dev.php/register/,139893
 b44d51,::1,POST,http://localhost/EMHaveclesoleil/web/app_dev.php/register/,1398931626,
 f3f958,::1,GET,http://localhost/EMHaveclesoleil/web/app_dev.php/register/confirmed,1398931627,
 f670aa,127.0.0.1,GET,http://localhost/EMHaveclesoleil/web/app_dev.php/1,1398943403,
+e11c2e,127.0.0.1,GET,http://localhost/EMHaveclesoleil/web/app_dev.php/,1398945337,a571bb
+a571bb,127.0.0.1,GET,http://localhost/EMHaveclesoleil/web/app_dev.php/,1398945337,
+67a971,127.0.0.1,GET,http://localhost/EMHaveclesoleil/web/app_dev.php/,1398945377,f01e8d
+f01e8d,127.0.0.1,GET,http://localhost/EMHaveclesoleil/web/app_dev.php/,1398945377,
+23ff27,127.0.0.1,GET,http://localhost/EMHaveclesoleil/web/app_dev.php/,1398945421,
+bc227f,127.0.0.1,GET,http://localhost/EMHaveclesoleil/web/app_dev.php/,1398945476,b2c162
+b2c162,127.0.0.1,POST,http://localhost/EMHaveclesoleil/web/app_dev.php/,1398945476,
