@@ -302,6 +302,9 @@
       <parameter key="ROLE_SUPER_ADMIN" type="collection">
         <parameter>ROLE_ADMIN</parameter>
       </parameter>
+      <parameter key="ROLE_MEMBRE" type="collection">
+        <parameter>ROLE_MEMBRE</parameter>
+      </parameter>
     </parameter>
     <parameter key="twig.class">Twig_Environment</parameter>
     <parameter key="twig.loader.filesystem.class">Symfony\Bundle\TwigBundle\Loader\FilesystemLoader</parameter>
@@ -2839,7 +2842,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>535e1eb0d0044</argument>
+            <argument>5361fe5f05032</argument>
           </service>
         </argument>
       </argument>
@@ -2892,6 +2895,9 @@
         </argument>
         <argument key="ROLE_SUPER_ADMIN" type="collection">
           <argument>ROLE_ADMIN</argument>
+        </argument>
+        <argument key="ROLE_MEMBRE" type="collection">
+          <argument>ROLE_MEMBRE</argument>
         </argument>
       </argument>
     </service>
@@ -3109,7 +3115,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>535e1eb0d0044</argument>
+            <argument>5361fe5f05032</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
           </service>
         </argument>
@@ -3720,6 +3726,7 @@
       <argument type="service" id="security.authentication.trust_resolver" on-invalid="null"/>
       <argument type="service" id="security.role_hierarchy" on-invalid="null"/>
     </service>
+    <service id="emh_rubriques_slug" class="emh\cmsPrincipalBundle\Slug"/>
     <service id="fos_user.security.interactive_login_listener" class="FOS\UserBundle\EventListener\LastLoginListener">
       <tag name="kernel.event_subscriber"/>
       <argument type="service" id="fos_user.user_manager"/>

@@ -16,8 +16,8 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new emh\cmsPrincipalBundle\emhcmsPrincipalBundle(),
             
+            new emh\cmsPrincipalBundle\emhcmsPrincipalBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new emh\MembresBundle\emhMembresBundle(),
         );

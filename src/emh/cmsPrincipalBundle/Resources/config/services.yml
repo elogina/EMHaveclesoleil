@@ -5,3 +5,7 @@ services:
 #    emhcms_principal.example:
 #        class: %emhcms_principal.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+ emh_rubriques_slug:
+    class: emh\cmsPrincipalBundle\Slug
+    argument: [$nom]
