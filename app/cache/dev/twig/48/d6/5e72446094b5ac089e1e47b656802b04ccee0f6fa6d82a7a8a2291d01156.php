@@ -24,7 +24,7 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 3
-        $context["__internal_bea8030f924957ccf572b1de83c00c430a674f51accc4b39f6a8435292828772"] = $this;
+        $context["__internal_5e5a131e9dd503675c70f43a693c7edb9bb022b4e1a39445f08907a188a21f56"] = $this;
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
@@ -33,7 +33,7 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
     {
         // line 6
         echo "    ";
-        if (twig_length_filter($this->env, $this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "data"))) {
+        if (twig_length_filter($this->env, $this->getAttribute($this->getContext($context, "collector"), "data"))) {
             // line 7
             echo "        ";
             ob_start();
@@ -41,16 +41,16 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
             echo "            <img width=\"20\" height=\"28\" alt=\"Forms\" src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAcCAYAAABh2p9gAAAAYElEQVRIiWNgGHGAEZ+knZ3df2zihw4dwqmPiVIXoQMMm3C5ChdAdy0LsgH4vIIPIJtBdS9T3UAWdAFyvQ0DjKRGAiEwQsIQOdioHoYoLqRGwh514VB0IakWjsC8PAIBAMl9LomdN/ohAAAAAElFTkSuQmCC\"/>
             <span class=\"sf-toolbar-status sf-toolbar-status-";
             // line 9
-            if ($this->getAttribute($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "data"), "nb_errors")) {
+            if ($this->getAttribute($this->getAttribute($this->getContext($context, "collector"), "data"), "nb_errors")) {
                 echo "red";
             } else {
                 echo "green";
             }
             echo "\">";
-            if ($this->getAttribute($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "data"), "nb_errors")) {
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "data"), "nb_errors"), "html", null, true);
+            if ($this->getAttribute($this->getAttribute($this->getContext($context, "collector"), "data"), "nb_errors")) {
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "collector"), "data"), "nb_errors"), "html", null, true);
             } else {
-                echo twig_escape_filter($this->env, twig_length_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "data"), "forms")), "html", null, true);
+                echo twig_escape_filter($this->env, twig_length_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "collector"), "data"), "forms")), "html", null, true);
             }
             echo "</span>
         ";
@@ -59,7 +59,7 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
             echo "
         ";
             // line 12
-            $this->env->loadTemplate("@WebProfiler/Profiler/toolbar_item.html.twig")->display(array_merge($context, array("link" => (isset($context["profiler_url"]) ? $context["profiler_url"] : $this->getContext($context, "profiler_url")))));
+            $this->env->loadTemplate("@WebProfiler/Profiler/toolbar_item.html.twig")->display(array_merge($context, array("link" => $this->getContext($context, "profiler_url"))));
             // line 13
             echo "    ";
         }
@@ -74,10 +74,10 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
         <strong>Forms</strong>
         ";
         // line 20
-        if (twig_length_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "data"), "forms"))) {
+        if (twig_length_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "collector"), "data"), "forms"))) {
             // line 21
             echo "            <span class=\"count\"><span>";
-            echo twig_escape_filter($this->env, twig_length_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "data"), "forms")), "html", null, true);
+            echo twig_escape_filter($this->env, twig_length_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "collector"), "data"), "forms")), "html", null, true);
             echo "</span></span>
         ";
         }
@@ -154,7 +154,7 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
 
     ";
         // line 89
-        if (twig_length_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "data"), "forms"))) {
+        if (twig_length_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "collector"), "data"), "forms"))) {
             // line 90
             echo "        <div class=\"window\">
             <div class=\"tree\">
@@ -164,11 +164,11 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
                 ";
             // line 95
             $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "data"), "forms"));
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getContext($context, "collector"), "data"), "forms"));
             foreach ($context['_seq'] as $context["formName"] => $context["formData"]) {
                 // line 96
                 echo "                    ";
-                echo $context["__internal_bea8030f924957ccf572b1de83c00c430a674f51accc4b39f6a8435292828772"]->getform_tree_entry((isset($context["formName"]) ? $context["formName"] : $this->getContext($context, "formName")), (isset($context["formData"]) ? $context["formData"] : $this->getContext($context, "formData")));
+                echo $context["__internal_5e5a131e9dd503675c70f43a693c7edb9bb022b4e1a39445f08907a188a21f56"]->getform_tree_entry($this->getContext($context, "formName"), $this->getContext($context, "formData"));
                 echo "
                 ";
             }
@@ -182,11 +182,11 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
             ";
             // line 101
             $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "data"), "forms"));
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getContext($context, "collector"), "data"), "forms"));
             foreach ($context['_seq'] as $context["formName"] => $context["formData"]) {
                 // line 102
                 echo "                ";
-                echo $context["__internal_bea8030f924957ccf572b1de83c00c430a674f51accc4b39f6a8435292828772"]->getform_tree_details((isset($context["formName"]) ? $context["formName"] : $this->getContext($context, "formName")), (isset($context["formData"]) ? $context["formData"] : $this->getContext($context, "formData")));
+                echo $context["__internal_5e5a131e9dd503675c70f43a693c7edb9bb022b4e1a39445f08907a188a21f56"]->getform_tree_details($this->getContext($context, "formName"), $this->getContext($context, "formData"));
                 echo "
             ";
             }
@@ -285,24 +285,24 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
             echo "    <li>
         <a href=\"#details_";
             // line 176
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "id"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "data"), "id"), "html", null, true);
             echo "\">";
-            echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getContext($context, "name"), "html", null, true);
             echo "</a>
 
         ";
             // line 178
-            if ((!twig_test_empty($this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "children")))) {
+            if ((!twig_test_empty($this->getAttribute($this->getContext($context, "data"), "children")))) {
                 // line 179
                 echo "            <ul>
                 ";
                 // line 180
                 $context['_parent'] = (array) $context;
-                $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "children"));
+                $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getContext($context, "data"), "children"));
                 foreach ($context['_seq'] as $context["childName"] => $context["childData"]) {
                     // line 181
                     echo "                    ";
-                    echo $this->getAttribute($this, "form_tree_entry", array(0 => (isset($context["childName"]) ? $context["childName"] : $this->getContext($context, "childName")), 1 => (isset($context["childData"]) ? $context["childData"] : $this->getContext($context, "childData"))), "method");
+                    echo $this->getAttribute($this, "form_tree_entry", array(0 => $this->getContext($context, "childName"), 1 => $this->getContext($context, "childData")), "method");
                     echo "
                 ";
                 }
@@ -339,21 +339,21 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
         try {
             // line 189
             echo "    <div class=\"tree-details\" id=\"details_";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "id"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "data"), "id"), "html", null, true);
             echo "\">
         <h2>
             ";
             // line 191
-            echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getContext($context, "name"), "html", null, true);
             echo "
             ";
             // line 192
-            if ($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "type_class", array(), "any", true, true)) {
+            if ($this->getAttribute($this->getContext($context, "data", true), "type_class", array(), "any", true, true)) {
                 // line 193
                 echo "            <span class=\"form-type\">[<abbr title=\"";
-                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "type_class"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "data"), "type_class"), "html", null, true);
                 echo "\">";
-                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "type"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "data"), "type"), "html", null, true);
                 echo "</abbr>]</span>
             ";
             }
@@ -362,7 +362,7 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
 
         ";
             // line 197
-            if (($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "errors", array(), "any", true, true) && (twig_length_filter($this->env, $this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "errors")) > 0))) {
+            if (($this->getAttribute($this->getContext($context, "data", true), "errors", array(), "any", true, true) && (twig_length_filter($this->env, $this->getAttribute($this->getContext($context, "data"), "errors")) > 0))) {
                 // line 198
                 echo "        <h3>Errors</h3>
 
@@ -374,13 +374,13 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
             ";
                 // line 205
                 $context['_parent'] = (array) $context;
-                $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "errors"));
+                $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getContext($context, "data"), "errors"));
                 foreach ($context['_seq'] as $context["_key"] => $context["error"]) {
                     // line 206
                     echo "            <tr>
                 <td>";
                     // line 207
-                    echo twig_escape_filter($this->env, $this->getAttribute((isset($context["error"]) ? $context["error"] : $this->getContext($context, "error")), "message"), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "error"), "message"), "html", null, true);
                     echo "</td>
                 <td><em>Unknown.</em></td>
             </tr>
@@ -397,7 +397,7 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
             echo "
         ";
             // line 214
-            if ($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "default_data", array(), "any", true, true)) {
+            if ($this->getAttribute($this->getContext($context, "data", true), "default_data", array(), "any", true, true)) {
                 // line 215
                 echo "        <h3>Default Data</h3>
 
@@ -407,10 +407,10 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
                 <td>
                     ";
                 // line 221
-                if ($this->getAttribute($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "default_data", array(), "any", false, true), "model", array(), "any", true, true)) {
+                if ($this->getAttribute($this->getAttribute($this->getContext($context, "data", true), "default_data", array(), "any", false, true), "model", array(), "any", true, true)) {
                     // line 222
                     echo "                        <pre>";
-                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "default_data"), "model"), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "data"), "default_data"), "model"), "html", null, true);
                     echo "</pre>
                     ";
                 } else {
@@ -425,7 +425,7 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
                 <th>Normalized Format</th>
                 <td><pre>";
                 // line 230
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "default_data"), "norm"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "data"), "default_data"), "norm"), "html", null, true);
                 echo "</pre></td>
             </tr>
             <tr>
@@ -433,10 +433,10 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
                 <td>
                     ";
                 // line 235
-                if ($this->getAttribute($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "default_data", array(), "any", false, true), "view", array(), "any", true, true)) {
+                if ($this->getAttribute($this->getAttribute($this->getContext($context, "data", true), "default_data", array(), "any", false, true), "view", array(), "any", true, true)) {
                     // line 236
                     echo "                        <pre>";
-                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "default_data"), "view"), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "data"), "default_data"), "view"), "html", null, true);
                     echo "</pre>
                     ";
                 } else {
@@ -454,13 +454,13 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
             echo "
         ";
             // line 245
-            if ($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "submitted_data", array(), "any", true, true)) {
+            if ($this->getAttribute($this->getContext($context, "data", true), "submitted_data", array(), "any", true, true)) {
                 // line 246
                 echo "        <h3>Submitted Data</h3>
 
         ";
                 // line 248
-                if ($this->getAttribute($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "submitted_data", array(), "any", false, true), "norm", array(), "any", true, true)) {
+                if ($this->getAttribute($this->getAttribute($this->getContext($context, "data", true), "submitted_data", array(), "any", false, true), "norm", array(), "any", true, true)) {
                     // line 249
                     echo "            <table>
                 <tr>
@@ -468,10 +468,10 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
                     <td>
                         ";
                     // line 253
-                    if ($this->getAttribute($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "submitted_data", array(), "any", false, true), "view", array(), "any", true, true)) {
+                    if ($this->getAttribute($this->getAttribute($this->getContext($context, "data", true), "submitted_data", array(), "any", false, true), "view", array(), "any", true, true)) {
                         // line 254
                         echo "                            <pre>";
-                        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "submitted_data"), "view"), "html", null, true);
+                        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "data"), "submitted_data"), "view"), "html", null, true);
                         echo "</pre>
                         ";
                     } else {
@@ -486,7 +486,7 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
                     <th>Normalized Format</th>
                     <td><pre>";
                     // line 262
-                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "submitted_data"), "norm"), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "data"), "submitted_data"), "norm"), "html", null, true);
                     echo "</pre></td>
                 </tr>
                 <tr>
@@ -494,10 +494,10 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
                     <td>
                         ";
                     // line 267
-                    if ($this->getAttribute($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "submitted_data", array(), "any", false, true), "model", array(), "any", true, true)) {
+                    if ($this->getAttribute($this->getAttribute($this->getContext($context, "data", true), "submitted_data", array(), "any", false, true), "model", array(), "any", true, true)) {
                         // line 268
                         echo "                            <pre>";
-                        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "submitted_data"), "model"), "html", null, true);
+                        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "data"), "submitted_data"), "model"), "html", null, true);
                         echo "</pre>
                         ";
                     } else {
@@ -522,13 +522,13 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
             echo "
         ";
             // line 280
-            if ($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "passed_options", array(), "any", true, true)) {
+            if ($this->getAttribute($this->getContext($context, "data", true), "passed_options", array(), "any", true, true)) {
                 // line 281
                 echo "        <h3>Passed Options</h3>
 
         ";
                 // line 283
-                if (twig_length_filter($this->env, $this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "passed_options"))) {
+                if (twig_length_filter($this->env, $this->getAttribute($this->getContext($context, "data"), "passed_options"))) {
                     // line 284
                     echo "        <table>
             <tr>
@@ -539,29 +539,29 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
             ";
                     // line 290
                     $context['_parent'] = (array) $context;
-                    $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "passed_options"));
+                    $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getContext($context, "data"), "passed_options"));
                     foreach ($context['_seq'] as $context["option"] => $context["value"]) {
                         // line 291
                         echo "            <tr>
                 <th>";
                         // line 292
-                        echo twig_escape_filter($this->env, (isset($context["option"]) ? $context["option"] : $this->getContext($context, "option")), "html", null, true);
+                        echo twig_escape_filter($this->env, $this->getContext($context, "option"), "html", null, true);
                         echo "</th>
                 <td><pre>";
                         // line 293
-                        echo twig_escape_filter($this->env, (isset($context["value"]) ? $context["value"] : $this->getContext($context, "value")), "html", null, true);
+                        echo twig_escape_filter($this->env, $this->getContext($context, "value"), "html", null, true);
                         echo "</pre></td>
                 <td>
                     ";
                         // line 295
-                        if (($this->getAttribute($this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "resolved_options"), (isset($context["option"]) ? $context["option"] : $this->getContext($context, "option")), array(), "array") === (isset($context["value"]) ? $context["value"] : $this->getContext($context, "value")))) {
+                        if (($this->getAttribute($this->getAttribute($this->getContext($context, "data"), "resolved_options"), $this->getContext($context, "option"), array(), "array") === $this->getContext($context, "value"))) {
                             // line 296
                             echo "                        <em>same as passed value</em>
                     ";
                         } else {
                             // line 298
                             echo "                        <pre>";
-                            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "resolved_options"), (isset($context["option"]) ? $context["option"] : $this->getContext($context, "option")), array(), "array"), "html", null, true);
+                            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "data"), "resolved_options"), $this->getContext($context, "option"), array(), "array"), "html", null, true);
                             echo "</pre>
                     ";
                         }
@@ -588,7 +588,7 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
             echo "
         ";
             // line 309
-            if ($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "resolved_options", array(), "any", true, true)) {
+            if ($this->getAttribute($this->getContext($context, "data", true), "resolved_options", array(), "any", true, true)) {
                 // line 310
                 echo "        <h3>Resolved Options</h3>
 
@@ -600,17 +600,17 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
             ";
                 // line 317
                 $context['_parent'] = (array) $context;
-                $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "resolved_options"));
+                $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getContext($context, "data"), "resolved_options"));
                 foreach ($context['_seq'] as $context["option"] => $context["value"]) {
                     // line 318
                     echo "            <tr>
                 <th>";
                     // line 319
-                    echo twig_escape_filter($this->env, (isset($context["option"]) ? $context["option"] : $this->getContext($context, "option")), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->getContext($context, "option"), "html", null, true);
                     echo "</th>
                 <td><pre>";
                     // line 320
-                    echo twig_escape_filter($this->env, (isset($context["value"]) ? $context["value"] : $this->getContext($context, "value")), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->getContext($context, "value"), "html", null, true);
                     echo "</pre></td>
             </tr>
             ";
@@ -626,7 +626,7 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
             echo "
         ";
             // line 326
-            if ($this->getAttribute((isset($context["data"]) ? $context["data"] : null), "view_vars", array(), "any", true, true)) {
+            if ($this->getAttribute($this->getContext($context, "data", true), "view_vars", array(), "any", true, true)) {
                 // line 327
                 echo "        <h3>View Variables</h3>
 
@@ -638,17 +638,17 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
             ";
                 // line 334
                 $context['_parent'] = (array) $context;
-                $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "view_vars"));
+                $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getContext($context, "data"), "view_vars"));
                 foreach ($context['_seq'] as $context["variable"] => $context["value"]) {
                     // line 335
                     echo "            <tr>
                 <th>";
                     // line 336
-                    echo twig_escape_filter($this->env, (isset($context["variable"]) ? $context["variable"] : $this->getContext($context, "variable")), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->getContext($context, "variable"), "html", null, true);
                     echo "</th>
                 <td><pre>";
                     // line 337
-                    echo twig_escape_filter($this->env, (isset($context["value"]) ? $context["value"] : $this->getContext($context, "value")), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->getContext($context, "value"), "html", null, true);
                     echo "</pre></td>
             </tr>
             ";
@@ -666,11 +666,11 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
     ";
             // line 344
             $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["data"]) ? $context["data"] : $this->getContext($context, "data")), "children"));
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getContext($context, "data"), "children"));
             foreach ($context['_seq'] as $context["childName"] => $context["childData"]) {
                 // line 345
                 echo "        ";
-                echo $this->getAttribute($this, "form_tree_details", array(0 => (isset($context["childName"]) ? $context["childName"] : $this->getContext($context, "childName")), 1 => (isset($context["childData"]) ? $context["childData"] : $this->getContext($context, "childData"))), "method");
+                echo $this->getAttribute($this, "form_tree_details", array(0 => $this->getContext($context, "childName"), 1 => $this->getContext($context, "childData")), "method");
                 echo "
     ";
             }
@@ -698,6 +698,6 @@ class __TwigTemplate_48d65e72446094b5ac089e1e47b656802b04ccee0f6fa6d82a7a8a2291d
 
     public function getDebugInfo()
     {
-        return array (  672 => 345,  668 => 344,  664 => 342,  651 => 337,  647 => 336,  644 => 335,  640 => 334,  631 => 327,  626 => 325,  613 => 320,  609 => 319,  602 => 317,  593 => 310,  591 => 309,  588 => 308,  585 => 307,  581 => 305,  577 => 303,  569 => 300,  563 => 298,  559 => 296,  557 => 295,  552 => 293,  548 => 292,  545 => 291,  541 => 290,  533 => 284,  531 => 283,  525 => 280,  519 => 278,  515 => 276,  509 => 272,  505 => 270,  499 => 268,  497 => 267,  489 => 262,  483 => 258,  479 => 256,  473 => 254,  471 => 253,  465 => 249,  463 => 248,  459 => 246,  457 => 245,  454 => 244,  448 => 240,  444 => 238,  438 => 236,  436 => 235,  428 => 230,  418 => 224,  412 => 222,  410 => 221,  402 => 215,  400 => 214,  397 => 213,  393 => 211,  383 => 207,  376 => 205,  365 => 197,  347 => 191,  317 => 185,  313 => 183,  304 => 181,  295 => 178,  285 => 175,  273 => 174,  205 => 108,  201 => 106,  179 => 98,  159 => 90,  93 => 27,  77 => 20,  51 => 13,  34 => 5,  31 => 4,  810 => 492,  807 => 491,  796 => 489,  792 => 488,  788 => 486,  775 => 485,  749 => 479,  746 => 478,  727 => 476,  710 => 475,  706 => 473,  702 => 472,  698 => 471,  694 => 470,  690 => 469,  686 => 468,  682 => 467,  679 => 466,  677 => 465,  660 => 340,  649 => 462,  634 => 456,  629 => 326,  625 => 453,  622 => 323,  620 => 451,  606 => 318,  601 => 446,  567 => 414,  549 => 411,  532 => 410,  529 => 409,  527 => 281,  522 => 279,  517 => 404,  199 => 93,  196 => 92,  188 => 102,  182 => 87,  173 => 85,  68 => 30,  62 => 12,  28 => 3,  357 => 123,  344 => 119,  341 => 189,  332 => 116,  327 => 114,  324 => 113,  318 => 111,  306 => 107,  297 => 179,  291 => 102,  263 => 95,  258 => 94,  243 => 92,  231 => 83,  224 => 81,  212 => 78,  202 => 94,  190 => 76,  187 => 75,  174 => 65,  143 => 51,  136 => 71,  122 => 41,  117 => 39,  112 => 36,  104 => 32,  85 => 23,  75 => 19,  58 => 25,  44 => 9,  161 => 63,  158 => 80,  154 => 60,  151 => 59,  140 => 58,  125 => 42,  121 => 50,  118 => 49,  100 => 39,  87 => 41,  49 => 14,  46 => 13,  27 => 3,  91 => 33,  88 => 25,  63 => 18,  389 => 160,  386 => 159,  378 => 157,  371 => 156,  367 => 198,  363 => 126,  358 => 151,  353 => 193,  345 => 147,  343 => 146,  340 => 145,  334 => 141,  331 => 140,  328 => 139,  326 => 138,  321 => 112,  309 => 108,  307 => 128,  302 => 125,  296 => 121,  293 => 120,  290 => 119,  288 => 176,  283 => 100,  281 => 114,  276 => 111,  274 => 97,  269 => 107,  265 => 96,  259 => 103,  255 => 93,  253 => 100,  235 => 85,  232 => 88,  227 => 86,  222 => 83,  210 => 77,  208 => 76,  189 => 66,  184 => 101,  175 => 65,  170 => 96,  166 => 95,  163 => 82,  155 => 47,  152 => 46,  144 => 42,  127 => 35,  109 => 52,  94 => 21,  82 => 28,  76 => 34,  61 => 15,  39 => 6,  36 => 5,  79 => 21,  72 => 17,  69 => 16,  54 => 22,  47 => 11,  42 => 7,  40 => 11,  37 => 10,  22 => 1,  164 => 58,  157 => 89,  145 => 74,  139 => 49,  131 => 45,  120 => 31,  115 => 39,  111 => 47,  108 => 37,  106 => 51,  101 => 31,  98 => 45,  92 => 43,  83 => 33,  80 => 32,  74 => 14,  66 => 11,  60 => 6,  55 => 24,  52 => 12,  50 => 22,  41 => 8,  32 => 5,  29 => 6,  462 => 202,  453 => 199,  449 => 198,  446 => 197,  441 => 196,  439 => 195,  431 => 189,  429 => 188,  422 => 226,  415 => 180,  408 => 176,  401 => 172,  394 => 168,  387 => 164,  380 => 206,  373 => 156,  361 => 195,  355 => 150,  351 => 192,  348 => 140,  342 => 137,  338 => 135,  335 => 134,  329 => 188,  325 => 129,  323 => 128,  320 => 127,  315 => 110,  312 => 109,  303 => 106,  300 => 180,  298 => 120,  289 => 113,  286 => 112,  278 => 98,  275 => 105,  270 => 102,  267 => 101,  262 => 98,  256 => 96,  248 => 97,  246 => 136,  241 => 93,  233 => 87,  229 => 87,  226 => 84,  220 => 81,  216 => 79,  213 => 78,  207 => 75,  203 => 73,  200 => 72,  197 => 104,  194 => 68,  191 => 67,  185 => 74,  181 => 65,  178 => 66,  176 => 86,  172 => 64,  168 => 61,  165 => 83,  162 => 57,  156 => 62,  153 => 77,  150 => 55,  147 => 75,  141 => 73,  134 => 54,  130 => 46,  123 => 61,  119 => 40,  116 => 57,  113 => 48,  105 => 25,  102 => 40,  99 => 23,  96 => 37,  90 => 26,  84 => 40,  81 => 23,  73 => 33,  70 => 15,  67 => 24,  64 => 13,  59 => 11,  53 => 12,  45 => 9,  43 => 12,  38 => 7,  35 => 6,  33 => 4,  30 => 3,);
+        return array (  672 => 345,  668 => 344,  664 => 342,  660 => 340,  651 => 337,  647 => 336,  644 => 335,  640 => 334,  631 => 327,  629 => 326,  626 => 325,  622 => 323,  613 => 320,  609 => 319,  606 => 318,  602 => 317,  593 => 310,  591 => 309,  588 => 308,  585 => 307,  581 => 305,  577 => 303,  569 => 300,  563 => 298,  559 => 296,  557 => 295,  552 => 293,  548 => 292,  545 => 291,  541 => 290,  533 => 284,  531 => 283,  527 => 281,  525 => 280,  522 => 279,  519 => 278,  515 => 276,  509 => 272,  505 => 270,  499 => 268,  497 => 267,  489 => 262,  483 => 258,  479 => 256,  473 => 254,  471 => 253,  465 => 249,  463 => 248,  459 => 246,  457 => 245,  454 => 244,  448 => 240,  444 => 238,  438 => 236,  436 => 235,  428 => 230,  422 => 226,  418 => 224,  412 => 222,  410 => 221,  402 => 215,  400 => 214,  397 => 213,  393 => 211,  383 => 207,  380 => 206,  376 => 205,  367 => 198,  365 => 197,  361 => 195,  353 => 193,  351 => 192,  347 => 191,  341 => 189,  329 => 188,  317 => 185,  313 => 183,  304 => 181,  300 => 180,  297 => 179,  295 => 178,  288 => 176,  285 => 175,  273 => 174,  205 => 108,  201 => 106,  197 => 104,  188 => 102,  184 => 101,  179 => 98,  170 => 96,  166 => 95,  159 => 90,  93 => 27,  90 => 26,  85 => 23,  77 => 20,  62 => 12,  27 => 3,  59 => 11,  51 => 13,  44 => 9,  38 => 7,  34 => 5,  31 => 4,  28 => 3,  91 => 33,  88 => 32,  82 => 28,  76 => 25,  73 => 24,  67 => 20,  63 => 18,  61 => 17,  39 => 6,  36 => 5,  33 => 4,  30 => 3,  79 => 21,  72 => 17,  69 => 16,  54 => 22,  47 => 11,  45 => 9,  42 => 16,  40 => 11,  37 => 10,  22 => 1,  246 => 32,  164 => 58,  162 => 57,  157 => 89,  145 => 46,  139 => 45,  131 => 42,  123 => 41,  120 => 40,  115 => 39,  111 => 38,  108 => 37,  106 => 36,  101 => 33,  98 => 32,  96 => 31,  92 => 29,  83 => 25,  80 => 27,  74 => 14,  66 => 11,  64 => 13,  60 => 6,  55 => 13,  52 => 12,  50 => 14,  43 => 9,  41 => 8,  35 => 6,  32 => 5,  29 => 6,);
     }
 }

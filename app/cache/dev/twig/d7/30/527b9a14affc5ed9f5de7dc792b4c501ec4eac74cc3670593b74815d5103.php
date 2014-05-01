@@ -31,12 +31,12 @@ class __TwigTemplate_d730527b9a14affc5ed9f5de7dc792b4c501ec4eac74cc3670593b74815
     {
         // line 4
         echo "    ";
-        if ($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "hasexception")) {
+        if ($this->getAttribute($this->getContext($context, "collector"), "hasexception")) {
             // line 5
             echo "        <style>
             ";
             // line 6
-            echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('routing')->getPath("_profiler_exception_css", array("token" => (isset($context["token"]) ? $context["token"] : $this->getContext($context, "token")))));
+            echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('routing')->getPath("_profiler_exception_css", array("token" => $this->getContext($context, "token"))));
             echo "
         </style>
     ";
@@ -58,7 +58,7 @@ class __TwigTemplate_d730527b9a14affc5ed9f5de7dc792b4c501ec4eac74cc3670593b74815
     <span class=\"count\">
         ";
         // line 17
-        if ($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "hasexception")) {
+        if ($this->getAttribute($this->getContext($context, "collector"), "hasexception")) {
             // line 18
             echo "            <span>1</span>
         ";
@@ -77,7 +77,7 @@ class __TwigTemplate_d730527b9a14affc5ed9f5de7dc792b4c501ec4eac74cc3670593b74815
 
     ";
         // line 27
-        if ((!$this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "hasexception"))) {
+        if ((!$this->getAttribute($this->getContext($context, "collector"), "hasexception"))) {
             // line 28
             echo "        <p>
             <em>No exception was thrown and uncaught during the request.</em>
@@ -88,7 +88,7 @@ class __TwigTemplate_d730527b9a14affc5ed9f5de7dc792b4c501ec4eac74cc3670593b74815
             echo "        <div class=\"sf-reset\">
             ";
             // line 33
-            echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('routing')->getPath("_profiler_exception", array("token" => (isset($context["token"]) ? $context["token"] : $this->getContext($context, "token")))));
+            echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('routing')->getPath("_profiler_exception", array("token" => $this->getContext($context, "token"))));
             echo "
         </div>
     ";
@@ -107,6 +107,6 @@ class __TwigTemplate_d730527b9a14affc5ed9f5de7dc792b4c501ec4eac74cc3670593b74815
 
     public function getDebugInfo()
     {
-        return array (  91 => 33,  88 => 32,  63 => 18,  389 => 160,  386 => 159,  378 => 157,  371 => 156,  367 => 155,  363 => 153,  358 => 151,  353 => 149,  345 => 147,  343 => 146,  340 => 145,  334 => 141,  331 => 140,  328 => 139,  326 => 138,  321 => 135,  309 => 129,  307 => 128,  302 => 125,  296 => 121,  293 => 120,  290 => 119,  288 => 118,  283 => 115,  281 => 114,  276 => 111,  274 => 110,  269 => 107,  265 => 105,  259 => 103,  255 => 101,  253 => 100,  235 => 89,  232 => 88,  227 => 86,  222 => 83,  210 => 77,  208 => 76,  189 => 66,  184 => 63,  175 => 58,  170 => 56,  166 => 54,  163 => 53,  155 => 47,  152 => 46,  144 => 42,  127 => 35,  109 => 27,  94 => 21,  82 => 28,  76 => 25,  61 => 17,  39 => 6,  36 => 5,  79 => 18,  72 => 13,  69 => 12,  54 => 22,  47 => 8,  42 => 7,  40 => 11,  37 => 10,  22 => 1,  164 => 58,  157 => 56,  145 => 46,  139 => 45,  131 => 42,  120 => 31,  115 => 39,  111 => 38,  108 => 37,  106 => 36,  101 => 33,  98 => 32,  92 => 29,  83 => 25,  80 => 27,  74 => 14,  66 => 11,  60 => 6,  55 => 13,  52 => 12,  50 => 14,  41 => 8,  32 => 4,  29 => 6,  462 => 202,  453 => 199,  449 => 198,  446 => 197,  441 => 196,  439 => 195,  431 => 189,  429 => 188,  422 => 184,  415 => 180,  408 => 176,  401 => 172,  394 => 168,  387 => 164,  380 => 158,  373 => 156,  361 => 152,  355 => 150,  351 => 141,  348 => 140,  342 => 137,  338 => 135,  335 => 134,  329 => 131,  325 => 129,  323 => 128,  320 => 127,  315 => 131,  312 => 130,  303 => 122,  300 => 121,  298 => 120,  289 => 113,  286 => 112,  278 => 106,  275 => 105,  270 => 102,  267 => 101,  262 => 98,  256 => 96,  248 => 97,  246 => 96,  241 => 93,  233 => 87,  229 => 87,  226 => 84,  220 => 81,  216 => 79,  213 => 78,  207 => 75,  203 => 73,  200 => 72,  197 => 69,  194 => 68,  191 => 67,  185 => 66,  181 => 65,  178 => 59,  176 => 63,  172 => 57,  168 => 61,  165 => 60,  162 => 57,  156 => 58,  153 => 56,  150 => 55,  147 => 43,  141 => 51,  134 => 39,  130 => 46,  123 => 41,  119 => 40,  116 => 39,  113 => 38,  105 => 25,  102 => 24,  99 => 23,  96 => 31,  90 => 20,  84 => 24,  81 => 23,  73 => 24,  70 => 15,  67 => 20,  64 => 19,  59 => 14,  53 => 12,  45 => 9,  43 => 9,  38 => 6,  35 => 9,  33 => 4,  30 => 3,);
+        return array (  91 => 33,  88 => 32,  82 => 28,  76 => 25,  73 => 24,  67 => 20,  63 => 18,  61 => 17,  39 => 6,  36 => 5,  33 => 4,  30 => 3,  79 => 21,  72 => 13,  69 => 12,  54 => 22,  47 => 18,  45 => 9,  42 => 16,  40 => 11,  37 => 10,  22 => 1,  246 => 32,  164 => 58,  162 => 57,  157 => 56,  145 => 46,  139 => 45,  131 => 42,  123 => 41,  120 => 40,  115 => 39,  111 => 38,  108 => 37,  106 => 36,  101 => 33,  98 => 32,  96 => 31,  92 => 29,  83 => 25,  80 => 27,  74 => 14,  66 => 11,  64 => 19,  60 => 6,  55 => 13,  52 => 12,  50 => 14,  43 => 9,  41 => 8,  35 => 9,  32 => 4,  29 => 6,);
     }
 }

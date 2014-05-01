@@ -32,7 +32,7 @@ class __TwigTemplate_36418061aa2270a1199f2d03682234195186cb17c2ccf6c1ee9a4dd9d48
         echo "
     ";
         // line 5
-        echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('routing')->getPath("_wdt", array("token" => (isset($context["token"]) ? $context["token"] : $this->getContext($context, "token")), "position" => "normal")));
+        echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('routing')->getPath("_wdt", array("token" => $this->getContext($context, "token"), "position" => "normal")));
         echo "
 
     <div id=\"content\">
@@ -47,7 +47,7 @@ class __TwigTemplate_36418061aa2270a1199f2d03682234195186cb17c2ccf6c1ee9a4dd9d48
                 <div id=\"collector-wrapper\">
                     ";
         // line 14
-        if ((isset($context["profile"]) ? $context["profile"] : $this->getContext($context, "profile"))) {
+        if ($this->getContext($context, "profile")) {
             // line 15
             echo "                        <div id=\"resume\">
                             <a id=\"resume-view-all\" href=\"";
@@ -57,22 +57,22 @@ class __TwigTemplate_36418061aa2270a1199f2d03682234195186cb17c2ccf6c1ee9a4dd9d48
                             <strong>Profile for:</strong>
                             ";
             // line 18
-            echo twig_escape_filter($this->env, twig_upper_filter($this->env, $this->getAttribute((isset($context["profile"]) ? $context["profile"] : $this->getContext($context, "profile")), "method")), "html", null, true);
+            echo twig_escape_filter($this->env, twig_upper_filter($this->env, $this->getAttribute($this->getContext($context, "profile"), "method")), "html", null, true);
             echo "
                             ";
             // line 19
-            if (twig_in_filter(twig_upper_filter($this->env, $this->getAttribute((isset($context["profile"]) ? $context["profile"] : $this->getContext($context, "profile")), "method")), array(0 => "GET", 1 => "HEAD"))) {
+            if (twig_in_filter(twig_upper_filter($this->env, $this->getAttribute($this->getContext($context, "profile"), "method")), array(0 => "GET", 1 => "HEAD"))) {
                 // line 20
                 echo "                                <a href=\"";
-                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["profile"]) ? $context["profile"] : $this->getContext($context, "profile")), "url"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "profile"), "url"), "html", null, true);
                 echo "\">";
-                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["profile"]) ? $context["profile"] : $this->getContext($context, "profile")), "url"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "profile"), "url"), "html", null, true);
                 echo "</a>
                             ";
             } else {
                 // line 22
                 echo "                                ";
-                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["profile"]) ? $context["profile"] : $this->getContext($context, "profile")), "url"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "profile"), "url"), "html", null, true);
                 echo "
                             ";
             }
@@ -80,9 +80,9 @@ class __TwigTemplate_36418061aa2270a1199f2d03682234195186cb17c2ccf6c1ee9a4dd9d48
             echo "                            <span class=\"date\">
                                 <em>by ";
             // line 25
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["profile"]) ? $context["profile"] : $this->getContext($context, "profile")), "ip"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "profile"), "ip"), "html", null, true);
             echo "</em> at <em>";
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["profile"]) ? $context["profile"] : $this->getContext($context, "profile")), "time"), "r"), "html", null, true);
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getContext($context, "profile"), "time"), "r"), "html", null, true);
             echo "</em>
                             </span>
                         </div>
@@ -109,28 +109,28 @@ class __TwigTemplate_36418061aa2270a1199f2d03682234195186cb17c2ccf6c1ee9a4dd9d48
                             ";
             // line 38
             $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["templates"]) ? $context["templates"] : $this->getContext($context, "templates")));
+            $context['_seq'] = twig_ensure_traversable($this->getContext($context, "templates"));
             foreach ($context['_seq'] as $context["name"] => $context["template"]) {
                 // line 39
                 echo "                                ";
                 ob_start();
-                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["template"]) ? $context["template"] : $this->getContext($context, "template")), "renderBlock", array(0 => "menu", 1 => array("collector" => $this->getAttribute((isset($context["profile"]) ? $context["profile"] : $this->getContext($context, "profile")), "getcollector", array(0 => (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name"))), "method"))), "method"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "template"), "renderBlock", array(0 => "menu", 1 => array("collector" => $this->getAttribute($this->getContext($context, "profile"), "getcollector", array(0 => $this->getContext($context, "name")), "method"))), "method"), "html", null, true);
                 $context["menu"] = ('' === $tmp = ob_get_clean()) ? '' : new Twig_Markup($tmp, $this->env->getCharset());
                 // line 40
                 echo "                                ";
-                if (((isset($context["menu"]) ? $context["menu"] : $this->getContext($context, "menu")) != "")) {
+                if (($this->getContext($context, "menu") != "")) {
                     // line 41
                     echo "                                    <li class=\"";
-                    echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "html", null, true);
-                    if (((isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")) == (isset($context["panel"]) ? $context["panel"] : $this->getContext($context, "panel")))) {
+                    echo twig_escape_filter($this->env, $this->getContext($context, "name"), "html", null, true);
+                    if (($this->getContext($context, "name") == $this->getContext($context, "panel"))) {
                         echo " selected";
                     }
                     echo "\">
                                         <a href=\"";
                     // line 42
-                    echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("_profiler", array("token" => (isset($context["token"]) ? $context["token"] : $this->getContext($context, "token")), "panel" => (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")))), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("_profiler", array("token" => $this->getContext($context, "token"), "panel" => $this->getContext($context, "name"))), "html", null, true);
                     echo "\">";
-                    echo (isset($context["menu"]) ? $context["menu"] : $this->getContext($context, "menu"));
+                    echo $this->getContext($context, "menu");
                     echo "</a>
                                     </li>
                                 ";
@@ -159,7 +159,7 @@ class __TwigTemplate_36418061aa2270a1199f2d03682234195186cb17c2ccf6c1ee9a4dd9d48
         echo "
                     ";
         // line 57
-        $this->env->loadTemplate("@WebProfiler/Profiler/admin.html.twig")->display(array("token" => (isset($context["token"]) ? $context["token"] : $this->getContext($context, "token"))));
+        $this->env->loadTemplate("@WebProfiler/Profiler/admin.html.twig")->display(array("token" => $this->getContext($context, "token")));
         // line 58
         echo "                </div>
             </div>
@@ -260,6 +260,6 @@ class __TwigTemplate_36418061aa2270a1199f2d03682234195186cb17c2ccf6c1ee9a4dd9d48
 
     public function getDebugInfo()
     {
-        return array (  164 => 58,  157 => 56,  145 => 46,  139 => 45,  131 => 42,  120 => 40,  115 => 39,  111 => 38,  108 => 37,  106 => 36,  101 => 33,  98 => 32,  92 => 29,  83 => 25,  80 => 24,  74 => 22,  66 => 20,  60 => 18,  55 => 16,  52 => 15,  50 => 14,  41 => 8,  32 => 4,  29 => 3,  462 => 202,  453 => 199,  449 => 198,  446 => 197,  441 => 196,  439 => 195,  431 => 189,  429 => 188,  422 => 184,  415 => 180,  408 => 176,  401 => 172,  394 => 168,  387 => 164,  380 => 160,  373 => 156,  361 => 146,  355 => 143,  351 => 141,  348 => 140,  342 => 137,  338 => 135,  335 => 134,  329 => 131,  325 => 129,  323 => 128,  320 => 127,  315 => 125,  312 => 124,  303 => 122,  300 => 121,  298 => 120,  289 => 113,  286 => 112,  278 => 106,  275 => 105,  270 => 102,  267 => 101,  262 => 98,  256 => 96,  248 => 94,  246 => 32,  241 => 90,  233 => 87,  229 => 85,  226 => 84,  220 => 81,  216 => 79,  213 => 78,  207 => 75,  203 => 73,  200 => 72,  197 => 71,  194 => 70,  191 => 69,  185 => 66,  181 => 65,  178 => 64,  176 => 63,  172 => 62,  168 => 61,  165 => 60,  162 => 57,  156 => 58,  153 => 56,  150 => 55,  147 => 54,  141 => 51,  134 => 47,  130 => 46,  123 => 41,  119 => 40,  116 => 39,  113 => 38,  105 => 34,  102 => 33,  99 => 31,  96 => 31,  90 => 27,  84 => 24,  81 => 23,  73 => 20,  70 => 19,  67 => 18,  64 => 19,  59 => 14,  53 => 12,  45 => 10,  43 => 9,  38 => 6,  35 => 5,  33 => 4,  30 => 3,);
+        return array (  246 => 32,  164 => 58,  162 => 57,  157 => 56,  145 => 46,  139 => 45,  131 => 42,  123 => 41,  120 => 40,  115 => 39,  111 => 38,  108 => 37,  106 => 36,  101 => 33,  98 => 32,  96 => 31,  92 => 29,  83 => 25,  80 => 24,  74 => 22,  66 => 20,  64 => 19,  60 => 18,  55 => 16,  52 => 15,  50 => 14,  43 => 9,  41 => 8,  35 => 5,  32 => 4,  29 => 3,);
     }
 }
