@@ -1,9 +1,30 @@
 cms_principal_page:
-    pattern:  /{id}
+    pattern:  /{slug}
     defaults: { _controller: emhcmsPrincipalBundle:Rubrique:detail }
     
+cms_principal_rubrique_edit:
+    pattern:  /rubrique/{id}/edit
+    defaults: { _controller: emhcmsPrincipalBundle:Rubrique:edit } 
+    
 cms_principal_rubrique_add:
-    pattern:  /
+    pattern:  /rubrique/add
     defaults: { _controller: emhcmsPrincipalBundle:Rubrique:add }  
     
+cms_principal_article_add:
+    pattern:  /article/add
+    defaults: { _controller: emhcmsPrincipalBundle:Article:add }    
+  
+    
+cms_principal_rubrique_delete:
+    pattern:  /rubrique/{id}/delete
+    defaults: { _controller: emhcmsPrincipalBundle:Rubrique:delete}
 
+
+    
+cms_principal_article_edit:
+    pattern:  /article/{id}/edit
+    defaults: { _controller: emhcmsPrincipalBundle:Article:edit }
+
+cms_principal_article_delete:
+    pattern:  /article/{id}/delete
+    defaults: { _controller: emhcmsPrincipalBundle:Article:delete}

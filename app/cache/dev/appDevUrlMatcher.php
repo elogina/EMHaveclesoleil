@@ -136,17 +136,44 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // cms_principal_page
-        if (preg_match('#^/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+        if (preg_match('#^/(?P<slug>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_page')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::detailAction',));
         }
 
-        // cms_principal_rubrique_add
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'cms_principal_rubrique_add');
+        if (0 === strpos($pathinfo, '/rubrique')) {
+            // cms_principal_rubrique_edit
+            if (preg_match('#^/rubrique/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_rubrique_edit')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::editAction',));
             }
 
-            return array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::addAction',  '_route' => 'cms_principal_rubrique_add',);
+            // cms_principal_rubrique_add
+            if ($pathinfo === '/rubrique/add') {
+                return array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::addAction',  '_route' => 'cms_principal_rubrique_add',);
+            }
+
+        }
+
+        // cms_principal_article_add
+        if ($pathinfo === '/article/add') {
+            return array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\ArticleController::addAction',  '_route' => 'cms_principal_article_add',);
+        }
+
+        // cms_principal_rubrique_delete
+        if (0 === strpos($pathinfo, '/rubrique') && preg_match('#^/rubrique/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_rubrique_delete')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::deleteAction',));
+        }
+
+        if (0 === strpos($pathinfo, '/article')) {
+            // cms_principal_article_edit
+            if (preg_match('#^/article/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_article_edit')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\ArticleController::editAction',));
+            }
+
+            // cms_principal_article_delete
+            if (preg_match('#^/article/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_article_delete')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\ArticleController::deleteAction',));
+            }
+
         }
 
         // emh_membres_homepage
