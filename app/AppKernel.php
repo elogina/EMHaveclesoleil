@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new emh\cmsPrincipalBundle\emhcmsPrincipalBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new emh\MembresBundle\emhMembresBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

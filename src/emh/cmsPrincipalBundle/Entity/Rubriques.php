@@ -3,6 +3,7 @@
 namespace emh\cmsPrincipalBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Rubriques
@@ -23,6 +24,7 @@ class Rubriques {
 
        
     /**
+     * @Gedmo\Slug(fields={"nomFr"})
      * @ORM\Column(type="string")
      */
     protected $slug;
@@ -76,7 +78,7 @@ class Rubriques {
      * @return Rubriques
      */
     public function setSlug($slug) {
-        $this->slug = $this->slugify($slug);
+       $this->slug = $slug;
     }
 
     /**
@@ -91,7 +93,7 @@ class Rubriques {
     public function setNomFr($nomFr) {
         $this->nomFr = $nomFr;
 
-        $this->setSlug($this->nomFr);
+        
 
         return $this;
     }
@@ -149,31 +151,7 @@ class Rubriques {
         return $this->sites;
     }
 
-    public function slugify($text) {
-        // replace non letter or digits by -
-        $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
-
-        // trim
-        $text = trim($text, '-');
-
-        // transliterate
-        if (function_exists('iconv')) {
-            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-        }
-
-        // lowercase
-        $text = strtolower($text);
-
-        // remove unwanted characters
-        $text = preg_replace('#[^-\w]+#', '', $text);
-
-        if (empty($text)) {
-            return 'n-a';
-        }
-
-        return $text;
-    }
-    
+   
    
 
 }

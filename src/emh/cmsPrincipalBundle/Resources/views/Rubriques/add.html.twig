@@ -1,16 +1,11 @@
-
-
-
-        
-        
-
-            <form action="{{path('cms_principal_rubrique_add') }}" method="post">
+<form action="{{path('cms_principal_rubrique_add') }}" method="post">
                {{ form_widget(form) }} 
-                <p><input type="submit"/></p>
-            </form>
-           
-  
+    <p><input type="submit"/></p>
+</form>
 
 
 
- 
+
+
+
+ Connecté en tant que {{ app.user.username }}
