@@ -31,22 +31,22 @@ class __TwigTemplate_ab70352592121cdb73feae2476a53a09d5a9b7c977efe474baf4f751fdf
     {
         // line 4
         echo "    ";
-        if ($this->getAttribute($this->getContext($context, "collector"), "user")) {
+        if ($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "user")) {
             // line 5
             echo "        ";
-            $context["color_code"] = ((($this->getAttribute($this->getContext($context, "collector"), "enabled") && $this->getAttribute($this->getContext($context, "collector"), "authenticated"))) ? ("green") : ("yellow"));
+            $context["color_code"] = ((($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "enabled") && $this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "authenticated"))) ? ("green") : ("yellow"));
             // line 6
             echo "        ";
-            $context["authentication_color_code"] = ((($this->getAttribute($this->getContext($context, "collector"), "enabled") && $this->getAttribute($this->getContext($context, "collector"), "authenticated"))) ? ("green") : ("red"));
+            $context["authentication_color_code"] = ((($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "enabled") && $this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "authenticated"))) ? ("green") : ("red"));
             // line 7
             echo "        ";
-            $context["authentication_color_text"] = ((($this->getAttribute($this->getContext($context, "collector"), "enabled") && $this->getAttribute($this->getContext($context, "collector"), "authenticated"))) ? ("Yes") : ("No"));
+            $context["authentication_color_text"] = ((($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "enabled") && $this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "authenticated"))) ? ("Yes") : ("No"));
             // line 8
             echo "    ";
         } else {
             // line 9
             echo "        ";
-            $context["color_code"] = (($this->getAttribute($this->getContext($context, "collector"), "enabled")) ? ("red") : ("black"));
+            $context["color_code"] = (($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "enabled")) ? ("red") : ("black"));
             // line 10
             echo "    ";
         }
@@ -55,42 +55,42 @@ class __TwigTemplate_ab70352592121cdb73feae2476a53a09d5a9b7c977efe474baf4f751fdf
         ob_start();
         // line 12
         echo "        ";
-        if ($this->getAttribute($this->getContext($context, "collector"), "user")) {
+        if ($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "user")) {
             // line 13
             echo "            <div class=\"sf-toolbar-info-piece\">
                 <b>Logged in as</b>
                 <span class=\"sf-toolbar-status sf-toolbar-status-";
             // line 15
-            echo twig_escape_filter($this->env, $this->getContext($context, "color_code"), "html", null, true);
+            echo twig_escape_filter($this->env, (isset($context["color_code"]) ? $context["color_code"] : $this->getContext($context, "color_code")), "html", null, true);
             echo "\">";
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "collector"), "user"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "user"), "html", null, true);
             echo "</span>
             </div>
             <div class=\"sf-toolbar-info-piece\">
                 <b>Authenticated</b>
                 <span class=\"sf-toolbar-status sf-toolbar-status-";
             // line 19
-            echo twig_escape_filter($this->env, $this->getContext($context, "authentication_color_code"), "html", null, true);
+            echo twig_escape_filter($this->env, (isset($context["authentication_color_code"]) ? $context["authentication_color_code"] : $this->getContext($context, "authentication_color_code")), "html", null, true);
             echo "\">";
-            echo twig_escape_filter($this->env, $this->getContext($context, "authentication_color_text"), "html", null, true);
+            echo twig_escape_filter($this->env, (isset($context["authentication_color_text"]) ? $context["authentication_color_text"] : $this->getContext($context, "authentication_color_text")), "html", null, true);
             echo "</span>
             </div>
             ";
             // line 21
-            if (($this->getAttribute($this->getContext($context, "collector"), "tokenClass") != null)) {
+            if (($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "tokenClass") != null)) {
                 // line 22
                 echo "            <div class=\"sf-toolbar-info-piece\">
                 <b>Token class</b>
                 ";
                 // line 24
-                echo $this->env->getExtension('code')->abbrClass($this->getAttribute($this->getContext($context, "collector"), "tokenClass"));
+                echo $this->env->getExtension('code')->abbrClass($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "tokenClass"));
                 echo "
             </div>
             ";
             }
             // line 27
             echo "        ";
-        } elseif ($this->getAttribute($this->getContext($context, "collector"), "enabled")) {
+        } elseif ($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "enabled")) {
             // line 28
             echo "            You are not authenticated.
         ";
@@ -109,13 +109,13 @@ class __TwigTemplate_ab70352592121cdb73feae2476a53a09d5a9b7c977efe474baf4f751fdf
         echo "        <img width=\"24\" height=\"28\" alt=\"Security\" src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAcCAYAAAB75n/uAAAC70lEQVR42u2V3UtTYRzHu+mFwCwK+gO6CEryPlg7yiYx50vDqUwjFIZDSYUk2ZTmCysHvg9ZVggOQZiRScsR4VwXTjEwdKZWk8o6gd5UOt0mbev7g/PAkLONIOkiBx+25/v89vuc85zn2Q5Fo9F95UDwnwhS5HK5TyqVRv8m1JN6k+AiC+fn54cwbgFNIrTQ/J9IqDcJJDGBHsgDgYBSq9W6ysvLPf39/SSUUU7zsQ1yc3MjmN90OBzfRkZG1umzQqGIxPSTkIBjgdDkaGNjoza2kcFgUCE/QvMsq6io2PV6vQu1tbV8Xl7etkql2qqvr/+MbDE/Pz8s9OP2Cjhwwmw29+4R3Kec1WZnZ4fn5uamc3Jyttra2qbH8ero6JgdHh5+CvFHq9X6JZHgzODgoCVW0NPTY0N+ltU2Nzdv4GqXsYSrPp+vDw80aLFYxru6uhyQ/rDb7a8TCVJDodB1jUazTVlxcXGQ5/mbyE+z2u7u7veY38BVT3Z2djopm5qa6isrK/tQWVn5qb29fSGR4DC4PDAwMEsZHuArjGnyGKutq6v7ajQaF6urq9/MzMz0QuSemJiwQDwGkR0POhhXgILjNTU1TaWlpTxlOp1uyWQyaUjMajMzM8Nut/tJQUHBOpZppbCwkM/KytrBznuL9xDVxBMo8KXHYnu6qKjIivmrbIy67x6Px4Yd58W672ApfzY0NCyNjo7OZmRkiAv8fr+O47iwmABXtoXaG3uykF6vX7bZbF6cgZWqqiqezYkKcNtmjO+CF2AyhufgjsvlMiU7vXEF+4C4ALf9CwdrlVAqlcFkTdRqdQSHLUDgBEeSCrArAsiGwENs0XfJBE6ncxm1D8Aj/B6tigkkJSUlmxSwLYhMDeRsyyUCd+lHrWxtbe2aTCbbZTn1ZD92F0Cr8GBfgnsgDZwDt8EzMBmHMXBLqD0PDMAh9Gql3iRIESQSIAXp4CRIBZeEjIvDFZAm1J4C6UK9ROiZcvCn/+8FvwHtDdJEaRY+oQAAAABJRU5ErkJggg==\" />
         <span class=\"sf-toolbar-status sf-toolbar-status-";
         // line 35
-        echo twig_escape_filter($this->env, $this->getContext($context, "color_code"), "html", null, true);
+        echo twig_escape_filter($this->env, (isset($context["color_code"]) ? $context["color_code"] : $this->getContext($context, "color_code")), "html", null, true);
         echo "\"></span>
         ";
         // line 36
-        if ($this->getAttribute($this->getContext($context, "collector"), "user")) {
+        if ($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "user")) {
             echo "<div class=\"sf-toolbar-status sf-toolbar-info-piece-additional\">";
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "collector"), "user"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "user"), "html", null, true);
             echo "</div>";
         }
         // line 37
@@ -123,7 +123,7 @@ class __TwigTemplate_ab70352592121cdb73feae2476a53a09d5a9b7c977efe474baf4f751fdf
         $context["icon"] = ('' === $tmp = ob_get_clean()) ? '' : new Twig_Markup($tmp, $this->env->getCharset());
         // line 38
         echo "    ";
-        $this->env->loadTemplate("@WebProfiler/Profiler/toolbar_item.html.twig")->display(array_merge($context, array("link" => $this->getContext($context, "profiler_url"))));
+        $this->env->loadTemplate("@WebProfiler/Profiler/toolbar_item.html.twig")->display(array_merge($context, array("link" => (isset($context["profiler_url"]) ? $context["profiler_url"] : $this->getContext($context, "profiler_url")))));
     }
 
     // line 41
@@ -144,14 +144,14 @@ class __TwigTemplate_ab70352592121cdb73feae2476a53a09d5a9b7c977efe474baf4f751fdf
         echo "    <h2>Security</h2>
     ";
         // line 50
-        if ($this->getAttribute($this->getContext($context, "collector"), "user")) {
+        if ($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "user")) {
             // line 51
             echo "        <table>
             <tr>
                 <th>Username</th>
                 <td>";
             // line 54
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "collector"), "user"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "user"), "html", null, true);
             echo "</td>
             </tr>
             <tr>
@@ -159,14 +159,14 @@ class __TwigTemplate_ab70352592121cdb73feae2476a53a09d5a9b7c977efe474baf4f751fdf
                 <td>
                     ";
             // line 59
-            if ($this->getAttribute($this->getContext($context, "collector"), "authenticated")) {
+            if ($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "authenticated")) {
                 // line 60
                 echo "                        yes
                     ";
             } else {
                 // line 62
                 echo "                        no ";
-                if ((!twig_length_filter($this->env, $this->getAttribute($this->getContext($context, "collector"), "roles")))) {
+                if ((!twig_length_filter($this->env, $this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "roles")))) {
                     echo "<em>(probably because the user has no roles)</em>";
                 }
                 // line 63
@@ -179,18 +179,18 @@ class __TwigTemplate_ab70352592121cdb73feae2476a53a09d5a9b7c977efe474baf4f751fdf
                 <th>Roles</th>
                 <td>";
             // line 68
-            echo twig_escape_filter($this->env, $this->env->getExtension('yaml')->encode($this->getAttribute($this->getContext($context, "collector"), "roles")), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('yaml')->encode($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "roles")), "html", null, true);
             echo "</td>
             </tr>
             ";
             // line 70
-            if (($this->getAttribute($this->getContext($context, "collector"), "tokenClass") != null)) {
+            if (($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "tokenClass") != null)) {
                 // line 71
                 echo "            <tr>
                 <th>Token class</th>
                 <td>";
                 // line 73
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "collector"), "tokenClass"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "tokenClass"), "html", null, true);
                 echo "</td>
             </tr>
             ";
@@ -198,7 +198,7 @@ class __TwigTemplate_ab70352592121cdb73feae2476a53a09d5a9b7c977efe474baf4f751fdf
             // line 76
             echo "        </table>
     ";
-        } elseif ($this->getAttribute($this->getContext($context, "collector"), "enabled")) {
+        } elseif ($this->getAttribute((isset($context["collector"]) ? $context["collector"] : $this->getContext($context, "collector")), "enabled")) {
             // line 78
             echo "        <p>
             <em>No token</em>

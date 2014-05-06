@@ -135,52 +135,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // cms_principal_page
-        if (preg_match('#^/(?P<slug>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_page')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::detailAction',));
-        }
-
-        if (0 === strpos($pathinfo, '/rubrique')) {
-            // cms_principal_rubrique_edit
-            if (preg_match('#^/rubrique/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_rubrique_edit')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::editAction',));
-            }
-
-            // cms_principal_rubrique_add
-            if ($pathinfo === '/rubrique/add') {
-                return array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::addAction',  '_route' => 'cms_principal_rubrique_add',);
-            }
-
-        }
-
-        // cms_principal_article_add
-        if ($pathinfo === '/article/add') {
-            return array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\ArticleController::addAction',  '_route' => 'cms_principal_article_add',);
-        }
-
-        // cms_principal_rubrique_delete
-        if (0 === strpos($pathinfo, '/rubrique') && preg_match('#^/rubrique/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_rubrique_delete')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::deleteAction',));
-        }
-
-        if (0 === strpos($pathinfo, '/article')) {
-            // cms_principal_article_edit
-            if (preg_match('#^/article/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_article_edit')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\ArticleController::editAction',));
-            }
-
-            // cms_principal_article_delete
-            if (preg_match('#^/article/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_article_delete')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\ArticleController::deleteAction',));
-            }
-
-        }
-
-        // emh_membres_homepage
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_homepage')), array (  '_controller' => 'emh\\MembresBundle\\Controller\\DefaultController::indexAction',));
-        }
-
         if (0 === strpos($pathinfo, '/log')) {
             if (0 === strpos($pathinfo, '/login')) {
                 // fos_user_security_login
@@ -342,6 +296,55 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ChangePasswordController::changePasswordAction',  '_route' => 'fos_user_change_password',);
         }
         not_fos_user_change_password:
+
+        // cms_principal_page
+        if (preg_match('#^/(?P<slug>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_page')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::detailAction',));
+        }
+
+        if (0 === strpos($pathinfo, '/admin')) {
+            if (0 === strpos($pathinfo, '/admin/rubrique')) {
+                // cms_principal_rubrique_edit
+                if (preg_match('#^/admin/rubrique/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_rubrique_edit')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::editAction',));
+                }
+
+                // cms_principal_rubrique_add
+                if ($pathinfo === '/admin/rubrique/add') {
+                    return array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::addAction',  '_route' => 'cms_principal_rubrique_add',);
+                }
+
+            }
+
+            // cms_principal_article_add
+            if ($pathinfo === '/admin/article/add') {
+                return array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\ArticleController::addAction',  '_route' => 'cms_principal_article_add',);
+            }
+
+            // cms_principal_rubrique_delete
+            if (0 === strpos($pathinfo, '/admin/rubrique') && preg_match('#^/admin/rubrique/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_rubrique_delete')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::deleteAction',));
+            }
+
+            if (0 === strpos($pathinfo, '/admin/article')) {
+                // cms_principal_article_edit
+                if (preg_match('#^/admin/article/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_article_edit')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\ArticleController::editAction',));
+                }
+
+                // cms_principal_article_delete
+                if (preg_match('#^/admin/article/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_article_delete')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\ArticleController::deleteAction',));
+                }
+
+            }
+
+        }
+
+        // emh_membres_homepage
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_homepage')), array (  '_controller' => 'emh\\MembresBundle\\Controller\\DefaultController::indexAction',));
+        }
 
         // _welcome
         if (rtrim($pathinfo, '/') === '') {

@@ -16,8 +16,8 @@ class RubriquesType extends AbstractType
     {
         $builder
             ->add('nomFr')
-            ->add('nomEn')
-            ->add('sites')
+            
+                
         ;
     }
     

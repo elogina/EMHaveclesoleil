@@ -55,13 +55,13 @@ class __TwigTemplate_39d00dc0bf963b1d975c6e8f02ed8be4105eab94c8cbcc4794112ff5576
         // line 11
         echo "    ";
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "flashbag"), "get", array(0 => "notice"), "method"));
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session"), "flashbag"), "get", array(0 => "notice"), "method"));
         foreach ($context['_seq'] as $context["_key"] => $context["flashMessage"]) {
             // line 12
             echo "        <div class=\"flash-message\">
             <em>Notice</em>: ";
             // line 13
-            echo twig_escape_filter($this->env, $this->getContext($context, "flashMessage"), "html", null, true);
+            echo twig_escape_filter($this->env, (isset($context["flashMessage"]) ? $context["flashMessage"] : $this->getContext($context, "flashMessage")), "html", null, true);
             echo "
         </div>
     ";
@@ -91,7 +91,7 @@ class __TwigTemplate_39d00dc0bf963b1d975c6e8f02ed8be4105eab94c8cbcc4794112ff5576
         <div class=\"block\">
             <div class=\"symfony-content\">";
             // line 34
-            echo $this->getContext($context, "code");
+            echo (isset($context["code"]) ? $context["code"] : $this->getContext($context, "code"));
             echo "</div>
         </div>
     ";

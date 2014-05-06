@@ -21,11 +21,11 @@ class __TwigTemplate_6dcb167cd0106f537256ae4b01e91db8df7b634a6a863d8c5c1ea704e17
         // line 2
         echo $this->env->getExtension('routing')->getPath("cms_principal_article_add");
         echo "\" method=\"post\" ";
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getContext($context, "form"), 'enctype');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'enctype');
         echo ">
                ";
         // line 3
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getContext($context, "form"), 'widget');
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget');
         echo " 
                 <p><input type=\"submit\"/></p>
             </form>
