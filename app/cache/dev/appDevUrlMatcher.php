@@ -135,6 +135,34 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/formation')) {
+            // emh_ecommerce_liste_formations
+            if ($pathinfo === '/formation') {
+                return array (  '_controller' => 'emh\\EcommerceBundle\\Controller\\ProduitController::listeAction',  '_route' => 'emh_ecommerce_liste_formations',);
+            }
+
+            // emh_ecommerce_add_formation
+            if ($pathinfo === '/formation/add') {
+                return array (  '_controller' => 'emh\\EcommerceBundle\\Controller\\ProduitController::addAction',  '_route' => 'emh_ecommerce_add_formation',);
+            }
+
+            // emh_ecommerce_detail_formation
+            if (preg_match('#^/formation/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_ecommerce_detail_formation')), array (  '_controller' => 'emh\\EcommerceBundle\\Controller\\ProduitController::detailAction',));
+            }
+
+            // emh_ecommerce_edit_formation
+            if (preg_match('#^/formation/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_ecommerce_edit_formation')), array (  '_controller' => 'emh\\EcommerceBundle\\Controller\\ProduitController::editAction',));
+            }
+
+            // emh_ecommerce_delete_formation
+            if (preg_match('#^/formation/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_ecommerce_delete_formation')), array (  '_controller' => 'emh\\EcommerceBundle\\Controller\\ProduitController::deleteAction',));
+            }
+
+        }
+
         // cms_principal_page
         if (preg_match('#^/(?P<slug>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_page')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::detailAction',));

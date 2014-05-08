@@ -1,6 +1,6 @@
 <?php
 
-namespace emh\cmsPrincipalBundle\Entity;
+namespace emh\EcommerceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -142,7 +142,7 @@ class Achats
     /**
      * Get membres
      *
-     * @return \emh\cmsPrincipalBundle\Entity\Membres 
+     * @return \emh\EcommerceBundle\Entity\Membres 
      */
     public function getMembres()
     {
@@ -152,10 +152,10 @@ class Achats
     /**
      * Set produits
      *
-     * @param \emh\cmsPrincipalBundle\Entity\Produits $produits
+     * @param \emh\EcommerceBundle\Entity\Produits $produits
      * @return Achats
      */
-    public function setProduits(\emh\cmsPrincipalBundle\Entity\Produits $produits)
+    public function setProduits(\emh\EcommerceBundle\Entity\Produits $produits)
     {
         $this->produits = $produits;
 
@@ -165,7 +165,7 @@ class Achats
     /**
      * Get produits
      *
-     * @return \emh\cmsPrincipalBundle\Entity\Produits 
+     * @return \emh\EcommerceBundle\Entity\Produits 
      */
     public function getProduits()
     {

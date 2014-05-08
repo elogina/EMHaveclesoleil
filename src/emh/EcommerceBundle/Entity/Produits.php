@@ -1,6 +1,6 @@
 <?php
 
-namespace emh\cmsPrincipalBundle\Entity;
+namespace emh\EcommerceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

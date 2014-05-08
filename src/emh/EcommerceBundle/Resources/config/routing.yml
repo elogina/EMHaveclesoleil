@@ -1,0 +1,23 @@
+emh_ecommerce_liste_formations:
+    pattern:  /formation
+    defaults: { _controller: emhEcommerceBundle:Produit:liste }
+    
+emh_ecommerce_add_formation:
+    pattern:  /formation/add
+    defaults: { _controller: emhEcommerceBundle:Produit:add }
+    
+emh_ecommerce_detail_formation:
+    pattern:  /formation/{id}
+    defaults: { _controller: emhEcommerceBundle:Produit:detail }
+    
+emh_ecommerce_edit_formation:
+    pattern:  /formation/{id}/edit
+    defaults: { _controller: emhEcommerceBundle:Produit:edit }
+    
+
+    
+    
+emh_ecommerce_delete_formation:
+    pattern:  /formation/{id}/delete
+    defaults: { _controller: emhEcommerceBundle:Produit:delete }
+    

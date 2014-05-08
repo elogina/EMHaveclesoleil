@@ -28,18 +28,18 @@ class __TwigTemplate_a69e99e8ad6f4dc06ba673b3167cd6c5c8b4b0a93cc1dacf2aea3e2c85b
         echo "\" method=\"post\" enctype=\"multipart/form-data\">
         ";
         // line 8
-        if ((!twig_test_empty((isset($context["token"]) ? $context["token"] : $this->getContext($context, "token"))))) {
+        if ((!twig_test_empty($this->getContext($context, "token")))) {
             // line 9
             echo "            <div style=\"margin-bottom: 10px\">
                 &#187;&#160;<a href=\"";
             // line 10
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("_profiler_purge", array("token" => (isset($context["token"]) ? $context["token"] : $this->getContext($context, "token")))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("_profiler_purge", array("token" => $this->getContext($context, "token"))), "html", null, true);
             echo "\">Purge</a>
             </div>
             <div style=\"margin-bottom: 10px\">
                 &#187;&#160;<a href=\"";
             // line 13
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("_profiler_export", array("token" => (isset($context["token"]) ? $context["token"] : $this->getContext($context, "token")))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("_profiler_export", array("token" => $this->getContext($context, "token"))), "html", null, true);
             echo "\">Export</a>
             </div>
         ";
@@ -72,6 +72,6 @@ class __TwigTemplate_a69e99e8ad6f4dc06ba673b3167cd6c5c8b4b0a93cc1dacf2aea3e2c85b
 
     public function getDebugInfo()
     {
-        return array (  48 => 16,  36 => 10,  33 => 9,  27 => 7,  98 => 34,  87 => 32,  83 => 31,  76 => 27,  70 => 24,  64 => 21,  58 => 18,  53 => 15,  42 => 13,  38 => 12,  31 => 8,  26 => 6,  19 => 1,);
+        return array (  48 => 16,  36 => 10,  33 => 9,  27 => 7,  98 => 34,  87 => 32,  83 => 31,  76 => 27,  70 => 24,  64 => 21,  58 => 18,  53 => 15,  38 => 12,  31 => 8,  26 => 6,  56 => 16,  46 => 13,  42 => 13,  39 => 10,  35 => 9,  19 => 1,);
     }
 }
