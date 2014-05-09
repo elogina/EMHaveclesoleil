@@ -2880,7 +2880,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5369284350555</argument>
+            <argument>536cd355505cd</argument>
           </service>
         </argument>
       </argument>
@@ -3251,7 +3251,7 @@
               <service class="Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler" public="false">
                 <argument type="service" id="security.http_utils"/>
                 <argument type="collection">
-                  <argument key="login_path">login</argument>
+                  <argument key="login_path">fos_user_security_login</argument>
                   <argument key="always_use_default_target_path">false</argument>
                   <argument key="default_target_path">/</argument>
                   <argument key="target_path_parameter">_target_path</argument>
@@ -3267,7 +3267,7 @@
                 <argument type="service" id="http_kernel"/>
                 <argument type="service" id="security.http_utils"/>
                 <argument type="collection">
-                  <argument key="login_path">login</argument>
+                  <argument key="login_path">fos_user_security_login</argument>
                   <argument key="failure_path">null</argument>
                   <argument key="failure_forward">false</argument>
                   <argument key="failure_path_parameter">_failure_path</argument>
@@ -3276,7 +3276,7 @@
               </service>
             </argument>
             <argument type="collection">
-              <argument key="check_path">login_check</argument>
+              <argument key="check_path">fos_user_security_check</argument>
               <argument key="use_forward">false</argument>
               <argument key="require_previous_session">true</argument>
               <argument key="username_parameter">_username</argument>
@@ -3342,7 +3342,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>5369284350555</argument>
+            <argument>536cd355505cd</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
           </service>
         </argument>
@@ -3358,7 +3358,7 @@
             <service class="Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint" public="false">
               <argument type="service" id="http_kernel"/>
               <argument type="service" id="security.http_utils"/>
-              <argument>login</argument>
+              <argument>fos_user_security_login</argument>
               <argument>false</argument>
             </service>
           </argument>
