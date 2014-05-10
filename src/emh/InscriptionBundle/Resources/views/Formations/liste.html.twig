@@ -1,0 +1,14 @@
+<h1>liste des formations</h1> <br>
+
+{% for formations in formations %}
+
+
+<ul>
+    <li>
+            <a href="{{path('emh_formation_detail',{'id': formations.id})}}">
+                    {{ formations.nomFr }}
+                </a>
+    </li>
+</ul>
+
+{% endfor %}

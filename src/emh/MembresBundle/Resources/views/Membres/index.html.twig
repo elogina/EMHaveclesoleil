@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+<h1>User list</h1>
+
+
+
+    <tbody>
+        {% for user in membres %}
+
+            {{ user.username}}
+            
+            {% for formation in user.formationsAteliers %}
+                {{ formation.nomFr }}
+            {% endfor %}
+        {% endfor %}
+    </tbody>
+</table>
+
+
+    {% endblock %}

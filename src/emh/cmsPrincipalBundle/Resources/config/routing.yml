@@ -18,9 +18,7 @@ cms_principal_article_add:
 cms_principal_rubrique_delete:
     pattern:  /admin/rubrique/{id}/delete
     defaults: { _controller: emhcmsPrincipalBundle:Rubrique:delete}
-
-
-    
+  
 cms_principal_article_edit:
     pattern:  /admin/article/{id}/edit
     defaults: { _controller: emhcmsPrincipalBundle:Article:edit }

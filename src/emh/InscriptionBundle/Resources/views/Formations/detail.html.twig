@@ -1,0 +1,10 @@
+<h1>detail de la formation</h1>
+
+<p> {{ formations.nomFr }} <br>
+    {{ formations.descriptionFr }}
+</p>
+
+
+<a href="{{path('emh_membres_inscription', {'id': formations.id})}}">inscription</a> <br>
+
+<a href="{{path('emh_membres_profil')}}">profil</a>

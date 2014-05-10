@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Membres
  *
  * @ORM\Table(name="membres")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="emh\MembresBundle\Entity\MembresRepository")
  */
 class Membres extends BaseUser
 {
@@ -41,7 +41,7 @@ class Membres extends BaseUser
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="emh\MembresBundle\Entity\Membres", inversedBy="membres")
+     * @ORM\ManyToMany(targetEntity="emh\InscriptionBundle\Entity\FormationsAteliers", inversedBy="membres")
      * @ORM\JoinTable(name="inscription",
      *   joinColumns={
      *     @ORM\JoinColumn(name="membres_id", referencedColumnName="id")
@@ -51,7 +51,9 @@ class Membres extends BaseUser
      *   }
      * )
      */
-    private $formations;
+    
+    
+    private $formationsAteliers;
 
     /**
      * Constructor
@@ -162,12 +164,12 @@ class Membres extends BaseUser
     /**
      * Add formations
      *
-     * @param \emh\cmsPrincipalBundle\Entity\FormationsAteliers $formations
+     * @param \emh\InscriptionBundle\Entity\FormationsAteliers $formations
      * @return Membres
      */
-    public function addFormation(\emh\cmsPrincipalBundle\Entity\FormationsAteliers $formations)
+    public function addFormationAteliers(\emh\InscriptionBundle\Entity\FormationsAteliers $formations)
     {
-        $this->formations[] = $formations;
+        $this->formationsAteliers[] = $formations;
 
         return $this;
     }
@@ -175,11 +177,11 @@ class Membres extends BaseUser
     /**
      * Remove formations
      *
-     * @param \emh\cmsPrincipalBundle\Entity\FormationsAteliers $formations
+     * @param \emh\InscriptionBundle\Entity\FormationsAteliers $formations
      */
-    public function removeFormation(\emh\cmsPrincipalBundle\Entity\FormationsAteliers $formations)
+    public function removeFormationAteliers(\emh\InscriptionBundle\Entity\FormationsAteliers $formations)
     {
-        $this->formations->removeElement($formations);
+        $this->formationsAteliers->removeElement($formations);
     }
 
     /**
@@ -187,8 +189,19 @@ class Membres extends BaseUser
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getFormations()
+    public function getFormationsAteliers()
     {
-        return $this->formations;
+        $listeFormations = array();
+        
+        foreach($this->formationsAteliers as $formation){
+            
+            $listeFormations[]=$formation;
+        }
+//        Pourquoi ça ne marche pas ??????!!!!!!!
+  //      return $this->formationsAteliers;
+   var_dump($listeFormations);
+   echo '<br>-----------------<br>';
+   var_dump($this->formationsAteliers);
+        return $listeFormations;
     }
 }

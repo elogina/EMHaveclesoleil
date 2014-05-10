@@ -135,6 +135,54 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/formation')) {
+            // emh_formation
+            if (rtrim($pathinfo, '/') === '/formation') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'emh_formation');
+                }
+
+                return array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::listeAction',  '_route' => 'emh_formation',);
+            }
+
+            // emh_formation_detail
+            if (0 === strpos($pathinfo, '/formation/formation') && preg_match('#^/formation/formation/(?P<id>[^/]++)/detail$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_formation_detail')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::detailAction',));
+            }
+
+            if (0 === strpos($pathinfo, '/formation/admin/formation')) {
+                // emh_formation_edit
+                if (preg_match('#^/formation/admin/formation/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_formation_edit')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::editAction',));
+                }
+
+                // emh_formation_delete
+                if (preg_match('#^/formation/admin/formation/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_formation_delete')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::deleteAction',));
+                }
+
+                // emh_formation_add
+                if ($pathinfo === '/formation/admin/formation/add') {
+                    return array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::addAction',  '_route' => 'emh_formation_add',);
+                }
+
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/membre')) {
+            // emh_membres_inscription
+            if (0 === strpos($pathinfo, '/membre/inscription/formation') && preg_match('#^/membre/inscription/formation/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_inscription')), array (  '_controller' => 'emh\\MembresBundle\\Controller\\MembreController::addAction',));
+            }
+
+            // emh_membres_profil
+            if ($pathinfo === '/membre/membre/profile') {
+                return array (  '_controller' => 'emh\\MembresBundle\\Controller\\MembreController::testAction',  '_route' => 'emh_membres_profil',);
+            }
+
+        }
+
         if (0 === strpos($pathinfo, '/log')) {
             if (0 === strpos($pathinfo, '/login')) {
                 // fos_user_security_login
@@ -339,11 +387,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
-        }
-
-        // emh_membres_homepage
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_homepage')), array (  '_controller' => 'emh\\MembresBundle\\Controller\\DefaultController::indexAction',));
         }
 
         // _welcome

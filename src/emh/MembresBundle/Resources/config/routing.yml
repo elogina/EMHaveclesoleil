@@ -1,3 +1,7 @@
-emh_membres_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: emhMembresBundle:Default:index }
+emh_membres_inscription:
+    pattern: /inscription/formation/{id}
+    defaults: { _controller: "emhMembresBundle:Membre:add" }
+
+emh_membres_profil:
+    pattern:  /membre/profile
+    defaults: { _controller: "emhMembresBundle:Membre:test" }

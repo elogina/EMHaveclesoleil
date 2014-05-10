@@ -20,6 +20,7 @@
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
       <parameter key="emhMembresBundle">emh\MembresBundle\emhMembresBundle</parameter>
       <parameter key="StofDoctrineExtensionsBundle">Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle</parameter>
+      <parameter key="emhInscriptionBundle">emh\InscriptionBundle\emhInscriptionBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -1925,6 +1926,12 @@
         <argument>fr</argument>
         <argument>messages</argument>
       </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>C:\wamp\www\EMHaveclesoleil\src\emh\InscriptionBundle/Resources/translations\messages.fr.xlf</argument>
+        <argument>fr</argument>
+        <argument>messages</argument>
+      </call>
     </service>
     <service id="translation.loader.php" class="Symfony\Component\Translation\Loader\PhpFileLoader">
       <tag name="translation.loader" alias="php"/>
@@ -2880,7 +2887,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>536cd355505cd</argument>
+            <argument>536d1bbff0030</argument>
           </service>
         </argument>
       </argument>
@@ -3342,7 +3349,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>536cd355505cd</argument>
+            <argument>536d1bbff0030</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
           </service>
         </argument>
@@ -3741,6 +3748,7 @@
               <argument key="emhcmsPrincipalBundle">emh\cmsPrincipalBundle\Entity</argument>
               <argument key="FOSUserBundle">FOS\UserBundle\Entity</argument>
               <argument key="emhMembresBundle">emh\MembresBundle\Entity</argument>
+              <argument key="emhInscriptionBundle">emh\InscriptionBundle\Entity</argument>
             </argument>
           </call>
           <call method="setMetadataCacheImpl">
@@ -3780,6 +3788,7 @@
                       <argument type="collection">
                         <argument>C:\wamp\www\EMHaveclesoleil\src\emh\cmsPrincipalBundle\Entity</argument>
                         <argument>C:\wamp\www\EMHaveclesoleil\src\emh\MembresBundle\Entity</argument>
+                        <argument>C:\wamp\www\EMHaveclesoleil\src\emh\InscriptionBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -3792,10 +3801,24 @@
                       <argument type="collection">
                         <argument>C:\wamp\www\EMHaveclesoleil\src\emh\cmsPrincipalBundle\Entity</argument>
                         <argument>C:\wamp\www\EMHaveclesoleil\src\emh\MembresBundle\Entity</argument>
+                        <argument>C:\wamp\www\EMHaveclesoleil\src\emh\InscriptionBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
                   <argument>emh\MembresBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>C:\wamp\www\EMHaveclesoleil\src\emh\cmsPrincipalBundle\Entity</argument>
+                        <argument>C:\wamp\www\EMHaveclesoleil\src\emh\MembresBundle\Entity</argument>
+                        <argument>C:\wamp\www\EMHaveclesoleil\src\emh\InscriptionBundle\Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>emh\InscriptionBundle\Entity</argument>
                 </call>
                 <call method="addDriver">
                   <argument type="service">
@@ -4327,6 +4350,10 @@
       <call method="addPath">
         <argument>C:\wamp\www\EMHaveclesoleil\src\emh\MembresBundle/Resources/views</argument>
         <argument>emhMembres</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\wamp\www\EMHaveclesoleil\src\emh\InscriptionBundle/Resources/views</argument>
+        <argument>emhInscription</argument>
       </call>
       <call method="addPath">
         <argument>C:\wamp\www\EMHaveclesoleil\src\Acme\DemoBundle/Resources/views</argument>
