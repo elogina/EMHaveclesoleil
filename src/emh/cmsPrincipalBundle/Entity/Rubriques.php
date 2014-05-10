@@ -52,7 +52,7 @@ class Rubriques {
      *   @ORM\JoinColumn(name="sites_id", referencedColumnName="id")
      * })
      */
-    private $sites;
+    public $sites;
     
     
     /**

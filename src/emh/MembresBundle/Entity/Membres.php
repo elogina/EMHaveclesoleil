@@ -199,9 +199,9 @@ class Membres extends BaseUser
         }
 //        Pourquoi ça ne marche pas ??????!!!!!!!
   //      return $this->formationsAteliers;
-   var_dump($listeFormations);
-   echo '<br>-----------------<br>';
-   var_dump($this->formationsAteliers);
+  // var_dump($listeFormations);
+  //s echo '<br>-----------------<br>';
+   //var_dump($this->formationsAteliers);
         return $listeFormations;
     }
 }

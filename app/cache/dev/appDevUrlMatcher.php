@@ -145,6 +145,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::listeAction',  '_route' => 'emh_formation',);
             }
 
+            // emh_formation_add
+            if ($pathinfo === '/formation/admin/formation/add') {
+                return array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::addAction',  '_route' => 'emh_formation_add',);
+            }
+
             // emh_formation_detail
             if (0 === strpos($pathinfo, '/formation/formation') && preg_match('#^/formation/formation/(?P<id>[^/]++)/detail$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_formation_detail')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::detailAction',));
@@ -161,11 +166,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_formation_delete')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::deleteAction',));
                 }
 
-                // emh_formation_add
-                if ($pathinfo === '/formation/admin/formation/add') {
-                    return array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::addAction',  '_route' => 'emh_formation_add',);
-                }
-
             }
 
         }
@@ -177,8 +177,13 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // emh_membres_profil
-            if ($pathinfo === '/membre/membre/profile') {
+            if ($pathinfo === '/membre/profile') {
                 return array (  '_controller' => 'emh\\MembresBundle\\Controller\\MembreController::testAction',  '_route' => 'emh_membres_profil',);
+            }
+
+            // emh_membres_desinscription
+            if (0 === strpos($pathinfo, '/membre/desinscription/formation') && preg_match('#^/membre/desinscription/formation/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_desinscription')), array (  '_controller' => 'emh\\MembresBundle\\Controller\\MembreController::deleteAction',));
             }
 
         }

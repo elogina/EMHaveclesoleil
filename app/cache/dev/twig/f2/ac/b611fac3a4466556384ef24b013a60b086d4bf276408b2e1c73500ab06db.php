@@ -45,6 +45,12 @@ class __TwigTemplate_f2acb611fac3a4466556384ef24b013a60b086d4bf276408b2e1c73500a
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['formations'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 15
+        echo "
+<p><a href=\"";
+        // line 16
+        echo $this->env->getExtension('routing')->getPath("emh_formation_add");
+        echo "\" >ajouter une formation</a></p>";
     }
 
     public function getTemplateName()
@@ -59,6 +65,6 @@ class __TwigTemplate_f2acb611fac3a4466556384ef24b013a60b086d4bf276408b2e1c73500a
 
     public function getDebugInfo()
     {
-        return array (  37 => 9,  33 => 8,  27 => 4,  23 => 3,  19 => 1,);
+        return array (  52 => 16,  49 => 15,  37 => 9,  33 => 8,  27 => 4,  23 => 3,  19 => 1,);
     }
 }

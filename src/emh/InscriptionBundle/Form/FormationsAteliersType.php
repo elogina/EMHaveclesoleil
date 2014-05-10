@@ -26,7 +26,8 @@ class FormationsAteliersType extends AbstractType
             ->add('nbmax')
             ->add('dateinscription')
             ->add('paye')
-            ->add('sites')
+            ->add('sites', 'entity', array('class'  =>'emhcmsPrincipalBundle:Sites',
+                                                'property' => 'nomFr'))
             //->add('membres')
         ;
     }

@@ -78,9 +78,9 @@ class FormationsAteliers
     private $fin;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="nbMax", type="boolean", nullable=false)
+     * @ORM\Column(name="nbMax", type="integer", nullable=false)
      */
     private $nbmax = '10';
 

@@ -3,19 +3,20 @@
 {% block body -%}
 <h1>User list</h1>
 
-
-
-    <tbody>
+<ul>
         {% for user in membres %}
 
             {{ user.username}}
-            
+
             {% for formation in user.formationsAteliers %}
+    <li>
                 {{ formation.nomFr }}
+        <a href="{{path('emh_membres_desinscription', {'id':formation.id})}}">désinscription</a>
+    </li>
             {% endfor %}
+
         {% endfor %}
-    </tbody>
-</table>
 
 
+</ul>
     {% endblock %}

@@ -16,6 +16,8 @@ class RubriquesType extends AbstractType
     {
         $builder
             ->add('nomFr')
+            ->add('sites', 'entity', array('class'  =>'emhcmsPrincipalBundle:Sites',
+                                                'property' => 'nomFr'))
             
                 
         ;

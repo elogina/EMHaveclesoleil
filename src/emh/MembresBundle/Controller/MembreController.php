@@ -43,7 +43,6 @@ class MembreController extends Controller
         
         $test = $rUser->getFormationsAteliers();
         
-    // print_r($rFormation->getId());
                           
         if(in_array($rFormation, $test)  ){
        
@@ -63,7 +62,18 @@ class MembreController extends Controller
     
     
     
-    
+    public function deleteAction($id) {
+        $modelManager = $this->getDoctrine()
+                             ->getManager();
+        $rFormation = $modelManager->find('emhInscriptionBundle:FormationsAteliers', $id);
+        
+        if (!$rFormation) {
+            throw new NotFoundHttpException("Enregistrement non trouvée");
+        }
+        $modelManager->remove($rFormation);
+        $modelManager->flush();
+        return $this->redirect($this->generateUrl('emh_membres_profil'));
+    }
     
 
 }

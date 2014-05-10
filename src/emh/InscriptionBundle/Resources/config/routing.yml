@@ -1,7 +1,11 @@
 emh_formation:
     pattern:  /
     defaults: { _controller: emhInscriptionBundle:Formation:liste }
-# A utiliser dans le path du lien      
+
+emh_formation_add:
+    pattern:  /admin/formation/add
+    defaults: { _controller: emhInscriptionBundle:Formation:add }  
+
 emh_formation_detail:
     pattern:  /formation/{id}/detail
     defaults: { _controller: emhInscriptionBundle:Formation:detail  }
@@ -14,6 +18,3 @@ emh_formation_delete:
     pattern:  /admin/formation/{id}/delete
     defaults: { _controller: emhInscriptionBundle:Formation:delete}
 
-emh_formation_add:
-    pattern:  /admin/formation/add
-    defaults: { _controller: emhInscriptionBundle:Formation:add }  

@@ -71,6 +71,8 @@ security:
         
         # PAGES ACCESSIBLES AUX ADMINISTRATEURS
         - { path: ^/emh/admin/, role: ROLE_ADMIN }
+        - { path: ^/emh/formation/admin/, role: ROLE_ADMIN }
+        - { path: ^/emh/membre/admin/, role: ROLE_ADMIN }
         
         # PAGES ACCESSIBLES AUX UTILISATEURS CONNECTES
         - { path: ^/emh/change-password, role: ROLE_USER }
@@ -87,4 +89,6 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/formation/admin/, role: ROLE_ADMIN }
+        - { path: ^/membre/admin/, role: ROLE_ADMIN }
         
