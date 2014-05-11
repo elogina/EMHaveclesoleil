@@ -52,7 +52,7 @@ class Rubriques {
      *   @ORM\JoinColumn(name="sites_id", referencedColumnName="id")
      * })
      */
-    public $sites;
+    private $sites;
     
     
     /**
@@ -151,7 +151,9 @@ class Rubriques {
         return $this->sites;
     }
 
-   
+     public function __toString() {
+        return $this->nomFr;
+    }
    
 
 }

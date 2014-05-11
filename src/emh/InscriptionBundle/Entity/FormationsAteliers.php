@@ -442,4 +442,8 @@ class FormationsAteliers
     {
         return $this->membres;
     }
+    
+    public function __toString() {
+        return $this->nomFr;
+    }
 }

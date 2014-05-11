@@ -215,4 +215,6 @@ class Articles
     {
         return $this->rubriques;
     }
+    
+  
 }

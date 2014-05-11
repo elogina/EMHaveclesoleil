@@ -42,7 +42,7 @@ class PropertyPath implements \IteratorAggregate, PropertyPathInterface
 
     /**
      * The number of elements in the property path
-     * @var integer
+     * @var int
      */
     private $length;
 
@@ -125,7 +125,7 @@ class PropertyPath implements \IteratorAggregate, PropertyPathInterface
             throw new InvalidPropertyPathException(sprintf(
                 'Could not parse property path "%s". Unexpected token "%s" at position %d',
                 $propertyPath,
-                $remaining{0},
+                $remaining[0],
                 $position
             ));
         }
@@ -155,7 +155,7 @@ class PropertyPath implements \IteratorAggregate, PropertyPathInterface
     public function getParent()
     {
         if ($this->length <= 1) {
-            return null;
+            return;
         }
 
         $parent = clone $this;

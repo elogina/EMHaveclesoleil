@@ -1,9 +1,32 @@
-parameters:
-#    emhcms_principal.example.class: emh\cmsPrincipalBundle\Example
-
 services:
-#    emhcms_principal.example:
-#        class: %emhcms_principal.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    sonata.admin.Rubrique:
+        class: emh\cmsPrincipalBundle\Admin\PostAdmin
+                
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Contenu", label: "Rubriques" }
+         
+        arguments:
+            - ~
+            - emh\cmsPrincipalBundle\Entity\Rubriques
+          
+            - ~
+        calls:
+            - [ setTranslationDomain, [emhcmsPrincipal]]
+            
+    sonata.admin.Article:
+        class: emh\cmsPrincipalBundle\Admin\PostArticleAdmin
+                
+        tags:
+           
+            - { name: sonata.admin, manager_type: orm, group: "Contenu", label: "Articles" }
+        arguments:
+            - ~
+          
+            - emh\cmsPrincipalBundle\Entity\Articles
+            - ~
+        calls:
+            - [ setTranslationDomain, [emhcmsPrincipal]]
+            
+            
+            
 
-    

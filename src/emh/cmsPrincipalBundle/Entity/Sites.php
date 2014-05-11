@@ -92,4 +92,9 @@ class Sites
     {
         return $this->nomEn;
     }
+    
+    public function __toString() {
+    return $this->nomFr;
+ 
+}
 }
