@@ -21,7 +21,7 @@ class MembreAdmin extends Admin
             
            
             ->add('roles')
-           
+            ->add('adresse')
             ->add('telephonne')
             ->add('FormationsAteliers','entity', array('class'  =>'emhInscriptionBundle:FormationsAteliers',
                                                 'property' => 'nomFr'))
@@ -40,7 +40,7 @@ class MembreAdmin extends Admin
             
            
             ->add('roles')
-           
+           ->add('adresse')
             ->add('telephonne')
             ->add('formationsAteliers') 
             
@@ -62,7 +62,7 @@ class MembreAdmin extends Admin
             
            
             ->addIdentifier('roles')
-           
+            ->addIdentifier('adresse')
             ->addIdentifier('telephonne')
             ->addIdentifier('formationsAteliers')
       

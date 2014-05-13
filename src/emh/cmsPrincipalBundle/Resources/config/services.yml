@@ -26,6 +26,11 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [emhcmsPrincipal]]
+
+    emh.form.articles:
+        class: emh\cmsPrincipalBundle\Form\ArticlesType
+        tags:
+            - { name: form.type, alias: articles }
             
             
             

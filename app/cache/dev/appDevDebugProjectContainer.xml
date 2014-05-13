@@ -695,14 +695,14 @@
       </parameter>
     </parameter>
     <parameter key="sonata.admin.configuration.templates" type="collection">
-      <parameter key="user_block">SonataAdminBundle:Core:user_block.html.twig</parameter>
       <parameter key="layout">SonataAdminBundle::standard_layout.html.twig</parameter>
       <parameter key="ajax">SonataAdminBundle::ajax_layout.html.twig</parameter>
-      <parameter key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</parameter>
-      <parameter key="search">SonataAdminBundle:Core:search.html.twig</parameter>
       <parameter key="list">SonataAdminBundle:CRUD:list.html.twig</parameter>
       <parameter key="show">SonataAdminBundle:CRUD:show.html.twig</parameter>
       <parameter key="edit">SonataAdminBundle:CRUD:edit.html.twig</parameter>
+      <parameter key="user_block">SonataAdminBundle:Core:user_block.html.twig</parameter>
+      <parameter key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</parameter>
+      <parameter key="search">SonataAdminBundle:Core:search.html.twig</parameter>
       <parameter key="preview">SonataAdminBundle:CRUD:preview.html.twig</parameter>
       <parameter key="history">SonataAdminBundle:CRUD:history.html.twig</parameter>
       <parameter key="acl">SonataAdminBundle:CRUD:acl.html.twig</parameter>
@@ -724,8 +724,16 @@
     <parameter key="sonata.admin.configuration.dashboard_blocks" type="collection">
       <parameter type="collection">
         <parameter key="position">left</parameter>
-        <parameter key="settings" type="collection"/>
         <parameter key="type">sonata.admin.block.admin_list</parameter>
+        <parameter key="settings" type="collection"/>
+      </parameter>
+      <parameter type="collection">
+        <parameter key="position">right</parameter>
+        <parameter key="type">sonata.block.service.text</parameter>
+        <parameter key="settings" type="collection">
+          <parameter key="content">&lt;h2&gt;Bienvenue sur votre Administration&lt;/h2&gt; &lt;p&gt;fichier config.yml&lt;/p&gt;
+</parameter>
+        </parameter>
       </parameter>
     </parameter>
     <parameter key="sonata.admin.security.acl_user_manager">fos_user.user_manager</parameter>
@@ -1039,6 +1047,9 @@
         <argument type="collection"/>
       </call>
       <call method="initialize"/>
+    </service>
+    <service id="emh.form.articles" class="emh\cmsPrincipalBundle\Form\ArticlesType">
+      <tag name="form.type" alias="articles"/>
     </service>
     <service id="sonata.admin.inscription" class="emh\InscriptionBundle\Admin\InscriptionAdmin" scope="prototype">
       <tag name="sonata.admin" manager_type="orm" group="Contenu" label="Formations"/>
@@ -3232,6 +3243,7 @@
           <service class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
             <argument type="service" id="service_container"/>
             <argument type="collection">
+              <argument key="articles">emh.form.articles</argument>
               <argument key="form">form.type.form</argument>
               <argument key="birthday">form.type.birthday</argument>
               <argument key="checkbox">form.type.checkbox</argument>
@@ -3854,7 +3866,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>536f785571d5e</argument>
+            <argument>53710cb6d72c0</argument>
           </service>
         </argument>
       </argument>
@@ -4008,28 +4020,6 @@
         </argument>
         <argument>null</argument>
       </call>
-      <call method="add">
-        <argument type="service">
-          <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-            <argument>^/formation/admin/</argument>
-          </service>
-        </argument>
-        <argument type="collection">
-          <argument>ROLE_ADMIN</argument>
-        </argument>
-        <argument>null</argument>
-      </call>
-      <call method="add">
-        <argument type="service">
-          <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-            <argument>^/membre/admin/</argument>
-          </service>
-        </argument>
-        <argument type="collection">
-          <argument>ROLE_ADMIN</argument>
-        </argument>
-        <argument>null</argument>
-      </call>
     </service>
     <service id="security.access_listener" class="Symfony\Component\Security\Http\Firewall\AccessListener" public="false">
       <tag name="monolog.logger" channel="security"/>
@@ -4117,7 +4107,7 @@
                 <argument type="service" id="security.http_utils"/>
                 <argument type="collection">
                   <argument key="always_use_default_target_path">true</argument>
-                  <argument key="default_target_path">/emh/rubrique</argument>
+                  <argument key="default_target_path">/accueil</argument>
                   <argument key="login_path">/login</argument>
                   <argument key="target_path_parameter">_target_path</argument>
                   <argument key="use_referer">false</argument>
@@ -4142,13 +4132,13 @@
             </argument>
             <argument type="collection">
               <argument key="check_path">_security_check</argument>
+              <argument key="post_only">true</argument>
               <argument key="use_forward">false</argument>
               <argument key="require_previous_session">true</argument>
               <argument key="username_parameter">_username</argument>
               <argument key="password_parameter">_password</argument>
               <argument key="csrf_parameter">_csrf_token</argument>
               <argument key="intention">authenticate</argument>
-              <argument key="post_only">true</argument>
             </argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
@@ -4248,11 +4238,11 @@
               <service class="Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler" public="false">
                 <argument type="service" id="security.http_utils"/>
                 <argument type="collection">
-                  <argument key="login_path">fos_user_security_login</argument>
                   <argument key="always_use_default_target_path">false</argument>
-                  <argument key="default_target_path">/</argument>
+                  <argument key="default_target_path">/accueil</argument>
                   <argument key="target_path_parameter">_target_path</argument>
-                  <argument key="use_referer">false</argument>
+                  <argument key="use_referer">true</argument>
+                  <argument key="login_path">/login</argument>
                 </argument>
                 <call method="setProviderKey">
                   <argument>main</argument>
@@ -4264,7 +4254,7 @@
                 <argument type="service" id="http_kernel"/>
                 <argument type="service" id="security.http_utils"/>
                 <argument type="collection">
-                  <argument key="login_path">fos_user_security_login</argument>
+                  <argument key="login_path">/login</argument>
                   <argument key="failure_path">null</argument>
                   <argument key="failure_forward">false</argument>
                   <argument key="failure_path_parameter">_failure_path</argument>
@@ -4273,14 +4263,14 @@
               </service>
             </argument>
             <argument type="collection">
-              <argument key="check_path">fos_user_security_check</argument>
+              <argument key="post_only">true</argument>
+              <argument key="check_path">/login_check</argument>
               <argument key="use_forward">false</argument>
               <argument key="require_previous_session">true</argument>
               <argument key="username_parameter">_username</argument>
               <argument key="password_parameter">_password</argument>
               <argument key="csrf_parameter">_csrf_token</argument>
               <argument key="intention">authenticate</argument>
-              <argument key="post_only">true</argument>
             </argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
@@ -4340,7 +4330,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>536f785571d5e</argument>
+            <argument>53710cb6d72c0</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
           </service>
         </argument>
@@ -4356,7 +4346,7 @@
             <service class="Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint" public="false">
               <argument type="service" id="http_kernel"/>
               <argument type="service" id="security.http_utils"/>
-              <argument>fos_user_security_login</argument>
+              <argument>/login</argument>
               <argument>false</argument>
             </service>
           </argument>
@@ -5409,8 +5399,8 @@
     </service>
     <service id="sonata.admin.pool" class="Sonata\AdminBundle\Admin\Pool">
       <argument type="service" id="service_container"/>
-      <argument>Sonata Admin</argument>
-      <argument>bundles/sonataadmin/logo_title.png</argument>
+      <argument>EMH-Administration</argument>
+      <argument>/bundles/sonataadmin/logo_title.png</argument>
       <argument type="collection">
         <argument key="html5_validate">true</argument>
         <argument key="confirm_exit">true</argument>
@@ -5419,14 +5409,14 @@
       </argument>
       <call method="setTemplates">
         <argument type="collection">
-          <argument key="user_block">SonataAdminBundle:Core:user_block.html.twig</argument>
           <argument key="layout">SonataAdminBundle::standard_layout.html.twig</argument>
           <argument key="ajax">SonataAdminBundle::ajax_layout.html.twig</argument>
-          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
-          <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
           <argument key="list">SonataAdminBundle:CRUD:list.html.twig</argument>
           <argument key="show">SonataAdminBundle:CRUD:show.html.twig</argument>
           <argument key="edit">SonataAdminBundle:CRUD:edit.html.twig</argument>
+          <argument key="user_block">SonataAdminBundle:Core:user_block.html.twig</argument>
+          <argument key="dashboard">SonataAdminBundle:Core:dashboard.html.twig</argument>
+          <argument key="search">SonataAdminBundle:Core:search.html.twig</argument>
           <argument key="preview">SonataAdminBundle:CRUD:preview.html.twig</argument>
           <argument key="history">SonataAdminBundle:CRUD:history.html.twig</argument>
           <argument key="acl">SonataAdminBundle:CRUD:acl.html.twig</argument>

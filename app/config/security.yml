@@ -29,9 +29,11 @@ security:
         secured_area:
             pattern:    ^/emh/secured/
             form_login:
+                
                 check_path: _security_check
+                post_only: true
                 always_use_default_target_path : true
-                default_target_path: /emh/rubrique
+                default_target_path: /accueil
                
             
         main:
@@ -39,13 +41,25 @@ security:
             anonymous:      true
             provider:       fos_userbundle
             
-            form_login:
-                login_path: fos_user_security_login 
-                check_path: fos_user_security_check
+            
+            form_login:                      # On définit notre méthode d'authentification
+                provider:    fos_userbundle  # On lit l'authentification au provider définit plus haut
+                remember_me: true            # On active la possibilité du "Se souvenir de moi" (désactivé par défaut)
+                # par défaut, le formulaire de login *doit* être un POST,
+                # et pas un GET
+                post_only: true
+                # options de redirection lorsque le login a réussi (vous
+                # pouvez en lire plus ci-dessous)
+                always_use_default_target_path: false
+                default_target_path:            /accueil
+                target_path_parameter:          _target_path                
+                use_referer: true 
 
             logout:
                 path:       /logout
                 target:     /accueil
+
+            
             
             remember_me:
                 key:        %secret% # %secret% est un paramètre de parameters.yml
@@ -71,8 +85,7 @@ security:
         
         # PAGES ACCESSIBLES AUX ADMINISTRATEURS
         - { path: ^/emh/admin/, role: ROLE_ADMIN }
-        - { path: ^/emh/formation/admin/, role: ROLE_ADMIN }
-        - { path: ^/emh/membre/admin/, role: ROLE_ADMIN }
+        
         
         # PAGES ACCESSIBLES AUX UTILISATEURS CONNECTES
         - { path: ^/emh/change-password, role: ROLE_USER }
@@ -89,6 +102,5 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/formation/admin/, role: ROLE_ADMIN }
-        - { path: ^/membre/admin/, role: ROLE_ADMIN }
+        
         

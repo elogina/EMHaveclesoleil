@@ -28,7 +28,11 @@ class Membres extends BaseUser
         $this->formations = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="string", length=255, nullable=true)
+     */
     private $adresse;
 
     /**

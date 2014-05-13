@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+
 class ArticlesType extends AbstractType
 {
         /**
@@ -14,15 +15,19 @@ class ArticlesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        
         $builder
             ->add('nomFr')
             ->add('nomEn')
             ->add('texteFr')
             ->add('texteEn')
-            ->add('image')
+            
+            ->add('file', 'file', array('label' => 'Image', 'required' => false))
             ->add('rubriques', 'entity', array('class'  =>'emhcmsPrincipalBundle:Rubriques',
                                                 'property' => 'nomFr'))
         ;
+        //echo 'builder';
+        //var_dump($builder);
     }
     
     /**
@@ -40,6 +45,6 @@ class ArticlesType extends AbstractType
      */
     public function getName()
     {
-        return 'emh_cmsprincipalbundle_articles';
+        return 'emh_cmsPrincipalbundle_articles';
     }
 }

@@ -26,7 +26,7 @@
         "knplabs/knp-snappy-bundle": "dev-master",
         "knplabs/knp-menu-bundle": "~1.1",
         "sonata-project/core-bundle": "dev-master",
-        "sonata-project/media-bundle": "2.2.7",
+        "sonata-project/media-bundle": "dev-master",
         "sonata-project/admin-bundle": "2.2.9",
         "sonata-project/notification-bundle": "2.2.4",
         "sonata-project/jquery-bundle": "1.8.x-dev",

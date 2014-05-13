@@ -4,11 +4,17 @@ namespace emh\cmsPrincipalBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+use Symfony\Component\Validator\Constraints as Assert;
+
+
 /**
  * Articles
  *
  * @ORM\Table(name="articles", indexes={@ORM\Index(name="fk_articles_rubriques1_idx", columns={"rubriques_id"})})
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Articles
 {
@@ -45,7 +51,7 @@ class Articles
     /**
      * @var string
      *
-     * @ORM\Column(name="texte_en", type="string", length=45, nullable=true)
+     * @ORM\Column(name="texte_en", type="text", nullable=true)
      */
     private $texteEn;
 
@@ -55,6 +61,11 @@ class Articles
      * @ORM\Column(name="image", type="string", length=45, nullable=true)
      */
     private $image;
+    
+      /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file;
 
     /**
      * @var \Rubriques
@@ -215,6 +226,83 @@ class Articles
     {
         return $this->rubriques;
     }
+     
     
+    public function getWebImage()
+    {
+        return null === $this->image ? null : $this->getUploadDir().'/'.$this->image;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+        return 'images/';
+    }
+ // propriété utilisé temporairement pour la suppression
+    private $filenameForRemove;
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function storeFilenameForRemove()
+    {
+        $this->filenameForRemove = $this->getAbsoluteImage();
+    }
+
+    
+    public function getAbsoluteImage()
+    {
+        return null === $this->image ? null : $this->getUploadRootDir().$this->id.$this->image;
+    }
+    
+    
+     /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if (null !== $this->file) {
+            // faites ce que vous voulez pour générer un nom unique
+            $this->image = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        echo'<script>alert("coucou")</script>';
+        if (null === $this->file) {
+            return;
+        }
+
+        // s'il y a une erreur lors du déplacement du fichier, une exception
+        // va automatiquement être lancée par la méthode move(). Cela va empêcher
+        // proprement l'entité d'être persistée dans la base de données si
+        // erreur il y a
+        $this->file->move($this->getUploadRootDir(), $this->image);
+       
+        unset($this->file);
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsoluteImage()) {
+            unlink($file);
+        }
+    }
   
 }

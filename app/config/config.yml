@@ -98,5 +98,31 @@ sonata_block:
         sonata.media.block.gallery:
         sonata.media.block.feature_media:
 
+sonata_admin:
+    title:      EMH-Administration 
+    title_logo: /bundles/sonataadmin/logo_title.png
+    templates:
+        # default global templates
+        layout:  SonataAdminBundle::standard_layout.html.twig
+        ajax:    SonataAdminBundle::ajax_layout.html.twig
+
+        # default actions templates, should extend a global templates
+        list:    SonataAdminBundle:CRUD:list.html.twig
+        show:    SonataAdminBundle:CRUD:show.html.twig
+        edit:    SonataAdminBundle:CRUD:edit.html.twig
+    dashboard:
+       blocks:
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+            -
+                position: right
+                type: sonata.block.service.text
+                settings:
+                    content: >
+                        <h2>Bienvenue sur votre Administration</h2>
+                        <p>fichier config.yml</p>
+                 
+       
 
             
