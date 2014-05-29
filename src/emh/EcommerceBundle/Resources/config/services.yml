@@ -1,0 +1,33 @@
+parameters:
+#    emh_ecommerce.example.class: emh\EcommerceBundle\Example
+
+services:
+    sonata.admin.Produits:
+        class: emh\EcommerceBundle\Admin\ProduitsAdmin
+                
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Achat", label: "Produits" }
+         
+        arguments:
+            - ~
+            - emh\EcommerceBundle\Entity\Produits
+          
+            - ~
+        calls:
+            - [ setTranslationDomain, [EcommerceBundle]]
+            
+    sonata.admin.Achats:
+        class: emh\EcommerceBundle\Admin\AchatsAdmin
+                
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Achat", label: "Achats" }
+         
+        arguments:
+            - ~
+            - emh\EcommerceBundle\Entity\Achats
+          
+            - ~
+        calls:
+            - [ setTranslationDomain, [EcommerceBundle]]
+            
+    

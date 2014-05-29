@@ -27,7 +27,13 @@ class Rubriques {
      * @Gedmo\Slug(fields={"nomFr"})
      * @ORM\Column(type="string")
      */
-    protected $slug;
+    protected $slugFr;
+    
+    /**
+     * @Gedmo\Slug(fields={"nomEn"})
+     * @ORM\Column(type="string")
+     */
+    protected $slugEn;
     
 
     /**
@@ -54,6 +60,22 @@ class Rubriques {
      */
     private $sites;
     
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="choixFormation", type="boolean", nullable=true)
+     */
+    
+    private $choixFormation;
+    
+     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="choixProduit", type="boolean", nullable=true)
+     */
+    
+    private $choixProduit;
+    
     
     /**
      * Get id
@@ -65,32 +87,49 @@ class Rubriques {
     }
 
     /**
+     * Set slugFr
+     *
+     * @param string $slug
+     * @return Rubriques
+     */
+    public function setSlugFr($slugFr) {
+       $this->slug = $slugFr;
+    }
+
+    /**
+     * Get slugFr
+     *
+     * @return string 
+     */
+    public function getSlugFr() {
+        return $this->slugFr;
+    }
+    
+    /**
+     * Set slugEn
+     *
+     * @param string $slug
+     * @return Rubriques
+     */
+    public function setSlugEn($slugEn) {
+       $this->slugEn = $slugEn;
+    }
+
+    /**
+     * Get slugFr
+     *
+     * @return string 
+     */
+    public function getSlugEn() {
+        return $this->slugEn;
+    }
+     /**
      * Set nomFr
      *
      * @param string $nomFr
      * @return Rubriques
      */
-
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     * @return Rubriques
-     */
-    public function setSlug($slug) {
-       $this->slug = $slug;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string 
-     */
-    public function getSlug() {
-        return $this->slug;
-    }
-    
-    public function setNomFr($nomFr) {
+    public function setNomFR($nomFr) {
         $this->nomFr = $nomFr;
 
         
@@ -129,6 +168,51 @@ class Rubriques {
     public function getNomEn() {
         return $this->nomEn;
     }
+    
+     /**
+     * Get choixFormation
+     *
+     * @return boolean 
+     */
+      public function setChoixFormation($choixFormation) {
+        $this->choixFormation = $choixFormation;
+
+        
+
+        return $this;
+    }
+
+    /**
+     * Get choixFormation
+     *
+     * @return boolean 
+     */
+    public function getChoixFormation() {
+        return $this->choixFormation;
+    }
+    
+    /**
+     * Get choixProduit
+     *
+     * @return boolean 
+     */
+      public function setChoixProduit($choixProduit) {
+        $this->choixProduit = $choixProduit;
+
+        
+
+        return $this;
+    }
+
+    /**
+     * Get choixProduit
+     *
+     * @return boolean 
+     */
+    public function getChoixProduit() {
+        return $this->choixProduit;
+    }
+
 
     /**
      * Set sites

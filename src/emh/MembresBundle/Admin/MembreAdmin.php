@@ -1,6 +1,4 @@
 <?php
-
-
 namespace emh\MembresBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -13,40 +11,35 @@ class MembreAdmin extends Admin
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
+        
         $formMapper
                 
-            ->add('username')
-            
-            ->add('email')
-            
-           
-            ->add('roles')
-            ->add('adresse')
-            ->add('telephonne')
-            ->add('FormationsAteliers','entity', array('class'  =>'emhInscriptionBundle:FormationsAteliers',
-                                                'property' => 'nomFr'))
-           
-                
-                    ;
+           ->add('username')        
+           ->add('email')
+           ->add('roles')
+           ->add('adresse')
+           ->add('telephonne')
+             
+
+                   
+ 
+        ;
     }
+
+    
 
     // Fields to be shown on filter forms
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
            ->add('username')
-            
-            ->add('email')
-            
-           
-            ->add('roles')
+           ->add('email')
+           ->add('roles')
            ->add('adresse')
-            ->add('telephonne')
-            ->add('formationsAteliers') 
-            
-         
-            
-                          
+           ->add('telephonne')
+           
+             
+                
 
         ;
     }
@@ -57,15 +50,12 @@ class MembreAdmin extends Admin
         $listMapper
             //->addIdentifier('nomFr')
              ->addIdentifier('username')
+            ->add('email')
+            ->add('roles')
+            ->add('adresse')
+            ->add('telephonne')
             
-            ->addIdentifier('email')
-            
-           
-            ->addIdentifier('roles')
-            ->addIdentifier('adresse')
-            ->addIdentifier('telephonne')
-            ->addIdentifier('formationsAteliers')
-      
+       
             
         ;
     }

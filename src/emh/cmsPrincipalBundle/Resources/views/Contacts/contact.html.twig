@@ -1,0 +1,25 @@
+
+{#
+    page formulaire de contact
+    Nom du bundle : cmsPrincipal
+    Controller : Contact
+    Action : index
+    Pour tester :mettre en render dans la vue ou l'on veux afficher le formulaire
+                 ( rubrique "contact"
+                  mettre: "{% if form is defined%}"  )
+    
+    Variable disponibles:
+        -lien : detail d'un lien
+                    id, nom_fr,  texte_fr,  image, rubriques_id, slug_fr
+            
+#}
+<form action="{{ path('cms_principal_contact') }}" method="post" {{ form_enctype(form) }} >
+        
+    <p><input type="text" name="name" placeholder="Your name" /></p>
+    
+    <p><input type="text" name="email"  placeholder="Your mail" /></p>
+    <p><textarea name="body" placeholder="Your message"></textarea></p>
+    <p><input type="submit" /></p>
+
+        <input type="submit" value="Submit" />
+    </form>

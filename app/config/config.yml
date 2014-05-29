@@ -1,9 +1,12 @@
 imports:
+    - { resource: @emhMembresBundle/Resources/config/services.yml }
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: @emhcmsPrincipalBundle/Resources/config/services.yml }
     - { resource: @emhInscriptionBundle/Resources/config/services.yml }
-    - { resource: @emhMembresBundle/Resources/config/services.yml }
+    - { resource: @emhEcommerceBundle/Resources/config/services.yml }
+    - { resource: @emhAgendaBundle/Resources/config/services.yml }
+    - { resource: @emhDonsBundle/Resources/config/services.yml }
 
 framework:
     #esi:             ~
@@ -69,17 +72,23 @@ stof_doctrine_extensions:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
+    transport: smtp
+    encryption: ssl
+    auth_mode: login
+    host:      smtp.gmail.com
     username:  "%mailer_user%"
     password:  "%mailer_password%"
-    spool:     { type: memory }
+    delivery_address: elodieleonard87@gmail.com
     
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: emh\MembresBundle\Entity\Membres
-
+    registration:
+        confirmation:
+            enabled: true
+        form:
+            type: emh_membresbundle_membres
 
 sonata_block:
     default_contexts: [cms]
@@ -98,18 +107,54 @@ sonata_block:
         sonata.media.block.gallery:
         sonata.media.block.feature_media:
 
+sonata_doctrine_orm_admin:
+    templates:
+        types:
+            list:
+                array:      SonataAdminBundle:CRUD:list_array.html.twig
+                boolean:    SonataAdminBundle:CRUD:list_boolean.html.twig
+                date:       SonataAdminBundle:CRUD:list_date.html.twig
+                time:       SonataAdminBundle:CRUD:list_time.html.twig
+                datetime:   SonataAdminBundle:CRUD:list_datetime.html.twig
+                text:       SonataAdminBundle:CRUD:base_list_field.html.twig
+                trans:      SonataAdminBundle:CRUD:list_trans.html.twig
+                string:     SonataAdminBundle:CRUD:base_list_field.html.twig
+                smallint:   SonataAdminBundle:CRUD:base_list_field.html.twig
+                bigint:     SonataAdminBundle:CRUD:base_list_field.html.twig
+                integer:    SonataAdminBundle:CRUD:base_list_field.html.twig
+                decimal:    SonataAdminBundle:CRUD:base_list_field.html.twig
+                identifier: SonataAdminBundle:CRUD:base_list_field.html.twig
+
+            show:
+                array:      SonataAdminBundle:CRUD:show_array.html.twig
+                boolean:    SonataAdminBundle:CRUD:show_boolean.html.twig
+                date:       SonataAdminBundle:CRUD:show_date.html.twig
+                time:       SonataAdminBundle:CRUD:show_time.html.twig
+                datetime:   SonataAdminBundle:CRUD:show_datetime.html.twig
+                text:       SonataAdminBundle:CRUD:base_show_field.html.twig
+                trans:      SonataAdminBundle:CRUD:show_trans.html.twig
+                string:     SonataAdminBundle:CRUD:base_show_field.html.twig
+                smallint:   SonataAdminBundle:CRUD:base_show_field.html.twig
+                bigint:     SonataAdminBundle:CRUD:base_show_field.html.twig
+                integer:    SonataAdminBundle:CRUD:base_show_field.html.twig
+                decimal:    SonataAdminBundle:CRUD:base_show_field.html.twig
+
 sonata_admin:
     title:      EMH-Administration 
     title_logo: /bundles/sonataadmin/logo_title.png
     templates:
+        
         # default global templates
         layout:  SonataAdminBundle::standard_layout.html.twig
         ajax:    SonataAdminBundle::ajax_layout.html.twig
+        dashboard: SonataAdminBundle:Core:dashboard.html.twig
 
-        # default actions templates, should extend a global templates
+       # default actions templates, should extend a global templates
         list:    SonataAdminBundle:CRUD:list.html.twig
         show:    SonataAdminBundle:CRUD:show.html.twig
         edit:    SonataAdminBundle:CRUD:edit.html.twig
+        # default actions templates, should extend a global templates
+       
     dashboard:
        blocks:
             -
@@ -125,4 +170,4 @@ sonata_admin:
                  
        
 
-            
+          

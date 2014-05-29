@@ -1,0 +1,25 @@
+{#
+    page detail des produits
+    Nom du bundle : EcommerceBundle
+    Controller : Produit
+    Action : detail
+    Pour tester :slug-du-site/produit/id-produit
+    Route : emh_ecommerce_detail_produit - Paramètre : slug et id
+    Variable disponibles:
+        -produit : detailo d'un produit
+                    id, nomFr, nomEn, descriptionFr, descriptionEn, image, prix
+            
+#}
+
+
+
+<h1>detail de du produit</h1>
+
+<p> {{ produits.nomFr }} <br>
+    {{ produits.descriptionFr }}
+</p>
+
+
+<a href="{{path('emh_membres_achat', {'id': produits.id, 'slug': sites.slug})}}">Achat</a> <br>
+
+<a href="{{path('emh_membres_delachat',{'id': produits.id,'slug': sites.slug})}}">profil</a>

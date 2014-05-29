@@ -1,11 +1,7 @@
-emh_membres_inscription:
-    pattern: /inscription/formation/{id}
-    defaults: { _controller: "emhMembresBundle:Membre:add" }
+
+
 
 emh_membres_profil:
     pattern:  /profile
     defaults: { _controller: "emhMembresBundle:Membre:test" }
     
-emh_membres_desinscription:
-    pattern:  /desinscription/formation/{id}
-    defaults: { _controller: "emhMembresBundle:Membre:delete" }

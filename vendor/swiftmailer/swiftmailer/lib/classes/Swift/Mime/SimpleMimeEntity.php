@@ -141,7 +141,7 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_MimeEntity
      *
      * @see LEVEL_TOP, LEVEL_MIXED, LEVEL_RELATED, LEVEL_ALTERNATIVE
      *
-     * @return int
+     * @return integer
      */
     public function getNestingLevel()
     {
@@ -184,9 +184,7 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_MimeEntity
      */
     public function getId()
     {
-        $tmp = (array) $this->_getHeaderFieldModel($this->_getIdField());
-
-        return $this->_headers->has($this->_getIdField()) ? current($tmp) : $this->_id;
+        return $this->_headers->has($this->_getIdField()) ? current((array) $this->_getHeaderFieldModel($this->_getIdField())) : $this->_id;
     }
 
     /**
@@ -239,7 +237,7 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_MimeEntity
     /**
      * Get the maximum line length of the body of this entity.
      *
-     * @return int
+     * @return integer
      */
     public function getMaxLineLength()
     {
@@ -251,7 +249,7 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_MimeEntity
      *
      * Though not enforced by the library, lines should not exceed 1000 chars.
      *
-     * @param int     $length
+     * @param integer $length
      *
      * @return Swift_Mime_SimpleMimeEntity
      */
@@ -276,7 +274,7 @@ class Swift_Mime_SimpleMimeEntity implements Swift_Mime_MimeEntity
      * Set all children of this entity.
      *
      * @param array   $children      Swift_Mime_Entity instances
-     * @param int     $compoundLevel For internal use only
+     * @param integer $compoundLevel For internal use only
      *
      * @return Swift_Mime_SimpleMimeEntity
      */

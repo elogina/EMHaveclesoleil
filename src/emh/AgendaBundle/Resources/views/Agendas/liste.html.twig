@@ -1,0 +1,25 @@
+{#
+    page liste des enregistrement de l'agenda
+    Nom du bundle : Agenda
+    Controller : Agenda
+    Action : liste
+    Pour tester :mettre en render dans la vue ou l'on veux afficher les liens de l'agenda
+                 {{render(controller('emhAgendaBundle:Agenda:liste'))}}
+    Variable disponibles:
+        -lien : detail d'un enregistrement dans l agenda
+                    id,site_id,slugFr,titre_fr,  texte_fr
+            
+#}
+
+ <ul>
+    {% for agenda in agendas %}
+            
+            <li>
+                
+                           
+              {{ agenda.texteFr}}
+            </li>
+
+       
+    {%endfor %}
+</ul>

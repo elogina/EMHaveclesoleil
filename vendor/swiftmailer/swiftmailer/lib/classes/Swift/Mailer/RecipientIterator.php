@@ -20,7 +20,7 @@ interface Swift_Mailer_RecipientIterator
     /**
      * Returns true only if there are more recipients to send to.
      *
-     * @return bool
+     * @return boolean
      */
     public function hasNext();
 

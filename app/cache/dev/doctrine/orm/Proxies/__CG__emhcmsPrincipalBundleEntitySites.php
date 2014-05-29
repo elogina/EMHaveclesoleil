@@ -64,10 +64,10 @@ class Sites extends \emh\cmsPrincipalBundle\Entity\Sites implements \Doctrine\OR
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'nomFr', 'nomEn');
+            return array('__isInitialized__', 'id', 'slug', 'nomFr', 'nomEn');
         }
 
-        return array('__isInitialized__', 'id', 'nomFr', 'nomEn');
+        return array('__isInitialized__', 'id', 'slug', 'nomFr', 'nomEn');
     }
 
     /**
@@ -230,6 +230,28 @@ class Sites extends \emh\cmsPrincipalBundle\Entity\Sites implements \Doctrine\OR
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNomEn', array());
 
         return parent::getNomEn();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSlug()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', array());
+
+        return parent::getSlug();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setSlug($slug)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', array($slug));
+
+        return parent::setSlug($slug);
     }
 
     /**

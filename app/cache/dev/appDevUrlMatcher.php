@@ -135,57 +135,72 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/formation')) {
-            // emh_formation
-            if (rtrim($pathinfo, '/') === '/formation') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'emh_formation');
-                }
-
-                return array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::listeAction',  '_route' => 'emh_formation',);
-            }
-
-            // emh_formation_add
-            if ($pathinfo === '/formation/admin/formation/add') {
-                return array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::addAction',  '_route' => 'emh_formation_add',);
-            }
-
-            // emh_formation_detail
-            if (0 === strpos($pathinfo, '/formation/formation') && preg_match('#^/formation/formation/(?P<id>[^/]++)/detail$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_formation_detail')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::detailAction',));
-            }
-
-            if (0 === strpos($pathinfo, '/formation/admin/formation')) {
-                // emh_formation_edit
-                if (preg_match('#^/formation/admin/formation/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_formation_edit')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::editAction',));
-                }
-
-                // emh_formation_delete
-                if (preg_match('#^/formation/admin/formation/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_formation_delete')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::deleteAction',));
-                }
-
-            }
-
+        // chapeau
+        if ($pathinfo === '/AsblSoleil') {
+            return array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::chapeauAction',  '_route' => 'chapeau',);
         }
 
-        if (0 === strpos($pathinfo, '/membre')) {
-            // emh_membres_inscription
-            if (0 === strpos($pathinfo, '/membre/inscription/formation') && preg_match('#^/membre/inscription/formation/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_inscription')), array (  '_controller' => 'emh\\MembresBundle\\Controller\\MembreController::addAction',));
+        // emh_dons_homepage
+        if (0 === strpos($pathinfo, '/dons/hello') && preg_match('#^/dons/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_dons_homepage')), array (  '_controller' => 'emhDonsBundle:Default:index',));
+        }
+
+        // emh_agenda_homepage
+        if (preg_match('#^/(?P<slug>[^/]++)/agenda/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_agenda_homepage')), array (  '_controller' => 'emhAgendaBundle:Default:index',));
+        }
+
+        // emh_ecommerce_liste_produits
+        if (preg_match('#^/(?P<slug>[^/]++)/produit/?$#s', $pathinfo, $matches)) {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'emh_ecommerce_liste_produits');
             }
 
-            // emh_membres_profil
-            if ($pathinfo === '/membre/profile') {
-                return array (  '_controller' => 'emh\\MembresBundle\\Controller\\MembreController::testAction',  '_route' => 'emh_membres_profil',);
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_ecommerce_liste_produits')), array (  '_controller' => 'emh\\EcommerceBundle\\Controller\\ProduitController::listeAction',));
+        }
+
+        // emh_ecommerce_detail_produit
+        if (preg_match('#^/(?P<slug>[^/]++)/produit/produit/(?P<id>[^/]++)/detail$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_ecommerce_detail_produit')), array (  '_controller' => 'emh\\EcommerceBundle\\Controller\\ProduitController::detailAction',));
+        }
+
+        // emh_membres_achat
+        if (preg_match('#^/(?P<slug>[^/]++)/produit/achat/produit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_achat')), array (  '_controller' => 'emh\\EcommerceBundle\\Controller\\AchatController::addAction',));
+        }
+
+        // emh_membres_delachat
+        if (preg_match('#^/(?P<slug>[^/]++)/produit/rendre/poduit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_delachat')), array (  '_controller' => 'emhEcommerceBundle:Achat::delete',));
+        }
+
+        // emh_formation
+        if (preg_match('#^/(?P<slug>[^/]++)/?$#s', $pathinfo, $matches)) {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'emh_formation');
             }
 
-            // emh_membres_desinscription
-            if (0 === strpos($pathinfo, '/membre/desinscription/formation') && preg_match('#^/membre/desinscription/formation/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_desinscription')), array (  '_controller' => 'emh\\MembresBundle\\Controller\\MembreController::deleteAction',));
-            }
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_formation')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::listeAction',));
+        }
 
+        // emh_formation_detail
+        if (preg_match('#^/(?P<slug>[^/]++)/formation/(?P<id>[^/]++)/detail$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_formation_detail')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::detailAction',));
+        }
+
+        // emh_membres_inscription
+        if (preg_match('#^/(?P<slug>[^/]++)/inscription/formation/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_inscription')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\InscriptionController::addAction',));
+        }
+
+        // emh_membres_desinscription
+        if (preg_match('#^/(?P<slug>[^/]++)/desinscription/formation/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_desinscription')), array (  '_controller' => 'emhInscriptionBundle:Inscription::delete',));
+        }
+
+        // emh_membres_profil
+        if (preg_match('#^/(?P<slug>[^/]++)/membre/profile$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_profil')), array (  '_controller' => 'emh\\MembresBundle\\Controller\\MembreController::testAction',));
         }
 
         if (0 === strpos($pathinfo, '/log')) {
@@ -394,6 +409,44 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             if (0 === strpos($pathinfo, '/admin/emh')) {
+                if (0 === strpos($pathinfo, '/admin/emh/membres/membres')) {
+                    // admin_emh_membres_membres_list
+                    if ($pathinfo === '/admin/emh/membres/membres/list') {
+                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.membres',  '_sonata_name' => 'admin_emh_membres_membres_list',  '_route' => 'admin_emh_membres_membres_list',);
+                    }
+
+                    // admin_emh_membres_membres_create
+                    if ($pathinfo === '/admin/emh/membres/membres/create') {
+                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.membres',  '_sonata_name' => 'admin_emh_membres_membres_create',  '_route' => 'admin_emh_membres_membres_create',);
+                    }
+
+                    // admin_emh_membres_membres_batch
+                    if ($pathinfo === '/admin/emh/membres/membres/batch') {
+                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.membres',  '_sonata_name' => 'admin_emh_membres_membres_batch',  '_route' => 'admin_emh_membres_membres_batch',);
+                    }
+
+                    // admin_emh_membres_membres_edit
+                    if (preg_match('#^/admin/emh/membres/membres/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_membres_membres_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.membres',  '_sonata_name' => 'admin_emh_membres_membres_edit',));
+                    }
+
+                    // admin_emh_membres_membres_delete
+                    if (preg_match('#^/admin/emh/membres/membres/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_membres_membres_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.membres',  '_sonata_name' => 'admin_emh_membres_membres_delete',));
+                    }
+
+                    // admin_emh_membres_membres_show
+                    if (preg_match('#^/admin/emh/membres/membres/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_membres_membres_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.membres',  '_sonata_name' => 'admin_emh_membres_membres_show',));
+                    }
+
+                    // admin_emh_membres_membres_export
+                    if ($pathinfo === '/admin/emh/membres/membres/export') {
+                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.membres',  '_sonata_name' => 'admin_emh_membres_membres_export',  '_route' => 'admin_emh_membres_membres_export',);
+                    }
+
+                }
+
                 if (0 === strpos($pathinfo, '/admin/emh/cmsprincipal')) {
                     if (0 === strpos($pathinfo, '/admin/emh/cmsprincipal/rubriques')) {
                         // admin_emh_cmsprincipal_rubriques_list
@@ -473,128 +526,257 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
                 }
 
-                if (0 === strpos($pathinfo, '/admin/emh/inscription/formationsateliers')) {
-                    // admin_emh_inscription_formationsateliers_list
-                    if ($pathinfo === '/admin/emh/inscription/formationsateliers/list') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.inscription',  '_sonata_name' => 'admin_emh_inscription_formationsateliers_list',  '_route' => 'admin_emh_inscription_formationsateliers_list',);
+                if (0 === strpos($pathinfo, '/admin/emh/inscription')) {
+                    if (0 === strpos($pathinfo, '/admin/emh/inscription/formationsateliers')) {
+                        // admin_emh_inscription_formationsateliers_list
+                        if ($pathinfo === '/admin/emh/inscription/formationsateliers/list') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.formation',  '_sonata_name' => 'admin_emh_inscription_formationsateliers_list',  '_route' => 'admin_emh_inscription_formationsateliers_list',);
+                        }
+
+                        // admin_emh_inscription_formationsateliers_create
+                        if ($pathinfo === '/admin/emh/inscription/formationsateliers/create') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.formation',  '_sonata_name' => 'admin_emh_inscription_formationsateliers_create',  '_route' => 'admin_emh_inscription_formationsateliers_create',);
+                        }
+
+                        // admin_emh_inscription_formationsateliers_batch
+                        if ($pathinfo === '/admin/emh/inscription/formationsateliers/batch') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.formation',  '_sonata_name' => 'admin_emh_inscription_formationsateliers_batch',  '_route' => 'admin_emh_inscription_formationsateliers_batch',);
+                        }
+
+                        // admin_emh_inscription_formationsateliers_edit
+                        if (preg_match('#^/admin/emh/inscription/formationsateliers/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_inscription_formationsateliers_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.formation',  '_sonata_name' => 'admin_emh_inscription_formationsateliers_edit',));
+                        }
+
+                        // admin_emh_inscription_formationsateliers_delete
+                        if (preg_match('#^/admin/emh/inscription/formationsateliers/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_inscription_formationsateliers_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.formation',  '_sonata_name' => 'admin_emh_inscription_formationsateliers_delete',));
+                        }
+
+                        // admin_emh_inscription_formationsateliers_show
+                        if (preg_match('#^/admin/emh/inscription/formationsateliers/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_inscription_formationsateliers_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.formation',  '_sonata_name' => 'admin_emh_inscription_formationsateliers_show',));
+                        }
+
+                        // admin_emh_inscription_formationsateliers_export
+                        if ($pathinfo === '/admin/emh/inscription/formationsateliers/export') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.formation',  '_sonata_name' => 'admin_emh_inscription_formationsateliers_export',  '_route' => 'admin_emh_inscription_formationsateliers_export',);
+                        }
+
                     }
 
-                    // admin_emh_inscription_formationsateliers_create
-                    if ($pathinfo === '/admin/emh/inscription/formationsateliers/create') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.inscription',  '_sonata_name' => 'admin_emh_inscription_formationsateliers_create',  '_route' => 'admin_emh_inscription_formationsateliers_create',);
-                    }
+                    if (0 === strpos($pathinfo, '/admin/emh/inscription/inscriptions')) {
+                        // admin_emh_inscription_inscriptions_list
+                        if ($pathinfo === '/admin/emh/inscription/inscriptions/list') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.inscriptions',  '_sonata_name' => 'admin_emh_inscription_inscriptions_list',  '_route' => 'admin_emh_inscription_inscriptions_list',);
+                        }
 
-                    // admin_emh_inscription_formationsateliers_batch
-                    if ($pathinfo === '/admin/emh/inscription/formationsateliers/batch') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.inscription',  '_sonata_name' => 'admin_emh_inscription_formationsateliers_batch',  '_route' => 'admin_emh_inscription_formationsateliers_batch',);
-                    }
+                        // admin_emh_inscription_inscriptions_create
+                        if ($pathinfo === '/admin/emh/inscription/inscriptions/create') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.inscriptions',  '_sonata_name' => 'admin_emh_inscription_inscriptions_create',  '_route' => 'admin_emh_inscription_inscriptions_create',);
+                        }
 
-                    // admin_emh_inscription_formationsateliers_edit
-                    if (preg_match('#^/admin/emh/inscription/formationsateliers/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_inscription_formationsateliers_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.inscription',  '_sonata_name' => 'admin_emh_inscription_formationsateliers_edit',));
-                    }
+                        // admin_emh_inscription_inscriptions_batch
+                        if ($pathinfo === '/admin/emh/inscription/inscriptions/batch') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.inscriptions',  '_sonata_name' => 'admin_emh_inscription_inscriptions_batch',  '_route' => 'admin_emh_inscription_inscriptions_batch',);
+                        }
 
-                    // admin_emh_inscription_formationsateliers_delete
-                    if (preg_match('#^/admin/emh/inscription/formationsateliers/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_inscription_formationsateliers_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.inscription',  '_sonata_name' => 'admin_emh_inscription_formationsateliers_delete',));
-                    }
+                        // admin_emh_inscription_inscriptions_edit
+                        if (preg_match('#^/admin/emh/inscription/inscriptions/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_inscription_inscriptions_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.inscriptions',  '_sonata_name' => 'admin_emh_inscription_inscriptions_edit',));
+                        }
 
-                    // admin_emh_inscription_formationsateliers_show
-                    if (preg_match('#^/admin/emh/inscription/formationsateliers/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_inscription_formationsateliers_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.inscription',  '_sonata_name' => 'admin_emh_inscription_formationsateliers_show',));
-                    }
+                        // admin_emh_inscription_inscriptions_delete
+                        if (preg_match('#^/admin/emh/inscription/inscriptions/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_inscription_inscriptions_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.inscriptions',  '_sonata_name' => 'admin_emh_inscription_inscriptions_delete',));
+                        }
 
-                    // admin_emh_inscription_formationsateliers_export
-                    if ($pathinfo === '/admin/emh/inscription/formationsateliers/export') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.inscription',  '_sonata_name' => 'admin_emh_inscription_formationsateliers_export',  '_route' => 'admin_emh_inscription_formationsateliers_export',);
+                        // admin_emh_inscription_inscriptions_show
+                        if (preg_match('#^/admin/emh/inscription/inscriptions/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_inscription_inscriptions_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.inscriptions',  '_sonata_name' => 'admin_emh_inscription_inscriptions_show',));
+                        }
+
+                        // admin_emh_inscription_inscriptions_export
+                        if ($pathinfo === '/admin/emh/inscription/inscriptions/export') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.inscriptions',  '_sonata_name' => 'admin_emh_inscription_inscriptions_export',  '_route' => 'admin_emh_inscription_inscriptions_export',);
+                        }
+
                     }
 
                 }
 
-                if (0 === strpos($pathinfo, '/admin/emh/membres/membres')) {
-                    // admin_emh_membres_membres_list
-                    if ($pathinfo === '/admin/emh/membres/membres/list') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.membres',  '_sonata_name' => 'admin_emh_membres_membres_list',  '_route' => 'admin_emh_membres_membres_list',);
+                if (0 === strpos($pathinfo, '/admin/emh/ecommerce')) {
+                    if (0 === strpos($pathinfo, '/admin/emh/ecommerce/produits')) {
+                        // admin_emh_ecommerce_produits_list
+                        if ($pathinfo === '/admin/emh/ecommerce/produits/list') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.produits',  '_sonata_name' => 'admin_emh_ecommerce_produits_list',  '_route' => 'admin_emh_ecommerce_produits_list',);
+                        }
+
+                        // admin_emh_ecommerce_produits_create
+                        if ($pathinfo === '/admin/emh/ecommerce/produits/create') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.produits',  '_sonata_name' => 'admin_emh_ecommerce_produits_create',  '_route' => 'admin_emh_ecommerce_produits_create',);
+                        }
+
+                        // admin_emh_ecommerce_produits_batch
+                        if ($pathinfo === '/admin/emh/ecommerce/produits/batch') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.produits',  '_sonata_name' => 'admin_emh_ecommerce_produits_batch',  '_route' => 'admin_emh_ecommerce_produits_batch',);
+                        }
+
+                        // admin_emh_ecommerce_produits_edit
+                        if (preg_match('#^/admin/emh/ecommerce/produits/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_ecommerce_produits_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.produits',  '_sonata_name' => 'admin_emh_ecommerce_produits_edit',));
+                        }
+
+                        // admin_emh_ecommerce_produits_delete
+                        if (preg_match('#^/admin/emh/ecommerce/produits/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_ecommerce_produits_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.produits',  '_sonata_name' => 'admin_emh_ecommerce_produits_delete',));
+                        }
+
+                        // admin_emh_ecommerce_produits_show
+                        if (preg_match('#^/admin/emh/ecommerce/produits/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_ecommerce_produits_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.produits',  '_sonata_name' => 'admin_emh_ecommerce_produits_show',));
+                        }
+
+                        // admin_emh_ecommerce_produits_export
+                        if ($pathinfo === '/admin/emh/ecommerce/produits/export') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.produits',  '_sonata_name' => 'admin_emh_ecommerce_produits_export',  '_route' => 'admin_emh_ecommerce_produits_export',);
+                        }
+
                     }
 
-                    // admin_emh_membres_membres_create
-                    if ($pathinfo === '/admin/emh/membres/membres/create') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.membres',  '_sonata_name' => 'admin_emh_membres_membres_create',  '_route' => 'admin_emh_membres_membres_create',);
+                    if (0 === strpos($pathinfo, '/admin/emh/ecommerce/achats')) {
+                        // admin_emh_ecommerce_achats_list
+                        if ($pathinfo === '/admin/emh/ecommerce/achats/list') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.achats',  '_sonata_name' => 'admin_emh_ecommerce_achats_list',  '_route' => 'admin_emh_ecommerce_achats_list',);
+                        }
+
+                        // admin_emh_ecommerce_achats_create
+                        if ($pathinfo === '/admin/emh/ecommerce/achats/create') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.achats',  '_sonata_name' => 'admin_emh_ecommerce_achats_create',  '_route' => 'admin_emh_ecommerce_achats_create',);
+                        }
+
+                        // admin_emh_ecommerce_achats_batch
+                        if ($pathinfo === '/admin/emh/ecommerce/achats/batch') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.achats',  '_sonata_name' => 'admin_emh_ecommerce_achats_batch',  '_route' => 'admin_emh_ecommerce_achats_batch',);
+                        }
+
+                        // admin_emh_ecommerce_achats_edit
+                        if (preg_match('#^/admin/emh/ecommerce/achats/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_ecommerce_achats_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.achats',  '_sonata_name' => 'admin_emh_ecommerce_achats_edit',));
+                        }
+
+                        // admin_emh_ecommerce_achats_delete
+                        if (preg_match('#^/admin/emh/ecommerce/achats/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_ecommerce_achats_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.achats',  '_sonata_name' => 'admin_emh_ecommerce_achats_delete',));
+                        }
+
+                        // admin_emh_ecommerce_achats_show
+                        if (preg_match('#^/admin/emh/ecommerce/achats/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                            return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_ecommerce_achats_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.achats',  '_sonata_name' => 'admin_emh_ecommerce_achats_show',));
+                        }
+
+                        // admin_emh_ecommerce_achats_export
+                        if ($pathinfo === '/admin/emh/ecommerce/achats/export') {
+                            return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.achats',  '_sonata_name' => 'admin_emh_ecommerce_achats_export',  '_route' => 'admin_emh_ecommerce_achats_export',);
+                        }
+
                     }
 
-                    // admin_emh_membres_membres_batch
-                    if ($pathinfo === '/admin/emh/membres/membres/batch') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.membres',  '_sonata_name' => 'admin_emh_membres_membres_batch',  '_route' => 'admin_emh_membres_membres_batch',);
+                }
+
+                if (0 === strpos($pathinfo, '/admin/emh/agenda/agendas')) {
+                    // admin_emh_agenda_agendas_list
+                    if ($pathinfo === '/admin/emh/agenda/agendas/list') {
+                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.agenda',  '_sonata_name' => 'admin_emh_agenda_agendas_list',  '_route' => 'admin_emh_agenda_agendas_list',);
                     }
 
-                    // admin_emh_membres_membres_edit
-                    if (preg_match('#^/admin/emh/membres/membres/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_membres_membres_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.membres',  '_sonata_name' => 'admin_emh_membres_membres_edit',));
+                    // admin_emh_agenda_agendas_create
+                    if ($pathinfo === '/admin/emh/agenda/agendas/create') {
+                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.agenda',  '_sonata_name' => 'admin_emh_agenda_agendas_create',  '_route' => 'admin_emh_agenda_agendas_create',);
                     }
 
-                    // admin_emh_membres_membres_delete
-                    if (preg_match('#^/admin/emh/membres/membres/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_membres_membres_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.membres',  '_sonata_name' => 'admin_emh_membres_membres_delete',));
+                    // admin_emh_agenda_agendas_batch
+                    if ($pathinfo === '/admin/emh/agenda/agendas/batch') {
+                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.agenda',  '_sonata_name' => 'admin_emh_agenda_agendas_batch',  '_route' => 'admin_emh_agenda_agendas_batch',);
                     }
 
-                    // admin_emh_membres_membres_show
-                    if (preg_match('#^/admin/emh/membres/membres/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_membres_membres_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.membres',  '_sonata_name' => 'admin_emh_membres_membres_show',));
+                    // admin_emh_agenda_agendas_edit
+                    if (preg_match('#^/admin/emh/agenda/agendas/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_agenda_agendas_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.agenda',  '_sonata_name' => 'admin_emh_agenda_agendas_edit',));
                     }
 
-                    // admin_emh_membres_membres_export
-                    if ($pathinfo === '/admin/emh/membres/membres/export') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.membres',  '_sonata_name' => 'admin_emh_membres_membres_export',  '_route' => 'admin_emh_membres_membres_export',);
+                    // admin_emh_agenda_agendas_delete
+                    if (preg_match('#^/admin/emh/agenda/agendas/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_agenda_agendas_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.agenda',  '_sonata_name' => 'admin_emh_agenda_agendas_delete',));
+                    }
+
+                    // admin_emh_agenda_agendas_show
+                    if (preg_match('#^/admin/emh/agenda/agendas/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_agenda_agendas_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.agenda',  '_sonata_name' => 'admin_emh_agenda_agendas_show',));
+                    }
+
+                    // admin_emh_agenda_agendas_export
+                    if ($pathinfo === '/admin/emh/agenda/agendas/export') {
+                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.agenda',  '_sonata_name' => 'admin_emh_agenda_agendas_export',  '_route' => 'admin_emh_agenda_agendas_export',);
+                    }
+
+                }
+
+                if (0 === strpos($pathinfo, '/admin/emh/dons/dons')) {
+                    // admin_emh_dons_dons_list
+                    if ($pathinfo === '/admin/emh/dons/dons/list') {
+                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.dons',  '_sonata_name' => 'admin_emh_dons_dons_list',  '_route' => 'admin_emh_dons_dons_list',);
+                    }
+
+                    // admin_emh_dons_dons_create
+                    if ($pathinfo === '/admin/emh/dons/dons/create') {
+                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.dons',  '_sonata_name' => 'admin_emh_dons_dons_create',  '_route' => 'admin_emh_dons_dons_create',);
+                    }
+
+                    // admin_emh_dons_dons_batch
+                    if ($pathinfo === '/admin/emh/dons/dons/batch') {
+                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.dons',  '_sonata_name' => 'admin_emh_dons_dons_batch',  '_route' => 'admin_emh_dons_dons_batch',);
+                    }
+
+                    // admin_emh_dons_dons_edit
+                    if (preg_match('#^/admin/emh/dons/dons/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_dons_dons_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.dons',  '_sonata_name' => 'admin_emh_dons_dons_edit',));
+                    }
+
+                    // admin_emh_dons_dons_delete
+                    if (preg_match('#^/admin/emh/dons/dons/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_dons_dons_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.dons',  '_sonata_name' => 'admin_emh_dons_dons_delete',));
+                    }
+
+                    // admin_emh_dons_dons_show
+                    if (preg_match('#^/admin/emh/dons/dons/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_emh_dons_dons_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.dons',  '_sonata_name' => 'admin_emh_dons_dons_show',));
+                    }
+
+                    // admin_emh_dons_dons_export
+                    if ($pathinfo === '/admin/emh/dons/dons/export') {
+                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.dons',  '_sonata_name' => 'admin_emh_dons_dons_export',  '_route' => 'admin_emh_dons_dons_export',);
                     }
 
                 }
 
             }
 
+        }
+
+        // cms_principal_contact
+        if (preg_match('#^/(?P<slug>[^/]++)/contact$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_contact')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\ContactController::indexAction',));
         }
 
         // cms_principal_page
-        if (preg_match('#^/(?P<slug>[^/]++)$#s', $pathinfo, $matches)) {
+        if (preg_match('#^/(?P<slug>[^/]++)/(?P<slugFr>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_page')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::detailAction',));
         }
 
-        if (0 === strpos($pathinfo, '/admin')) {
-            if (0 === strpos($pathinfo, '/admin/rubrique')) {
-                // cms_principal_rubrique_edit
-                if (preg_match('#^/admin/rubrique/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_rubrique_edit')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::editAction',));
-                }
-
-                // cms_principal_rubrique_add
-                if ($pathinfo === '/admin/rubrique/add') {
-                    return array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::addAction',  '_route' => 'cms_principal_rubrique_add',);
-                }
-
-            }
-
-            // cms_principal_article_add
-            if ($pathinfo === '/admin/article/add') {
-                return array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\ArticleController::addAction',  '_route' => 'cms_principal_article_add',);
-            }
-
-            // cms_principal_rubrique_delete
-            if (0 === strpos($pathinfo, '/admin/rubrique') && preg_match('#^/admin/rubrique/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_rubrique_delete')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::deleteAction',));
-            }
-
-            if (0 === strpos($pathinfo, '/admin/article')) {
-                // cms_principal_article_edit
-                if (preg_match('#^/admin/article/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_article_edit')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\ArticleController::editAction',));
-                }
-
-                // cms_principal_article_delete
-                if (preg_match('#^/admin/article/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_article_delete')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\ArticleController::deleteAction',));
-                }
-
-            }
-
+        // cms_principal_article
+        if (preg_match('#^/(?P<slug>[^/]++)/(?P<id>[^/]++)/(?P<slugFr>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_article')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\ArticleController::detailAction',));
         }
 
         // _welcome

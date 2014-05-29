@@ -12,8 +12,10 @@ class __TwigTemplate_f9e4293e2e6e7a2e5d54f3c49f1874a92ff0b88239bedd1345bfc813b32
         $this->blocks = array(
             'title' => array($this, 'block_title'),
             'stylesheets' => array($this, 'block_stylesheets'),
+            'menu' => array($this, 'block_menu'),
             'body' => array($this, 'block_body'),
             'javascripts' => array($this, 'block_javascripts'),
+            'pied' => array($this, 'block_pied'),
         );
     }
 
@@ -39,13 +41,21 @@ class __TwigTemplate_f9e4293e2e6e7a2e5d54f3c49f1874a92ff0b88239bedd1345bfc813b32
     <body>
         ";
         // line 10
+        $this->displayBlock('menu', $context, $blocks);
+        // line 16
+        echo "        ";
         $this->displayBlock('body', $context, $blocks);
-        // line 11
+        // line 17
         echo "        ";
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 12
-        echo "    </body>
-</html>
+        // line 18
+        echo "        
+    </body>
+    ";
+        // line 20
+        $this->displayBlock('pied', $context, $blocks);
+        // line 24
+        echo "</html>
 ";
     }
 
@@ -61,13 +71,37 @@ class __TwigTemplate_f9e4293e2e6e7a2e5d54f3c49f1874a92ff0b88239bedd1345bfc813b32
     }
 
     // line 10
+    public function block_menu($context, array $blocks = array())
+    {
+        echo " 
+       
+        <div class=\"menu\">
+              ";
+        // line 13
+        echo $this->env->getExtension('actions')->renderUri($this->env->getExtension('http_kernel')->controller("emhcmsPrincipalBundle:Rubrique:menu", array("slug" => $this->getAttribute((isset($context["sites"]) ? $context["sites"] : $this->getContext($context, "sites")), "slug"))), array());
+        // line 14
+        echo "\t</div>
+        ";
+    }
+
+    // line 16
     public function block_body($context, array $blocks = array())
+    {
+        echo " ";
+    }
+
+    // line 17
+    public function block_javascripts($context, array $blocks = array())
     {
     }
 
-    // line 11
-    public function block_javascripts($context, array $blocks = array())
+    // line 20
+    public function block_pied($context, array $blocks = array())
     {
+        // line 21
+        echo "    Pied de page
+    <p><a href=''>faire un don</a><p>
+    ";
     }
 
     public function getTemplateName()
@@ -82,6 +116,6 @@ class __TwigTemplate_f9e4293e2e6e7a2e5d54f3c49f1874a92ff0b88239bedd1345bfc813b32
 
     public function getDebugInfo()
     {
-        return array (  69 => 11,  64 => 10,  53 => 5,  47 => 12,  44 => 11,  42 => 10,  35 => 7,  33 => 6,  29 => 5,  23 => 1,  75 => 19,  68 => 17,  59 => 6,  55 => 13,  52 => 12,  48 => 11,  43 => 9,  40 => 8,  36 => 7,  31 => 4,  28 => 3,);
+        return array (  102 => 21,  99 => 20,  94 => 17,  88 => 16,  83 => 14,  81 => 13,  74 => 10,  69 => 6,  63 => 5,  58 => 24,  56 => 20,  52 => 18,  49 => 17,  46 => 16,  44 => 10,  37 => 7,  35 => 6,  31 => 5,  25 => 1,);
     }
 }

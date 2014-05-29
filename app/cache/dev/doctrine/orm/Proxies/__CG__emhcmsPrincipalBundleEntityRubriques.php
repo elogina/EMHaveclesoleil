@@ -64,10 +64,10 @@ class Rubriques extends \emh\cmsPrincipalBundle\Entity\Rubriques implements \Doc
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'slug', 'nomFr', 'nomEn', 'sites');
+            return array('__isInitialized__', 'id', 'slugFr', 'slugEn', 'nomFr', 'nomEn', 'sites', 'choixFormation', 'choixProduit');
         }
 
-        return array('__isInitialized__', 'id', 'slug', 'nomFr', 'nomEn', 'sites');
+        return array('__isInitialized__', 'id', 'slugFr', 'slugEn', 'nomFr', 'nomEn', 'sites', 'choixFormation', 'choixProduit');
     }
 
     /**
@@ -191,34 +191,56 @@ class Rubriques extends \emh\cmsPrincipalBundle\Entity\Rubriques implements \Doc
     /**
      * {@inheritDoc}
      */
-    public function setSlug($slug)
+    public function setSlugFr($slugFr)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', array($slug));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlugFr', array($slugFr));
 
-        return parent::setSlug($slug);
+        return parent::setSlugFr($slugFr);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getSlug()
+    public function getSlugFr()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlugFr', array());
 
-        return parent::getSlug();
+        return parent::getSlugFr();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function setNomFr($nomFr)
+    public function setSlugEn($slugEn)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNomFr', array($nomFr));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlugEn', array($slugEn));
 
-        return parent::setNomFr($nomFr);
+        return parent::setSlugEn($slugEn);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSlugEn()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlugEn', array());
+
+        return parent::getSlugEn();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setNomFR($nomFr)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNomFR', array($nomFr));
+
+        return parent::setNomFR($nomFr);
     }
 
     /**
@@ -252,6 +274,50 @@ class Rubriques extends \emh\cmsPrincipalBundle\Entity\Rubriques implements \Doc
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNomEn', array());
 
         return parent::getNomEn();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setChoixFormation($choixFormation)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setChoixFormation', array($choixFormation));
+
+        return parent::setChoixFormation($choixFormation);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getChoixFormation()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChoixFormation', array());
+
+        return parent::getChoixFormation();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setChoixProduit($choixProduit)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setChoixProduit', array($choixProduit));
+
+        return parent::setChoixProduit($choixProduit);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getChoixProduit()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChoixProduit', array());
+
+        return parent::getChoixProduit();
     }
 
     /**

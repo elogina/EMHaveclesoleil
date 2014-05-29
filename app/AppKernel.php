@@ -22,7 +22,9 @@ class AppKernel extends Kernel
             new emh\MembresBundle\emhMembresBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new emh\InscriptionBundle\emhInscriptionBundle(),
-            
+            new emh\EcommerceBundle\emhEcommerceBundle(),
+            new emh\AgendaBundle\emhAgendaBundle(),
+            new emh\DonsBundle\emhDonsBundle(),
             
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),       
             new Sonata\BlockBundle\SonataBlockBundle(),
@@ -32,6 +34,10 @@ class AppKernel extends Kernel
             new Sonata\CoreBundle\SonataCoreBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             
+
+            
+
+          
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

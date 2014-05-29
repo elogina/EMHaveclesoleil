@@ -5,6 +5,7 @@ namespace emh\cmsPrincipalBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -26,6 +27,18 @@ class Articles
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+    
+        /**
+     * @Gedmo\Slug(fields={"nomFr"})
+     * @ORM\Column(type="string")
+     */
+    protected $slugFr;
+    
+         /**
+     * @Gedmo\Slug(fields={"nomEn"})
+     * @ORM\Column(type="string")
+     */
+    protected $slugEn;
 
     /**
      * @var string
@@ -67,10 +80,11 @@ class Articles
      */
     public $file;
 
+
     /**
      * @var \Rubriques
      *
-     * @ORM\ManyToOne(targetEntity="Rubriques")
+     * @ORM\ManyToOne(targetEntity="emh\cmsPrincipalBundle\Entity\Rubriques")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="rubriques_id", referencedColumnName="id")
      * })
@@ -259,7 +273,7 @@ class Articles
     
     public function getAbsoluteImage()
     {
-        return null === $this->image ? null : $this->getUploadRootDir().$this->id.$this->image;
+       return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
     }
     
     
@@ -281,7 +295,7 @@ class Articles
      */
     public function upload()
     {
-        echo'<script>alert("coucou")</script>';
+       
         if (null === $this->file) {
             return;
         }

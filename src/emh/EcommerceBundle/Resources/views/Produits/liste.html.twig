@@ -1,0 +1,32 @@
+{#
+    page liste des produits
+    Nom du bundle : EcommerceBundle
+    Controller : Produit
+    Action : liste
+    Pour tester :slug-du-site/produit
+    Route : emh_ecommerce_liste_produits - Paramètre : slug 
+    Variable disponibles:
+        -produit : liste des produits
+                    id, nomFr, nomEn, descriptionFr, descriptionEn, image, prix
+            
+#}
+
+
+{%block body%}
+<h1>liste des Produits</h1> <br>
+
+{% for produit in produits %}
+
+
+<ul>
+   
+    <li>
+            <a href="{{path('emh_ecommerce_detail_produit',{'id': produit.id, 'slug': sites.slug})}}">
+                    {{ produit.nomFr }}
+                </a>
+    </li>
+   
+</ul>
+
+{% endfor %}
+{%endblock%}

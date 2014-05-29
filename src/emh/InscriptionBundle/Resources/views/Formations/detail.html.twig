@@ -5,6 +5,6 @@
 </p>
 
 
-<a href="{{path('emh_membres_inscription', {'id': formations.id})}}">inscription</a> <br>
+<a href="{{path('emh_membres_inscription', {'id': formations.id, 'slug': sites.slug})}}">inscription</a> <br>
 
-<a href="{{path('emh_membres_profil')}}">profil</a>
+<a href="{{path('emh_membres_profil',{'slug': sites.slug})}}">profil</a>

@@ -93,7 +93,7 @@ class Swift_Mime_SimpleMessage extends Swift_Mime_MimePart implements Swift_Mime
     /**
      * Set the date at which this message was created.
      *
-     * @param int     $date
+     * @param integer $date
      *
      * @return Swift_Mime_SimpleMessage
      */
@@ -109,7 +109,7 @@ class Swift_Mime_SimpleMessage extends Swift_Mime_MimePart implements Swift_Mime
     /**
      * Get the date at which this message was created.
      *
-     * @return int
+     * @return integer
      */
     public function getDate()
     {
@@ -304,8 +304,7 @@ class Swift_Mime_SimpleMessage extends Swift_Mime_MimePart implements Swift_Mime
     /**
      * Set the to addresses of this message.
      *
-     * If multiple recipients will receive the message an array should be used.
-     * Example: array('receiver@domain.org', 'other@domain.org' => 'A name')
+     * If multiple recipients will receive the message and array should be used.
      *
      * If $name is passed and the first parameter is a string, this name will be
      * associated with the address.
@@ -447,7 +446,7 @@ class Swift_Mime_SimpleMessage extends Swift_Mime_MimePart implements Swift_Mime
      *
      * The value is an integer where 1 is the highest priority and 5 is the lowest.
      *
-     * @param int     $priority
+     * @param integer $priority
      *
      * @return Swift_Mime_SimpleMessage
      */
@@ -482,7 +481,7 @@ class Swift_Mime_SimpleMessage extends Swift_Mime_MimePart implements Swift_Mime
      * The returned value is an integer where 1 is the highest priority and 5
      * is the lowest.
      *
-     * @return int
+     * @return integer
      */
     public function getPriority()
     {
@@ -639,7 +638,7 @@ class Swift_Mime_SimpleMessage extends Swift_Mime_MimePart implements Swift_Mime
     }
 
     // -- Private methods
-
+    
     /** Get the highest nesting level nested inside this message */
     private function _getTopNestingLevel()
     {

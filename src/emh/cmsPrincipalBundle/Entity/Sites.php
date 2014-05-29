@@ -3,6 +3,7 @@
 namespace emh\cmsPrincipalBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Sites
@@ -20,6 +21,13 @@ class Sites
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+    
+     /**
+     * @Gedmo\Slug(fields={"nomFr"})
+     * @ORM\Column(type="string")
+     */
+    protected $slug;
+    
 
     /**
      * @var string
@@ -82,7 +90,7 @@ class Sites
 
         return $this;
     }
-
+    
     /**
      * Get nomEn
      *
@@ -92,6 +100,31 @@ class Sites
     {
         return $this->nomEn;
     }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+    
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Sites
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    
     
     public function __toString() {
     return $this->nomFr;

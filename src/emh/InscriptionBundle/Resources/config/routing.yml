@@ -2,19 +2,17 @@ emh_formation:
     pattern:  /
     defaults: { _controller: emhInscriptionBundle:Formation:liste }
 
-emh_formation_add:
-    pattern:  /admin/formation/add
-    defaults: { _controller: emhInscriptionBundle:Formation:add }  
-
 emh_formation_detail:
     pattern:  /formation/{id}/detail
     defaults: { _controller: emhInscriptionBundle:Formation:detail  }
 
-emh_formation_edit:
-    pattern:  /admin/formation/{id}/edit
-    defaults: { _controller: emhInscriptionBundle:Formation:edit }
 
-emh_formation_delete:
-    pattern:  /admin/formation/{id}/delete
-    defaults: { _controller: emhInscriptionBundle:Formation:delete}
+
+emh_membres_inscription:
+    pattern: /inscription/formation/{id}
+    defaults: { _controller: "emhInscriptionBundle:Inscription:add" }
+    
+emh_membres_desinscription:
+    pattern:  /desinscription/formation/{id}
+    defaults: { _controller: "emhInscriptionBundle:Inscription::delete" }
 

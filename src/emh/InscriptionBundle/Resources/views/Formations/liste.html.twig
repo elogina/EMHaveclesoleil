@@ -1,16 +1,20 @@
+
+
+{%block body%}
 <h1>liste des formations</h1> <br>
 
-{% for formations in formations %}
+{% for formation in formations %}
 
 
 <ul>
+    {% if sites.id == formation.sites.id %}
     <li>
-            <a href="{{path('emh_formation_detail',{'id': formations.id})}}">
-                    {{ formations.nomFr }}
+            <a href="{{path('emh_formation_detail',{'id': formation.id, 'slug': sites.slug})}}">
+                    {{ formation.nomFr }}
                 </a>
     </li>
+    {%endif%}
 </ul>
 
 {% endfor %}
-
-<p><a href="{{path('emh_formation_add') }}" >ajouter une formation</a></p>
+{%endblock%}

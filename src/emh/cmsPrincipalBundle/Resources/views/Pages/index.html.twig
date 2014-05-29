@@ -1,0 +1,21 @@
+
+
+{%block body%}
+<h1>ASBL soleil site chapeau</h1>
+
+              {%for site in sites %}
+                
+                {% set found = false%}
+                
+                    {% for rubrique in rubriques if found == false%}
+
+                        {% if site.id == rubrique.sites.id  %}
+
+                             <p><a href='{{path('cms_principal_page', {'slug':site.slug, 'slugFr':rubrique.slugFr})}}'> {{site.nomFr}}</a></p>
+                             {% set found = true %}
+                        {%endif%}
+                 {%endfor%}
+              {%endfor %}
+
+
+{%endblock body%}

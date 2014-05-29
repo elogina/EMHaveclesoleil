@@ -1,9 +1,16 @@
 services:
+    
+    emh_user.registration.form.type:
+        class: emh\MembresBundle\Form\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: emh_membresbundle_membres}  
+    
     sonata.admin.Membres:
         class: emh\MembresBundle\Admin\MembreAdmin
                 
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Contenu", label: "Membres" }
+            - { name: sonata.admin, manager_type: orm, group: "Membres", label: "Membres" }
          
         arguments:
             - ~
@@ -14,5 +21,6 @@ services:
             - [ setTranslationDomain, [emhMembres]]
             
    
-            
+      
 
+ 

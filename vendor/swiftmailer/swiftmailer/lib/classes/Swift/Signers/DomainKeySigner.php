@@ -69,7 +69,7 @@ class Swift_Signers_DomainKeySigner implements Swift_Signers_HeaderSigner
     /**
      * Must we embed signed headers?
      *
-     * @var bool
+     * @var boolean
      */
     protected $_debugHeaders = false;
 
@@ -133,18 +133,6 @@ class Swift_Signers_DomainKeySigner implements Swift_Signers_HeaderSigner
         $this->_selector = $selector;
     }
 
-    /**
-     * Instanciate DomainKeySigner
-     *
-     * @param string $privateKey
-     * @param string $domainName
-     * @param string $selector
-     * @return Swift_Signers_DomainKeySigner
-     */
-    public static function newInstance($privateKey, $domainName, $selector) {
-    	return new static($privateKey, $domainName, $selector);
-    }
-    
     /**
      * Resets internal states
      *
@@ -299,7 +287,7 @@ class Swift_Signers_DomainKeySigner implements Swift_Signers_HeaderSigner
     /**
      * Enable / disable the DebugHeaders
      *
-     * @param bool    $debug
+     * @param boolean $debug
      * @return Swift_Signers_DomainKeySigner
      */
     public function setDebugHeaders($debug)

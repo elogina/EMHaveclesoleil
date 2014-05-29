@@ -1,0 +1,17 @@
+parameters:
+#    emh_agenda.example.class: emh\AgendaBundle\Example
+
+services:
+    sonata.admin.Agenda:
+        class: emh\AgendaBundle\Admin\AgendaAdmin
+                
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Agenda", label: "Agenda" }
+         
+        arguments:
+            - ~
+            - emh\AgendaBundle\Entity\Agendas
+          
+            - ~
+        calls:
+            - [ setTranslationDomain, [AgendaBundle]]

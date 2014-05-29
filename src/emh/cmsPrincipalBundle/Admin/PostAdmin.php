@@ -18,6 +18,11 @@ class PostAdmin extends Admin
            ->add('nomEn', 'text', array('label' => 'titre EN'))
            ->add('sites', 'entity', array('class'  =>'emhcmsPrincipalBundle:Sites',
                                           'property' => 'nomFr'))
+           ->add('choixFormation', 'checkbox', array('label'=> 'est-ce une formation?',
+                                                      'required'=>false,))
+           
+                ->add('choixProduit', 'checkbox', array('label'=> 'est-ce un produit?',
+                                                      'required'=>false,))
            
                 
                     ;
@@ -30,7 +35,8 @@ class PostAdmin extends Admin
             ->add('nomFr')
            ->add('nomEn')
            ->add('sites')
-             
+             ->add('choixFormation') 
+                  ->add('choixProduit') 
             
          
             
@@ -46,7 +52,8 @@ class PostAdmin extends Admin
             ->addIdentifier('nomFr')
             ->addIdentifier('nomEn')
             ->addIdentifier('sites')
-       
+        ->add('choixFormation')
+                 ->add('choixProduit') 
       
             
         ;

@@ -1,0 +1,17 @@
+parameters:
+#    emh_dons.example.class: emh\DonsBundle\Example
+
+services:
+    sonata.admin.Dons:
+        class: emh\DonsBundle\Admin\DonsAdmin
+                
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Dons", label: "Dons" }
+         
+        arguments:
+            - ~
+            - emh\DonsBundle\Entity\Dons
+          
+            - ~
+        calls:
+            - [ setTranslationDomain, [DonsBundle]]

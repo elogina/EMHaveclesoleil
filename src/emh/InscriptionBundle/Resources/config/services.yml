@@ -1,9 +1,9 @@
 services:
-    sonata.admin.Inscription:
-        class: emh\InscriptionBundle\Admin\InscriptionAdmin
+    sonata.admin.Formation:
+        class: emh\InscriptionBundle\Admin\FormationsAteliersAdmin
                 
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Contenu", label: "Formations" }
+            - { name: sonata.admin, manager_type: orm, group: "Formations", label: "Formations" }
          
         arguments:
             - ~
@@ -11,7 +11,21 @@ services:
           
             - ~
         calls:
-            - [ setTranslationDomain, [emhInscription]]
+            - [ setTranslationDomain, [InscriptionBundle]]
+            
+    sonata.admin.Inscriptions:
+        class: emh\InscriptionBundle\Admin\InscriptionsAdmin
+                
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Formations", label: "Inscriptions" }
+         
+        arguments:
+            - ~
+            - emh\InscriptionBundle\Entity\Inscriptions
+          
+            - ~
+        calls:
+            - [ setTranslationDomain, [InscriptionBundle]]
             
    
             

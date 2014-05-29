@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\HttpFoundation\File\File;
-use Sonata\AdminBundle\Controller\CRUDController;
+
 
 
 class PostArticleAdmin extends Admin
@@ -73,10 +73,10 @@ class PostArticleAdmin extends Admin
         $listMapper
             ->addIdentifier('nomFr')
             ->addIdentifier('nomEn')
-            ->addIdentifier('texteFr')
-            ->addIdentifier('texteEn')
+            ->add('texteFr')
+            ->add('texteEn')
             ->addIdentifier('rubriques')
-           ->addIdentifier('image')
+           ->add('image')
 
        
       

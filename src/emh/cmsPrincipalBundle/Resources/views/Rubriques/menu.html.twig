@@ -1,0 +1,49 @@
+{# vue menu,  
+2routes celle de cms_principal_page qui est la page de l' 'accueil' du site 
+        celle de la route du routing principal qui a besoin du slug pour savoir sur quel site s'afficher
+ici, on recoit donc 2 paramètres
+ 
+2 paramètres car on a besoin de savoir sur quele site on est et quelle rubrique on veut afficher
+
+Le render doit se trouver dans le template général et doit recevoir uniquement le slug du routing principal
+car on a besoin d'uniquement l'afficher.
+
+
+Attention, dans le controler qui permet d'afficher le menu, il faut récupérer le slug du site 
+et donc 
+$rsSites = $this->getDoctrine()
+                           ->getManager()
+                           ->getRepository('emhcmsPrincipalBundle:Sites')
+                         ->findOneBySlug($slug);
+
+
+cela doit se trouver sur tous les controller qui va s'afficher suivant le site sur lequel il doit être.
+#}
+{#
+    page: boucle du menu
+    Nom du bundle : cmsPrincipal
+    Controller : Rubrique
+    Action : menu
+    Pour tester : mettre un render dans la vue détail de la rubrique
+  
+    Variable disponibles:
+        -lien :  detail d'un lien
+                         nom, url, image, rubrique_id
+            
+#}
+
+    <ul>
+    {% for rubrique in rubriques %}
+            {% if sites.id == rubrique.sites.id %}
+            <li>
+                <a href="{{path('cms_principal_page', {'slug':sites.slug,'slugFr': rubrique.slugFr})}}">
+                            {{rubrique.nomFr}}
+                </a>
+            </li>
+
+        {%endif%}
+    {%endfor %}
+</ul>
+
+
+

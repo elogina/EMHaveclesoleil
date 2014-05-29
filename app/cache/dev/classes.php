@@ -13880,8 +13880,8 @@ $this->translator = $translator;
 }
 public function buildForm(FormBuilderInterface $builder, array $options)
 {
-$builder->add('start','date', array_merge(array('required'=> false), $options['field_options']));
-$builder->add('end','date', array_merge(array('required'=> false), $options['field_options']));
+$builder->add('start', $options['field_type'], array_merge(array('required'=> false), $options['field_options']));
+$builder->add('end', $options['field_type'], array_merge(array('required'=> false), $options['field_options']));
 }
 public function getName()
 {
@@ -13889,8 +13889,7 @@ return'sonata_type_date_range';
 }
 public function setDefaultOptions(OptionsResolverInterface $resolver)
 {
-$resolver->setDefaults(array('field_options'=> array()
-));
+$resolver->setDefaults(array('field_options'=> array(),'field_type'=>'date'));
 }
 }
 }
@@ -13909,8 +13908,8 @@ $this->translator = $translator;
 }
 public function buildForm(FormBuilderInterface $builder, array $options)
 {
-$builder->add('start','datetime', array_merge(array('required'=> false), $options['field_options']));
-$builder->add('end','datetime', array_merge(array('required'=> false), $options['field_options']));
+$builder->add('start', $options['field_type'], array_merge(array('required'=> false), $options['field_options']));
+$builder->add('end', $options['field_type'], array_merge(array('required'=> false), $options['field_options']));
 }
 public function getName()
 {
@@ -13918,8 +13917,7 @@ return'sonata_type_datetime_range';
 }
 public function setDefaultOptions(OptionsResolverInterface $resolver)
 {
-$resolver->setDefaults(array('field_options'=> array()
-));
+$resolver->setDefaults(array('field_options'=> array(),'field_type'=>'sonata_type_datetime_range'));
 }
 }
 }

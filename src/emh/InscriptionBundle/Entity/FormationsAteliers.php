@@ -4,6 +4,8 @@ namespace emh\InscriptionBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
+
 /**
  * FormationsAteliers
  *
@@ -20,7 +22,8 @@ class FormationsAteliers
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
+    
+   
     /**
      * @var string
      *
@@ -59,7 +62,7 @@ class FormationsAteliers
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="date", nullable=false)
+     * @ORM\Column(name="date", type="date", nullable=true)
      */
     private $date;
 
@@ -83,20 +86,9 @@ class FormationsAteliers
      * @ORM\Column(name="nbMax", type="integer", nullable=false)
      */
     private $nbmax = '10';
+    
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="dateInscription", type="date", nullable=false)
-     */
-    private $dateinscription;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="paye", type="blob", length=1, nullable=true)
-     */
-    private $paye;
+    
 
     /**
      * @var \Sites
@@ -120,6 +112,7 @@ class FormationsAteliers
      */
     public function __construct()
     {
+         
         $this->membres = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -341,52 +334,7 @@ class FormationsAteliers
         return $this->nbmax;
     }
 
-    /**
-     * Set dateinscription
-     *
-     * @param \DateTime $dateinscription
-     * @return FormationsAteliers
-     */
-    public function setDateinscription($dateinscription)
-    {
-        $this->dateinscription = $dateinscription;
-
-        return $this;
-    }
-
-    /**
-     * Get dateinscription
-     *
-     * @return \DateTime 
-     */
-    public function getDateinscription()
-    {
-        return $this->dateinscription;
-    }
-
-    /**
-     * Set paye
-     *
-     * @param string $paye
-     * @return FormationsAteliers
-     */
-    public function setPaye($paye)
-    {
-        $this->paye = $paye;
-
-        return $this;
-    }
-
-    /**
-     * Get paye
-     *
-     * @return string 
-     */
-    public function getPaye()
-    {
-        return $this->paye;
-    }
-
+   
     /**
      * Set sites
      *
@@ -410,39 +358,8 @@ class FormationsAteliers
         return $this->sites;
     }
 
-    /**
-     * Add membres
-     *
-     * @param \emh\MembresBundle\Entity\Membres $membres
-     * @return FormationsAteliers
-     */
-    public function addMembre(\emh\MembresBundle\Entity\Membres $membres)
-    {
-        $this->membres[] = $membres;
-
-        return $this;
-    }
-
-    /**
-     * Remove membres
-     *
-     * @param \emh\MembresBundle\Entity\Membres $membres
-     */
-    public function removeMembre(\emh\MembresBundle\Entity\Membres $membres)
-    {
-        $this->membres->removeElement($membres);
-    }
-
-    /**
-     * Get membres
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getMembres()
-    {
-        return $this->membres;
-    }
     
+   
     public function __toString() {
         return $this->nomFr;
     }

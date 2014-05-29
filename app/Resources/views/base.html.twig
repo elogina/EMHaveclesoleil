@@ -7,7 +7,18 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block menu %} 
+       
+        <div class="menu">
+              {% render (controller ("emhcmsPrincipalBundle:Rubrique:menu", {'slug': sites.slug}))%}
+	</div>
+        {% endblock %}
+        {% block body %} {% endblock %}
         {% block javascripts %}{% endblock %}
+        
     </body>
+    {% block pied %}
+    Pied de page
+    <p><a href=''>faire un don</a><p>
+    {% endblock %}
 </html>

@@ -1,0 +1,26 @@
+
+{#
+    page liste des config (lien facebook, etc)
+    Nom du bundle : cmsPrincipal
+    Controller : Config
+    Action : liste
+    Pour tester :mettre en render dans la vue ou l'on veux afficher les liens
+                 {{render(controller('emhcmsPrincipalBundle:Config:liste'))}}
+    Variable disponibles:
+        -lien : detail d'un lien
+                    id, nom_fr,  texte_fr,  image, rubriques_id, slug_fr
+            
+#}
+
+ <ul>
+    {% for lien in liens %}
+            {% if sites.id == lien.sites.id %}
+            <li>
+                <a href="{{path('cms_principal_page', {'slug':sites.slug)}}">
+                           
+                </a>
+            </li>
+
+        {%endif%}
+    {%endfor %}
+</ul>

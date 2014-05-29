@@ -16,9 +16,9 @@ class FormationsAteliersType extends AbstractType
     {
         $builder
             ->add('nomFr')
-           // ->add('nomEn')
+            ->add('nomEn')
             ->add('descriptionFr')
-            //->add('descriptionEn')
+            ->add('descriptionEn')
             ->add('prix')
             ->add('date')
             ->add('debut')
@@ -26,9 +26,14 @@ class FormationsAteliersType extends AbstractType
             ->add('nbmax')
             ->add('dateinscription')
             ->add('paye')
+            ->add('membres','entity', array('multiple' => true,
+                                            'expanded' => true,
+                                             'class'  =>'emhMembresBundle:Membres',
+                                             'property'=>'nom',
+                'required' => false))
             ->add('sites', 'entity', array('class'  =>'emhcmsPrincipalBundle:Sites',
                                                 'property' => 'nomFr'))
-            //->add('membres')
+           
         ;
     }
     

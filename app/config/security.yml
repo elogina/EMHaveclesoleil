@@ -18,22 +18,13 @@ security:
                     admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
 
     firewalls:
-        dev:
-            pattern:  ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-
-        login:
-            pattern:  ^/emh/secured/login$
-            security: false
-
-        secured_area:
-            pattern:    ^/emh/secured/
+        main:
+            pattern: ^/
             form_login:
-                
-                check_path: _security_check
-                post_only: true
-                always_use_default_target_path : true
-                default_target_path: /accueil
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+            logout:       true
+            anonymous:    true
                
             
         main:
@@ -51,13 +42,13 @@ security:
                 # options de redirection lorsque le login a réussi (vous
                 # pouvez en lire plus ci-dessous)
                 always_use_default_target_path: false
-                default_target_path:            /accueil
+                default_target_path:         /{slug}/Admin/accueil
                 target_path_parameter:          _target_path                
                 use_referer: true 
 
             logout:
                 path:       /logout
-                target:     /accueil
+                target:      /eft/accueil
 
             
             

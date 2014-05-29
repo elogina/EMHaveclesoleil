@@ -5,6 +5,7 @@ namespace emh\MembresBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Membres
  *
@@ -26,8 +27,22 @@ class Membres extends BaseUser
     {
         parent::__construct();
         $this->formations = new \Doctrine\Common\Collections\ArrayCollection();
+        
     }
-
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=50, nullable=true)
+     */
+    private $nom;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=50, nullable=true)
+     */
+    private $prenom;
+    
      /**
      * @var string
      *
@@ -41,24 +56,7 @@ class Membres extends BaseUser
      * @ORM\Column(name="telephonne", type="string", length=45, nullable=true)
      */
     private $telephonne;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="emh\InscriptionBundle\Entity\FormationsAteliers", inversedBy="membres")
-     * @ORM\JoinTable(name="inscription",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="membres_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="formations_id", referencedColumnName="id")
-     *   }
-     * )
-     */
     
-    
-    private $formationsAteliers;
-
     /**
      * Constructor
      */
@@ -164,48 +162,5 @@ class Membres extends BaseUser
     {
         return $this->telephonne;
     }
-
-    /**
-     * Add formations
-     *
-     * @param \emh\InscriptionBundle\Entity\FormationsAteliers $formations
-     * @return Membres
-     */
-    public function addFormationAteliers(\emh\InscriptionBundle\Entity\FormationsAteliers $formations)
-    {
-        $this->formationsAteliers[] = $formations;
-
-        return $this;
-    }
-
-    /**
-     * Remove formations
-     *
-     * @param \emh\InscriptionBundle\Entity\FormationsAteliers $formations
-     */
-    public function removeFormationAteliers(\emh\InscriptionBundle\Entity\FormationsAteliers $formations)
-    {
-        $this->formationsAteliers->removeElement($formations);
-    }
-
-    /**
-     * Get formations
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getFormationsAteliers()
-    {
-        $listeFormations = array();
-        
-        foreach($this->formationsAteliers as $formation){
-            
-            $listeFormations[]=$formation;
-        }
-//        Pourquoi ça ne marche pas ??????!!!!!!!
-  //      return $this->formationsAteliers;
-  // var_dump($listeFormations);
-  //s echo '<br>-----------------<br>';
-   //var_dump($this->formationsAteliers);
-        return $listeFormations;
-    }
+ 
 }

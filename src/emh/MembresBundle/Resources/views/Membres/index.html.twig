@@ -1,6 +1,6 @@
 {% extends '::base.html.twig' %}
 
-{% block body -%}
+{% block body %}
 <h1>User list</h1>
 
 <ul>
@@ -8,12 +8,12 @@
 
             {{ user.username}}
 
-            {% for formation in user.formationsAteliers %}
-    <li>
-                {{ formation.nomFr }}
-        <a href="{{path('emh_membres_desinscription', {'id':formation.id})}}">désinscription</a>
-    </li>
-            {% endfor %}
+                 {% for inscription in inscriptions%}
+                    <li>
+                                {{ inscription.formationsAteliers.nomFr }}
+                        <a href="{{path('emh_membres_desinscription', {'slug':sites.slug ,'id':inscription.formationsAteliers.id})}}">désinscription</a>
+                    </li>
+                {% endfor %}
 
         {% endfor %}
 

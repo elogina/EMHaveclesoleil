@@ -27,104 +27,50 @@ class ArticleController extends Controller
      * @param string $id
      * @return view: Rubriques/detail - rubrique
      */
-    public function listeParRubriqueAction($rubID)
+    public function listeParRubriqueAction($rubID, $slug)
             
     {
         $rsArticles = $this->getDoctrine()
                           ->getManager()
                           ->getRepository('emhcmsPrincipalBundle:Articles')
-                          ->findByRubriqueID($rubID);
+                          ->findByRubriques($rubID);
         
-        $rRubrique =  $this->getDoctrine()
-                          ->getManager()
-                          ->getRepository('emhcmsPrincipalBundle:Rubriques')
-                          ->findOneById($rubID);
+         $rsSites = $this->getDoctrine()
+                           ->getManager()
+                           ->getRepository('emhcmsPrincipalBundle:Sites')
+                         ->findOneBySlug($slug);
+      
         return $this->render('emhcmsPrincipalBundle:Articles:liste.html.twig', 
-                              array('article' => $rsArticles,
-                                    'rubrique' =>$rRubrique));
+                              array('article' => $rsArticles,'sites'=>$rsSites,
+                                    ));
     }
-     public function detailAction($id, $idArticle)
+     public function detailAction($id, $slugFr,$slug)
             
     {
         $rArticle = $this->getDoctrine()
                           ->getManager()
                           ->getRepository('emhcmsPrincipalBundle:Articles')
-                          ->findOneById($idArticle);
+                          ->findOneBySlugFr($slugFr);
         
         $rRubrique = $this->getDoctrine()
                           ->getManager()
                           ->getRepository('emhcmsPrincipalBundle:Rubriques')
                           ->findOneById($id);
         
+         $rsSites = $this->getDoctrine()
+                           ->getManager()
+                           ->getRepository('emhcmsPrincipalBundle:Sites')
+                         ->findOneBySlug($slug);
+        
         return $this->render('emhcmsPrincipalBundle:Articles:detail.html.twig', 
                               array('article' => $rArticle,
-                                    'rubrique'=> $rRubrique));
+                                    'rubrique'=> $rRubrique,
+                                  'sites'=>$rsSites));
         
         
-                
     }
-    public function addAction() {
-       $add = "add";
-       var_dump($add);
-        $modelManager = $this->getDoctrine()
-                              ->getManager();
-        
-        $rArticle = $modelManager ->getRepository('emhcmsPrincipalBundle:Articles');
-        
-        $form = $this->createForm(new ArticlesType());
-         
-        
-       $requete = $this->getRequest();
 
        
-        if ($requete->isMethod('POST')) {
-         
-            $rArticle= new ArticlesType();
-           
-            $form->bind($requete);
-            $Articles= $form->getData();
-            $modelManager->persist($Articles);
-            $modelManager->flush();
-             
-           $Rubrique = $Articles->getRubriques();
-            return $this->redirect($this->generateUrl('cms_principal_page', array('slug' => $Rubrique->getSlug())));
-        }
-
-        return $this->render('emhcmsPrincipalBundle:Articles:add.html.twig', 
-                array('form' => $form->createView()));
-    }
-    
-    /**
-     * action edit: pour modifier l'article
-     * string $id
-     * @return view: Articles/edit - article
-     */
-    public function editAction($id) {
-     
-        $modelManager = $this->getDoctrine()
-                             ->getManager();
-       
-        $rArticle = $modelManager ->getRepository('emhcmsPrincipalBundle:Articles')
-                                   ->findOneById($id);
-                           var_dump($rArticle);
-        $form = $this->createForm(new ArticlesType(), $rArticle);
-        $requete = $this->getRequest();
-        
-        if ($requete->isMethod('POST')) {
-            
-            $form->bind($requete);
-            $Article= $form->getData();
-           
-            $modelManager->persist($Article);
-            $modelManager->flush();
-            $Rubrique = $Article->getRubriques();
-            //return $this->redirect($this->generateUrl('cms_principal_page', array('slug' => $Rubrique->getSlug())));
-    }   
-   
-              return $this->render('emhcmsPrincipalBundle:Articles:edit.html.twig', 
-                              array('form' => $form->createView(),
-                                    'article' =>$rArticle));
-    }
 }
 
 

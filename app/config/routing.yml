@@ -1,10 +1,26 @@
+chapeau:
+    pattern: /AsblSoleil
+    defaults: { _controller: emhcmsPrincipalBundle:Rubrique:chapeau }
+
+emh_dons:
+    resource: "@emhDonsBundle/Resources/config/routing.yml"
+    prefix:   /dons
+
+emh_agenda:
+    resource: "@emhAgendaBundle/Resources/config/routing.yml"
+    prefix:   /{slug}/agenda
+
+emh_ecommerce:
+    resource: "@emhEcommerceBundle/Resources/config/routing.yml"
+    prefix:   /{slug}/produit
+
 emh_inscription:
     resource: "@emhInscriptionBundle/Resources/config/routing.yml"
-    prefix:   /formation
+    prefix:   /{slug}
     
 emh_membres:
     resource: "@emhMembresBundle/Resources/config/routing.yml"
-    prefix:   /membre
+    prefix:   /{slug}/membre
     
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
@@ -37,4 +53,5 @@ _sonata_admin:
     
 emhcms_principal:
     resource: "@emhcmsPrincipalBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{slug}
+    
