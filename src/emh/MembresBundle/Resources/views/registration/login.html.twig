@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block connection %}
+
+{% if error %}
+    <div>{{ error.message }}</div>
+{% endif %}
+
+<form action="{{ path('fos_user_security_check') }}" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="_password" />
+
+    <input type="hidden" name="_target_path" />
+
+    <input type="submit" name="login" />
+</form>
+
+{% endblock %}

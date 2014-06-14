@@ -13,20 +13,31 @@
 
 
 {%block body%}
-<h1>liste des Produits</h1> <br>
+<h1>liste des Produits en vente</h1> <br>
 
-{% for produit in produits %}
+        {% for produit in produits %}
 
 
-<ul>
-   
-    <li>
-            <a href="{{path('emh_ecommerce_detail_produit',{'id': produit.id, 'slug': sites.slug})}}">
-                    {{ produit.nomFr }}
-                </a>
-    </li>
-   
-</ul>
+        <ul>
 
-{% endfor %}
+          {# si le porduits est en vente il se trouvera dans la liste sinon, uniquement dans la galerie#}
+                {% if produit.onOff == 1 %}
+              <li>
+                    <a href="{{path('emh_ecommerce_detail_produit',{'id': produit.id, 'slug': sites.slug})}}">
+                            {{ produit.nomFr }}
+                        </a>
+                   </li>
+                {% endif %}
+         
+
+        </ul>
+
+        {% endfor %}
+
+        <h1>Galerie photos</h1> <br>
+        {% for produit in produits %}
+            <li>
+                    <img src="{{asset ('images/'~produit.image)}}"
+            </li>
+            {% endfor %}
 {%endblock%}

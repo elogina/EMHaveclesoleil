@@ -135,74 +135,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // chapeau
-        if ($pathinfo === '/AsblSoleil') {
-            return array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::chapeauAction',  '_route' => 'chapeau',);
-        }
-
-        // emh_dons_homepage
-        if (0 === strpos($pathinfo, '/dons/hello') && preg_match('#^/dons/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_dons_homepage')), array (  '_controller' => 'emhDonsBundle:Default:index',));
-        }
-
-        // emh_agenda_homepage
-        if (preg_match('#^/(?P<slug>[^/]++)/agenda/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_agenda_homepage')), array (  '_controller' => 'emhAgendaBundle:Default:index',));
-        }
-
-        // emh_ecommerce_liste_produits
-        if (preg_match('#^/(?P<slug>[^/]++)/produit/?$#s', $pathinfo, $matches)) {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'emh_ecommerce_liste_produits');
-            }
-
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_ecommerce_liste_produits')), array (  '_controller' => 'emh\\EcommerceBundle\\Controller\\ProduitController::listeAction',));
-        }
-
-        // emh_ecommerce_detail_produit
-        if (preg_match('#^/(?P<slug>[^/]++)/produit/produit/(?P<id>[^/]++)/detail$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_ecommerce_detail_produit')), array (  '_controller' => 'emh\\EcommerceBundle\\Controller\\ProduitController::detailAction',));
-        }
-
-        // emh_membres_achat
-        if (preg_match('#^/(?P<slug>[^/]++)/produit/achat/produit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_achat')), array (  '_controller' => 'emh\\EcommerceBundle\\Controller\\AchatController::addAction',));
-        }
-
-        // emh_membres_delachat
-        if (preg_match('#^/(?P<slug>[^/]++)/produit/rendre/poduit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_delachat')), array (  '_controller' => 'emhEcommerceBundle:Achat::delete',));
-        }
-
-        // emh_formation
-        if (preg_match('#^/(?P<slug>[^/]++)/?$#s', $pathinfo, $matches)) {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'emh_formation');
-            }
-
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_formation')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::listeAction',));
-        }
-
-        // emh_formation_detail
-        if (preg_match('#^/(?P<slug>[^/]++)/formation/(?P<id>[^/]++)/detail$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_formation_detail')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::detailAction',));
-        }
-
-        // emh_membres_inscription
-        if (preg_match('#^/(?P<slug>[^/]++)/inscription/formation/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_inscription')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\InscriptionController::addAction',));
-        }
-
-        // emh_membres_desinscription
-        if (preg_match('#^/(?P<slug>[^/]++)/desinscription/formation/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_desinscription')), array (  '_controller' => 'emhInscriptionBundle:Inscription::delete',));
-        }
-
-        // emh_membres_profil
-        if (preg_match('#^/(?P<slug>[^/]++)/membre/profile$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_profil')), array (  '_controller' => 'emh\\MembresBundle\\Controller\\MembreController::testAction',));
-        }
-
         if (0 === strpos($pathinfo, '/log')) {
             if (0 === strpos($pathinfo, '/login')) {
                 // fos_user_security_login
@@ -764,6 +696,94 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // chapeau
+        if ($pathinfo === '/AsblSoleil') {
+            return array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\RubriqueController::chapeauAction',  '_route' => 'chapeau',);
+        }
+
+        // emh_dons_homepage
+        if (0 === strpos($pathinfo, '/dons/hello') && preg_match('#^/dons/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_dons_homepage')), array (  '_controller' => 'emhDonsBundle:Default:index',));
+        }
+
+        // emh_agenda_homepage
+        if (preg_match('#^/(?P<slug>[^/]++)/agenda/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_agenda_homepage')), array (  '_controller' => 'emhAgendaBundle:Default:index',));
+        }
+
+        // emh_membres_produit_paypal
+        if (preg_match('#^/(?P<slug>[^/]++)/produit/(?P<id>[^/]++)/paypal/confirmation$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_produit_paypal')), array (  '_controller' => 'emh\\EcommerceBundle\\Controller\\AchatController::paypalAction',));
+        }
+
+        // emh_membres_confirmation_achat
+        if (preg_match('#^/(?P<slug>[^/]++)/produit/confirmation/do/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_confirmation_achat')), array (  '_controller' => 'emh\\EcommerceBundle\\Controller\\AchatController::processAction',));
+        }
+
+        // emh_ecommerce_liste_produits
+        if (preg_match('#^/(?P<slug>[^/]++)/produit/?$#s', $pathinfo, $matches)) {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'emh_ecommerce_liste_produits');
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_ecommerce_liste_produits')), array (  '_controller' => 'emh\\EcommerceBundle\\Controller\\ProduitController::listeAction',));
+        }
+
+        // emh_ecommerce_detail_produit
+        if (preg_match('#^/(?P<slug>[^/]++)/produit/produit/(?P<id>[^/]++)/detail$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_ecommerce_detail_produit')), array (  '_controller' => 'emh\\EcommerceBundle\\Controller\\ProduitController::detailAction',));
+        }
+
+        // emh_formation
+        if (preg_match('#^/(?P<slug>[^/]++)/formation/?$#s', $pathinfo, $matches)) {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'emh_formation');
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_formation')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::listeAction',));
+        }
+
+        // emh_formation_detail
+        if (preg_match('#^/(?P<slug>[^/]++)/formation/formation/(?P<id>[^/]++)/detail$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_formation_detail')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\FormationController::detailAction',));
+        }
+
+        // emh_membres_formation_paypal
+        if (preg_match('#^/(?P<slug>[^/]++)/formation/(?P<id>[^/]++)/paypal/confirmation$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_formation_paypal')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\InscriptionController::paypalAction',));
+        }
+
+        // emh_membres_confirmation
+        if (preg_match('#^/(?P<slug>[^/]++)/formation/confirmation/do/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_confirmation')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\InscriptionController::processAction',));
+        }
+
+        // emh_membres_profil
+        if (preg_match('#^/(?P<slug>[^/]++)/membre/profile$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_profil')), array (  '_controller' => 'emh\\MembresBundle\\Controller\\MembreController::testAction',));
+        }
+
+        // emh_membres_inscription
+        if (preg_match('#^/(?P<slug>[^/]++)/membre/inscription/formation/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_inscription')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\InscriptionController::addAction',));
+        }
+
+        // emh_membres_achat
+        if (preg_match('#^/(?P<slug>[^/]++)/membre/achat/produit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_achat')), array (  '_controller' => 'emh\\EcommerceBundle\\Controller\\AchatController::addAction',));
+        }
+
+        // emh_membres_delachat
+        if (preg_match('#^/(?P<slug>[^/]++)/membre/rendre/poduit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_delachat')), array (  '_controller' => 'emh\\EcommerceBundle\\Controller\\AchatController::deleteAction',));
+        }
+
+        // emh_membres_desinscription
+        if (preg_match('#^/(?P<slug>[^/]++)/membre/desinscription/formation/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'emh_membres_desinscription')), array (  '_controller' => 'emh\\InscriptionBundle\\Controller\\InscriptionController::deleteAction',));
+        }
+
         // cms_principal_contact
         if (preg_match('#^/(?P<slug>[^/]++)/contact$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_contact')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\ContactController::indexAction',));
@@ -775,7 +795,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // cms_principal_article
-        if (preg_match('#^/(?P<slug>[^/]++)/(?P<id>[^/]++)/(?P<slugFr>[^/]++)$#s', $pathinfo, $matches)) {
+        if (preg_match('#^/(?P<slug>[^/]++)/(?P<id>[^/]++)/(?P<slugFr>[^/]++)/detail$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'cms_principal_article')), array (  '_controller' => 'emh\\cmsPrincipalBundle\\Controller\\ArticleController::detailAction',));
         }
 

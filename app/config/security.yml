@@ -42,13 +42,13 @@ security:
                 # options de redirection lorsque le login a réussi (vous
                 # pouvez en lire plus ci-dessous)
                 always_use_default_target_path: false
-                default_target_path:         /{slug}/Admin/accueil
+                default_target_path:          /AsblSoleil
                 target_path_parameter:          _target_path                
                 use_referer: true 
 
             logout:
                 path:       /logout
-                target:      /eft/accueil
+                target:      /AsblSoleil
 
             
             
@@ -84,14 +84,10 @@ security:
         # PAGES ACCESSIBLES À TOUS
         - { path: ^/emh.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
-# FOS user configuration
+
 
        
 
-    access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
+   
         
         

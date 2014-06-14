@@ -1,7 +1,22 @@
 
-
-
 emh_membres_profil:
     pattern:  /profile
     defaults: { _controller: "emhMembresBundle:Membre:test" }
     
+   
+emh_membres_inscription:
+    pattern: /inscription/formation/{id}
+    defaults: { _controller: "emhInscriptionBundle:Inscription:add" }
+    
+emh_membres_achat:
+    pattern: /achat/produit/{id}
+    defaults: { _controller: "emhEcommerceBundle:Achat:add" }
+    
+emh_membres_delachat:
+    pattern:  /rendre/poduit/{id}
+    defaults: { _controller: "emhEcommerceBundle:Achat:delete" }
+
+    
+emh_membres_desinscription:
+    pattern:  /desinscription/formation/{id}
+    defaults: { _controller: "emhInscriptionBundle:Inscription:delete" }

@@ -2,23 +2,55 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}AsblSoleil{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        {% block connection%}
+          <div>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>  |
+                <a href="{{path('emh_membres_profil',{'slug': sites.slug})}}">profil</a>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>|
+                 <a href="{{ path('fos_user_registration_register') }}">s'enregistrer</a>
+            {% endif %}
+        </div>
+
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for key, message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message|trans({}, 'FOSUserBundle') }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {%endblock connection%}
+        <a href="{{ path('chapeau') }}">retour sur le chapeau</a>
         {% block menu %} 
        
         <div class="menu">
               {% render (controller ("emhcmsPrincipalBundle:Rubrique:menu", {'slug': sites.slug}))%}
 	</div>
-        {% endblock %}
-        {% block body %} {% endblock %}
+        {% endblock menu %}
+        
+         {% block body %}{% endblock body %}
         {% block javascripts %}{% endblock %}
         
-    </body>
+    
     {% block pied %}
     Pied de page
-    <p><a href=''>faire un don</a><p>
-    {% endblock %}
+    {#Bouton faire un don paypal#}
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="hosted_button_id" value="GADXW639KXMTQ">
+      <input type="image" src="https://www.paypalobjects.com/fr_FR/BE/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
+      <img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+    </form>
+    
+    {% endblock pied %}
+   </body>
 </html>

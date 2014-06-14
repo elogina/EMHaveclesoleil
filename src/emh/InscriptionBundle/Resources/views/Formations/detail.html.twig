@@ -1,3 +1,5 @@
+{% extends '::base.html.twig' %}
+{%block body%}
 <h1>detail de la formation</h1>
 
 <p> {{ formations.nomFr }} <br>
@@ -7,4 +9,6 @@
 
 <a href="{{path('emh_membres_inscription', {'id': formations.id, 'slug': sites.slug})}}">inscription</a> <br>
 
-<a href="{{path('emh_membres_profil',{'slug': sites.slug})}}">profil</a>
+
+
+{%endblock%}

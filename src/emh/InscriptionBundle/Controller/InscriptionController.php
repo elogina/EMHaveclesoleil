@@ -23,7 +23,7 @@ class InscriptionController extends Controller
 {
 
       
-    public function addAction($id) {
+    public function addAction($id, $slug) {
 
        $currentUser = $this->getUser();
  
@@ -35,7 +35,7 @@ class InscriptionController extends Controller
          }
       
 
-        $modelManager = $this->getDoctrine()
+       $modelManager = $this->getDoctrine()
                              ->getManager();
   
        
@@ -50,6 +50,17 @@ class InscriptionController extends Controller
        $rInscription = $modelManager->getRepository('emhInscriptionBundle:Inscriptions')
                                      ->findByMembres($rUser->getId());
                            
+        $rsSites = $modelManager->getRepository('emhcmsPrincipalBundle:Sites')
+                                ->findOneBySlug($slug);
+        
+        $listeAchat= $modelManager->getRepository('emhMembresBundle:Membres')
+                                  ->findAchats($currentUser);
+        $rInscription = $modelManager->getRepository('emhInscriptionBundle:Inscriptions')
+                                     ->findByMembres($currentUser->getId());
+        
+        $rAchat = $modelManager->getRepository('emhEcommerceBundle:Achats')
+                               ->findByMembres($rUser->getId());
+       
         
        $inscription = new \emh\InscriptionBundle\Entity\Inscriptions(); 
        
@@ -69,10 +80,230 @@ class InscriptionController extends Controller
             $modelManager->persist($inscription);
             $modelManager->flush();
     
-            
-        return new Response("Affichage de l'article d'id : ".$id.".");
+             $rInscription = $modelManager->getRepository('emhInscriptionBundle:Inscriptions')
+                                     ->findByMembres($rUser->getId());
+        return $this->render('emhMembresBundle:Membres:index.html.twig', array( 'formation'=> $rFormation, 
+                                                                                 'user' =>$rUser,
+                                                                                 'inscription' =>$rInscription,
+                                                                                 'sites'=>$rsSites,  
+                                                                                 'membres'=>$listeAchat,
+                                                                                 'inscriptions'=>$rInscription,
+                                                                                 'achats'=>$rAchat,
+                                                                                    
+                                                                        ));   
          
     }
+    
+     public function paypalAction($id, $slug){
+                                    
+          $rsFormations = $this->getDoctrine()
+                           ->getManager()
+                           ->getRepository('emhInscriptionBundle:FormationsAteliers')
+                           ->findOneById($id);
+           $rsSites =  $this->getDoctrine()
+                          ->getRepository('emhcmsPrincipalBundle:Sites')
+                          ->findOneBySlug($slug);
+                 
+        
+     $paypal ="#";
+     $user ='a-mag13-facilitator_api1.hotmail.com' ;
+     $pwd ='1401448888' ;
+     $signature ='AKlo4ceVFLUC2h8HnJeDoizpd2mQAYtG3cckEN1qwVj3SiFvLAfpqcbb' ;
+     $returnUrl = 'http://localhost/EMHaveclesoleil/web/app_dev.php/'.$slug.'/formation/confirmation/do/'.$id;
+     $params = array(
+         'METHOD' =>'SetExpressCheckout',
+         'VERSION' =>'113.0',
+         'USER' =>$user,
+         'SIGNATURE'=>$signature,
+         'PWD'=>$pwd,
+         'RETURNURL'=>$returnUrl,
+         'CANCELURL'=>'http://localhost/EMHaveclesoeil/web',
+         'PAYMENTREQUEST_0_AMT' => $rsFormations->getPrix(),                    
+         'PAYMENTREQUEST_0_CURRENCYCODE' =>'EUR',
+         
+       
+     ); 
+     
+      foreach ($rsFormations as $k => $product){
+         $params ["L_PAYMENTREQUEST_0_NAME$k"] = $product[$rsFormations->getNomFr()];
+         $params ["L_PAYMENTREQUEST_0_DESC$k"]=  $product[$rsFormations->getDescriptionFr()];
+         
+     }
+     
+    $params = http_build_query($params);
+    
+    $endpoint = 'https://api-3T.sandbox.paypal.com/nvp';
+    $curl = curl_init();
+        curl_setopt_array($curl, array(
+        CURLOPT_URL =>$endpoint,
+        CURLOPT_POST => 1,
+        CURLOPT_POSTFIELDS =>$params,
+        CURLOPT_RETURNTRANSFER =>1,
+        CURLOPT_SSL_VERIFYPEER =>false,
+        CURLOPT_SSL_VERIFYHOST=>false,
+        CURLOPT_VERBOSE => 1,
+        
+    ));
+    
+    $response = curl_exec($curl);
+    $responseArray =array();
+    
+    parse_str($response, $responseArray);
+   
+    if(curl_errno($curl)){
+        curl_close($curl);
+       
+    }
+    else{
+        if($responseArray['ACK'] == 'Success'){
+            
+        }
+        else{
+           
+        }
+         curl_close($curl);
+    }
+   
+  
+     $paypal = 'https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&useraction=commit&token='.$responseArray['TOKEN'];
+  
+          return $this->render('emhInscriptionBundle:Formations:confirmation.html.twig', array(
+                                                                                   'formation' =>  $rsFormations, 
+                                                                                   'paypal' =>$paypal,
+                                                                                   'site'=>$rsSites
+                                                                                    
+                                                                        ));              
+         
+    }
+  
+  public function processAction($slug, $id) {
+      
+       $rsFormations = $this->getDoctrine()
+                            ->getManager()
+                            ->getRepository('emhInscriptionBundle:FormationsAteliers')
+                            ->findOneById($id);
+      
+       $rsSites =  $this->getDoctrine()
+                         ->getManager()
+                         ->getRepository('emhcmsPrincipalBundle:Sites')
+                         ->findBySlug($slug);
+        
+      var_dump('je suis dans la process');
+     $paypal ="#";
+     $user ='a-mag13-facilitator_api1.hotmail.com' ;
+     $pwd ='1401448888' ;
+     $signature ='AKlo4ceVFLUC2h8HnJeDoizpd2mQAYtG3cckEN1qwVj3SiFvLAfpqcbb' ;
+     
+     $params = array(
+         'METHOD' =>'GetExpressCheckoutDetails',
+         'VERSION' =>'113.0',
+         'TOKEN'=> $_GET['token'],
+         'USER' =>$user,
+         'SIGNATURE'=>$signature,
+         'PWD'=>$pwd,
+         );
+     
+    $params = http_build_query($params);
+    
+    $endpoint = 'https://api-3T.sandbox.paypal.com/nvp';
+    $curl = curl_init();
+        curl_setopt_array($curl, array(
+        CURLOPT_URL =>$endpoint,
+        CURLOPT_POST => 1,
+        CURLOPT_POSTFIELDS =>$params,
+        CURLOPT_RETURNTRANSFER =>1,
+        CURLOPT_SSL_VERIFYPEER =>false,
+        CURLOPT_SSL_VERIFYHOST=>false,
+        CURLOPT_VERBOSE => 1,
+        
+    ));
+    
+    $response = curl_exec($curl);
+  
+        
+    $responseArray =array();
+    parse_str($response, $responseArray);
+   
+    if(curl_errno($curl)){
+        curl_close($curl);
+        die();  
+    }
+    else{
+        if($responseArray['CHECKOUTSTATUS'] == 'PaymentActionCompleted'){
+            die('Ce paiement a déjà été validé');
+        }
+        if($responseArray['ACK'] == 'Success'){
+            
+        }
+        else{
+            die();
+        }
+         curl_close($curl);
+    }
+     
+     
+    $paypal = 'https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&useraction=commit&token=' . $responseArray['TOKEN'];    
+    
+    var_dump($response);
+    $params = array(
+         'METHOD' =>'DoExpressCheckoutPayment',
+         'VERSION' =>'113.0',
+         'TOKEN'=> $_GET['token'],
+         'PAYERID'=>$_GET['PayerID'],
+         'USER' =>$user,
+         'SIGNATURE'=>$signature,
+         'PWD'=>$pwd,
+         'PAYMENTREQUEST_0_AMT' => $responseArray['PAYMENTREQUEST_0_AMT'],
+         'PAYMENTREQUEST_0_CURRENCYCODE' =>'EUR',
+         'PAYMENTACTION' => 'Sale',
+         );
+       
+    $params = http_build_query($params);
+    
+    $endpoint = 'https://api-3T.sandbox.paypal.com/nvp';
+    $curl = curl_init();
+        curl_setopt_array($curl, array(
+        CURLOPT_URL =>$endpoint,
+        CURLOPT_POST => 1,
+        CURLOPT_POSTFIELDS =>$params,
+        CURLOPT_RETURNTRANSFER =>1,
+        CURLOPT_SSL_VERIFYPEER =>false,
+        CURLOPT_SSL_VERIFYHOST=>false,
+        CURLOPT_VERBOSE => 1,
+        
+    ));
+    
+    $response = curl_exec($curl);
+  
+        
+    $responseArray =array();
+    parse_str($response, $responseArray);
+    var_dump($responseArray);
+  
+    if(curl_errno($curl)){
+        curl_close($curl);
+        die();  
+    }
+    else{
+        if($responseArray['PAYMENTINFO_0_PAYMENTSTATUS'] == 'PaymentActionCompleted'){
+            die('Ce paiement a déjà été validé');
+        }
+        if($responseArray['ACK'] == 'Success'){
+            
+        }
+        else{
+            die();
+        }
+         curl_close($curl);
+    }
+  
+   return $this->render('emhEcommerceBundle:Produits:doConfirmation.html.twig',
+                array('paypal' => $paypal,
+                      'sites'=>$rsSites,
+                      'formation' =>$rsFormations ));
+        
+  }     
+   
     
    public function deleteAction($id) {
        

@@ -16,23 +16,21 @@
  {% block body %} 
 articles liés à la rubrique
 
-{# correspond au titre d su site -> affiche que les rubrique du site#}
+{# correspond au titre du site -> affiche que les rubrique du site#}
  {% if sites.id == rubrique.sites.id  %}
-
         {{render(controller('emhcmsPrincipalBundle:Article:listeParRubrique',{'slug': sites.slug, 'rubID' : rubrique.id}))}}
-
-    {#  affiche la liste des formation la rubrique est formation#}
+  {%endif%}
+  
+        {#  affiche la liste des formations lorsque la rubrique est formation#}
         {% if rubrique.choixFormation == 1 %}
-    
             {{render(controller('emhInscriptionBundle:Formation:liste',{'slug': sites.slug}))}}
         {%endif%}
 
-{#  affiche la liste des produits si c'est la rubrique produit#}
-             {% if rubrique.choixProduit == 1 %}
-    
-            {{render(controller('emhEcommerceBundle:Produit:liste',{'slug': sites.slug}))}}
+        {#  affiche la liste des produits si c'est la rubrique produit#}
+        {% if rubrique.choixProduit == 1 %}
+           {{render(controller('emhEcommerceBundle:Produit:liste',{'slug': sites.slug}))}}
         {%endif%}
-{%endif%}
+
 
 
     {#  affiche l'agenda uniquement sur EFT et Ceramique  #}

@@ -1,20 +1,19 @@
+
+emh_membres_produit_paypal:
+    pattern: /{id}/paypal/confirmation
+    defaults: { _controller: "emhEcommerceBundle:Achat:paypal" }
+    
+emh_membres_confirmation_achat:
+    pattern: /confirmation/do/{id}
+    defaults: { _controller: "emhEcommerceBundle:Achat:process" }
+
+
 emh_ecommerce_liste_produits:
     pattern:  /
     defaults: { _controller: emhEcommerceBundle:Produit:liste }
-  
+
 emh_ecommerce_detail_produit:
     pattern:  /produit/{id}/detail
     defaults: { _controller: emhEcommerceBundle:Produit:detail }
-    
-
-
-
-emh_membres_achat:
-    pattern: /achat/produit/{id}
-    defaults: { _controller: "emhEcommerceBundle:Achat:add" }
-    
-emh_membres_delachat:
-    pattern:  /rendre/poduit/{id}
-    defaults: { _controller: "emhEcommerceBundle:Achat::delete" }
 
     

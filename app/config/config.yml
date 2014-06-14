@@ -86,7 +86,7 @@ fos_user:
     user_class: emh\MembresBundle\Entity\Membres
     registration:
         confirmation:
-            enabled: true
+            enabled: false
         form:
             type: emh_membresbundle_membres
 

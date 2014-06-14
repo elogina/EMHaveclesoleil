@@ -8,11 +8,11 @@ emh_formation_detail:
 
 
 
-emh_membres_inscription:
-    pattern: /inscription/formation/{id}
-    defaults: { _controller: "emhInscriptionBundle:Inscription:add" }
+emh_membres_formation_paypal:
+    pattern: /{id}/paypal/confirmation
+    defaults: { _controller: "emhInscriptionBundle:Inscription:paypal" }
     
-emh_membres_desinscription:
-    pattern:  /desinscription/formation/{id}
-    defaults: { _controller: "emhInscriptionBundle:Inscription::delete" }
+emh_membres_confirmation:
+    pattern: /confirmation/do/{id}
+    defaults: { _controller: "emhInscriptionBundle:Inscription:process" }
 

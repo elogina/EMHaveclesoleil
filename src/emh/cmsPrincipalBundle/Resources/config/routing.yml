@@ -7,7 +7,7 @@ cms_principal_page:
     defaults: { _controller: emhcmsPrincipalBundle:Rubrique:detail }
     
 cms_principal_article:
-    pattern:  /{id}/{slugFr}
+    pattern:  /{id}/{slugFr}/detail
     defaults: { _controller: emhcmsPrincipalBundle:Article:detail }
     
 

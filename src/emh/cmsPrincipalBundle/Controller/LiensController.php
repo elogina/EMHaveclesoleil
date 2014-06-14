@@ -22,8 +22,8 @@ class LienController extends Controller
 
 {
     /**
-     * action liste: détail des liens
-     * @param string $id
+     * action liste: liste des liens
+     * @param string $rubId, $slug
      * @return view: Liens/liste
      */
     public function listeAction($rubID,$slug)

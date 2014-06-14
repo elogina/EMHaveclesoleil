@@ -24,7 +24,7 @@ class ConfigController extends Controller
     /**
      * action liste: détail des liens
      * @param string $slug
-     * @return view: Liens/liste
+     * @return view: config/liste
      */
     public function listeAction($slug)
             

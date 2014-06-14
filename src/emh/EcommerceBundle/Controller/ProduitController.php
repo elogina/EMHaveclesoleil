@@ -18,6 +18,11 @@ use Symfony\Component\Form\FormBuilderInterface;
 /*----------------------
  * Le controller
  * ----------------------------------*/
+ /**
+     * action liste: liste des produits
+     * @param string $slug 
+     * @return view: produit/liste
+     */
 class ProduitController extends Controller
 
 {
@@ -40,34 +45,33 @@ class ProduitController extends Controller
                                     ));
     }
     
-    /**
-     * action detail: détail de la produit
-     * @param string $id
-     * @return view: Produits/detail - produit
+    
+    # attention va dans wamp -> php -> extention -> coche php curl
+    
+     /**
+     * action detail: ldetail des produits
+     * @param string $slug  îd
+     * @return view: produit/detail
      */
-     public function detailAction($id, $slug)
-            
-    {
-        
-        $rProduit = $this->getDoctrine()
+     public function detailAction($id, $slug){
+
+            $rProduits = $this->getDoctrine()
                           ->getManager()
                           ->getRepository('emhEcommerceBundle:Produits')
                           ->findOneById($id);
-        
-         $rsSites = $this->getDoctrine()
-                           ->getManager()
-                           ->getRepository('emhcmsPrincipalBundle:Sites')
-                         ->findOneBySlug($slug);
-    
-        return $this->render('emhEcommerceBundle:Produits:detail.html.twig', 
-                              array('produits' => $rProduit, 'sites'=>$rsSites,
-                                  ));
-         
-    }
-    
+            
+             $rsSites = $this->getDoctrine()
+                        ->getManager()
+                        ->getRepository('emhcmsPrincipalBundle:Sites')
+                        ->findOneBySlug($slug);
      
-    
-        
-      
-    
+     
+   return $this->render('emhEcommerceBundle:Produits:detail.html.twig', 
+                              array('produits' => $rProduits, 'sites'=>$rsSites,
+                                    ));
 }
+
+       
+    
+   
+  }

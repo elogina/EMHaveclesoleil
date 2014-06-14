@@ -25,7 +25,11 @@ use Symfony\Component\Form\FormBuilderInterface;
 class RubriqueController extends Controller
 
 {
-    
+     /**
+     * action chapeau: chapeau du site
+     * @param string 
+     * @return view: page/index 
+     */
      public function ChapeauAction(){
           $rsSites = $this->getDoctrine()
                            ->getManager()
@@ -43,8 +47,8 @@ class RubriqueController extends Controller
      }
     /**
      * action detail: détail de la rubrique
-     * @param string $id
-     * @return view: Rubriques/detail - rubrique
+     * @param string $slugFr - $slug
+     * @return view: Rubriques/detail 
      */
      public function detailAction($slugFr, $slug)
             
@@ -69,7 +73,8 @@ class RubriqueController extends Controller
     
      /**
      * action menu: liste des rubriques pour le menu
-     * @return view: Rubriques/menu - rubrique
+     * @param string $slug
+     * @return view: Rubriques/menu 
      */
     public function menuAction($slug)
             

@@ -35,55 +35,52 @@ articles liés à la rubrique
         echo " ";
         if (($this->getAttribute((isset($context["sites"]) ? $context["sites"] : $this->getContext($context, "sites")), "id") == $this->getAttribute($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "sites"), "id"))) {
             // line 21
-            echo "
-        ";
-            // line 22
+            echo "        ";
             echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("emhcmsPrincipalBundle:Article:listeParRubrique", array("slug" => $this->getAttribute((isset($context["sites"]) ? $context["sites"] : $this->getContext($context, "sites")), "slug"), "rubID" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "id"))));
             echo "
-
-    ";
-            // line 25
-            echo "        ";
-            if (($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "choixFormation") == 1)) {
-                // line 26
-                echo "    
-            ";
-                // line 27
-                echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("emhInscriptionBundle:Formation:liste", array("slug" => $this->getAttribute((isset($context["sites"]) ? $context["sites"] : $this->getContext($context, "sites")), "slug"))));
-                echo "
-        ";
-            }
-            // line 29
-            echo "
-";
-            // line 31
-            echo "             ";
-            if (($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "choixProduit") == 1)) {
-                // line 32
-                echo "    
-            ";
-                // line 33
-                echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("emhEcommerceBundle:Produit:liste", array("slug" => $this->getAttribute((isset($context["sites"]) ? $context["sites"] : $this->getContext($context, "sites")), "slug"))));
-                echo "
-        ";
-            }
+  ";
         }
-        // line 36
+        // line 23
+        echo "  
+        ";
+        // line 25
+        echo "        ";
+        if (($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "choixFormation") == 1)) {
+            // line 26
+            echo "            ";
+            echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("emhInscriptionBundle:Formation:liste", array("slug" => $this->getAttribute((isset($context["sites"]) ? $context["sites"] : $this->getContext($context, "sites")), "slug"))));
+            echo "
+        ";
+        }
+        // line 28
+        echo "
+        ";
+        // line 30
+        echo "        ";
+        if (($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "choixProduit") == 1)) {
+            // line 31
+            echo "           ";
+            echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("emhEcommerceBundle:Produit:liste", array("slug" => $this->getAttribute((isset($context["sites"]) ? $context["sites"] : $this->getContext($context, "sites")), "slug"))));
+            echo "
+        ";
+        }
+        // line 33
         echo "
 
+
     ";
-        // line 39
+        // line 37
         echo "   ";
         if ((($this->getAttribute((isset($context["sites"]) ? $context["sites"] : $this->getContext($context, "sites")), "id") == 1) || ($this->getAttribute((isset($context["sites"]) ? $context["sites"] : $this->getContext($context, "sites")), "id") == 3))) {
-            // line 40
+            // line 38
             echo "   agenda
         ";
-            // line 41
+            // line 39
             echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("emhAgendaBundle:Agenda:liste"));
             echo "
     ";
         }
-        // line 43
+        // line 41
         echo "
 ";
     }
@@ -100,6 +97,6 @@ articles liés à la rubrique
 
     public function getDebugInfo()
     {
-        return array (  87 => 43,  82 => 41,  79 => 40,  76 => 39,  72 => 36,  66 => 33,  63 => 32,  60 => 31,  57 => 29,  52 => 27,  49 => 26,  46 => 25,  41 => 22,  38 => 21,  35 => 20,  28 => 16,);
+        return array (  84 => 41,  79 => 39,  76 => 38,  73 => 37,  68 => 33,  62 => 31,  59 => 30,  56 => 28,  50 => 26,  47 => 25,  44 => 23,  38 => 21,  35 => 20,  28 => 16,);
     }
 }

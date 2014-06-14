@@ -24,5 +24,20 @@ class MembresRepository extends EntityRepository {
     }
     
     
+     public function findAchats($membresId) {
+        
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT u
+            FROM emhMembresBundle:Membres u
+            WHERE u.id = :membresId
+            '
+                
+               
+            );
+        $query->setParameter('membresId', $membresId);
+        return $query->getResult();
+        
+    }
+    
 }
     

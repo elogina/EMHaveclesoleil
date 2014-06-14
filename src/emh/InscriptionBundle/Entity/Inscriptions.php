@@ -43,7 +43,7 @@ class Inscriptions
     private $dateInscription;
 
     /**
-     * @var string
+     * @var boolean
      *
      * @ORM\Column(name="paye", type="boolean", length=1, nullable=true)
      */

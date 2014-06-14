@@ -23,9 +23,9 @@ class ArticleController extends Controller
 
 {
     /**
-     * action detail: détail de la rubrique
+     * action listeparRubrique: article par rubrique
      * @param string $id
-     * @return view: Rubriques/detail - rubrique
+     * @return view: article/liste 
      */
     public function listeParRubriqueAction($rubID, $slug)
             
@@ -44,6 +44,11 @@ class ArticleController extends Controller
                               array('article' => $rsArticles,'sites'=>$rsSites,
                                     ));
     }
+    /**
+     * action detail: détail de la rubrique
+     * @param string $id, $slugFr,$slug
+     * @return view: article/detail 
+     */
      public function detailAction($id, $slugFr,$slug)
             
     {

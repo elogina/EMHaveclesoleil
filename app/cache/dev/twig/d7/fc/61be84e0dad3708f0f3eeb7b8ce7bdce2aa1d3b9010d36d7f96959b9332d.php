@@ -33,6 +33,10 @@ class __TwigTemplate_d7fc61be84e0dad3708f0f3eeb7b8ce7bdce2aa1d3b9010d36d7f96959b
             // line 6
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "texteFr"), "html", null, true);
             echo "</p>
+        <img src=\"";
+            // line 7
+            echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(("images/" . $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "image"))), "html", null, true);
+            echo "\"
       
  ";
         }
@@ -53,6 +57,6 @@ class __TwigTemplate_d7fc61be84e0dad3708f0f3eeb7b8ce7bdce2aa1d3b9010d36d7f96959b
 
     public function getDebugInfo()
     {
-        return array (  34 => 6,  30 => 5,  27 => 4,  23 => 3,  19 => 1,);
+        return array (  34 => 6,  30 => 5,  27 => 4,  23 => 3,  19 => 1,  191 => 47,  188 => 45,  185 => 44,  180 => 41,  175 => 40,  170 => 37,  168 => 36,  161 => 33,  157 => 31,  151 => 30,  142 => 27,  137 => 26,  132 => 25,  128 => 24,  124 => 22,  119 => 20,  112 => 19,  107 => 17,  102 => 15,  98 => 14,  93 => 13,  91 => 12,  88 => 11,  85 => 10,  80 => 6,  74 => 5,  66 => 44,  57 => 40,  54 => 39,  52 => 33,  45 => 10,  36 => 6,  32 => 5,  26 => 1,  84 => 41,  79 => 39,  76 => 38,  73 => 37,  68 => 55,  62 => 42,  59 => 41,  56 => 28,  50 => 26,  47 => 32,  44 => 23,  38 => 7,  35 => 20,  28 => 16,);
     }
 }

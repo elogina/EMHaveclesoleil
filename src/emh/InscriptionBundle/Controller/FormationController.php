@@ -21,6 +21,11 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class FormationController extends Controller
 {
+     /**
+     * action liste: liste des formations
+     * @param string $slug
+     * @return view: formation/liste 
+     */
     public function listeAction($slug)
     {
        
@@ -39,7 +44,11 @@ class FormationController extends Controller
          return $this->render('emhInscriptionBundle:Formations:liste.html.twig', 
                 array('formations' => $rsFormations, 'sites'=>$rsSites));
     }
-    
+     /**
+     * action detail: detail des formations
+     * @param string $slug $id
+     * @return view: formation/detail 
+     */
     public function detailAction($id, $slug) {
         $rFormation = $this->getDoctrine()
                            ->getManager()

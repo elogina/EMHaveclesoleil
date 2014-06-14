@@ -1,22 +1,46 @@
-{% extends '::base.html.twig' %}
+{%extends "base.html.twig"%}
 
 {% block body %}
-<h1>User list</h1>
+<h1>Panier de l'utilisateur</h1>
 
 <ul>
         {% for user in membres %}
 
             {{ user.username}}
-
+                   Mes inscriptions
+                  {#la liste des inscription auxquel le membre connecté est inscrit 
+                    si il a payé l'inscription et est validé via l'admin, la formation n'apparait plus#}
                  {% for inscription in inscriptions%}
-                    <li>
-                                {{ inscription.formationsAteliers.nomFr }}
-                        <a href="{{path('emh_membres_desinscription', {'slug':sites.slug ,'id':inscription.formationsAteliers.id})}}">désinscription</a>
-                    </li>
+                    {% if inscription.paye == 0%}
+                        <li>
+                             {{ inscription.formationsAteliers.nomFr }}
+                            {# <a href="{{path('emh_membres_desinscription', {'slug':sites.slug ,'id':inscription.formationsAteliers.id})}}">désinscription</a>#}
+                            <a href="{{path('emh_membres_formation_paypal', {'id':inscription.formationsAteliers.id, 'slug':sites})}} ">confirmation de votre inscription</a>
+                        </li>
+                    
+                    {%endif%}
+                {% endfor %}
+                  Mes achats
+                 {#la liste des achat du  membre connecté  
+                  si il a payé l'article et est validé via l'admin, l'achat n'apparait plus#}
+                {% for achat in achats%}
+                    {% if achat.paye == 0%}
+                            <li>
+                               {{ achat.produits.nomFr }}
+
+                                {#<a href="{{path('emh_membres_desinscription', {'slug':sites.slug ,'id':inscription.formationsAteliers.id})}}">désinscription</a>#}
+
+                                 <a href=" {{path('emh_membres_produit_paypal', {'id':achat.produits.id, 'slug':sites})}}">confirmation de votre achat</a>   
+                            </li>
+                     
+                    {%endif%}
                 {% endfor %}
 
         {% endfor %}
 
 
+
 </ul>
-    {% endblock %}
+  
+
+{% endblock %}

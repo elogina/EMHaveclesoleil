@@ -15,6 +15,12 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class ContactController extends Controller{
+    
+     /**
+     * action index: index de la rubrique
+     * @param string $rubId
+     * @return view: cms_principal_page
+     */
 
 public function indexAction($rubID,$name){
     $message =\Swift_Message::newInstance()

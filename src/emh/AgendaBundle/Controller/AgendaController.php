@@ -23,9 +23,9 @@ class AgendaController extends Controller
 
 {
     /**
-     * action detail: détail de la rubrique
-     * @param string $id
-     * @return view: Rubriques/detail - rubrique
+     * action liste: liste de l'agenda
+     * @param string 
+     * @return view: agenda/liste 
      */
     public function listeAction()
             
@@ -40,6 +40,12 @@ class AgendaController extends Controller
                               array('agendas' => $rAgenda,
                                    ));
     }
+    
+     /**
+     * action detail: detail de l'agenda
+     * @param string $id $slug $slugFr
+     * @return view: agenda/detail 
+     */
      public function detailAction($id, $slugFr,$slug)
             
     {

@@ -1,27 +1,4 @@
-chapeau:
-    pattern: /AsblSoleil
-    defaults: { _controller: emhcmsPrincipalBundle:Rubrique:chapeau }
-
-emh_dons:
-    resource: "@emhDonsBundle/Resources/config/routing.yml"
-    prefix:   /dons
-
-emh_agenda:
-    resource: "@emhAgendaBundle/Resources/config/routing.yml"
-    prefix:   /{slug}/agenda
-
-emh_ecommerce:
-    resource: "@emhEcommerceBundle/Resources/config/routing.yml"
-    prefix:   /{slug}/produit
-
-emh_inscription:
-    resource: "@emhInscriptionBundle/Resources/config/routing.yml"
-    prefix:   /{slug}
-    
-emh_membres:
-    resource: "@emhMembresBundle/Resources/config/routing.yml"
-    prefix:   /{slug}/membre
-    
+#routes pour générées pour le fosUser
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
     prefix: /
@@ -42,14 +19,42 @@ fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
     
+#routes séuisée
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
     prefix: /admin
- 
+    
+#routes séuisée pour l'administration (backoffice)
 _sonata_admin:
     resource: .
     type: sonata_admin
     prefix: /admin
+
+#routes Bundles
+
+chapeau:
+    pattern: /AsblSoleil
+    defaults: { _controller: emhcmsPrincipalBundle:Rubrique:chapeau }
+    
+emh_dons:
+    resource: "@emhDonsBundle/Resources/config/routing.yml"
+    prefix:   /dons
+
+emh_agenda:
+    resource: "@emhAgendaBundle/Resources/config/routing.yml"
+    prefix:   /{slug}/agenda
+
+emh_ecommerce:
+    resource: "@emhEcommerceBundle/Resources/config/routing.yml"
+    prefix:   /{slug}/produit
+
+emh_inscription:
+    resource: "@emhInscriptionBundle/Resources/config/routing.yml"
+    prefix:   /{slug}/formation
+    
+emh_membres:
+    resource: "@emhMembresBundle/Resources/config/routing.yml"
+    prefix:   /{slug}/membre
     
 emhcms_principal:
     resource: "@emhcmsPrincipalBundle/Resources/config/routing.yml"
