@@ -16,8 +16,9 @@
 <h1>liste des Produits en vente</h1> <br>
 
         {% for produit in produits %}
-
-
+            {% for achat in achats %}
+                {# Si le produit est vendu il ne s'affiche pas #}
+                {% if achat.produits.id == produit.id %}
         <ul>
 
           {# si le porduits est en vente il se trouvera dans la liste sinon, uniquement dans la galerie#}
@@ -29,9 +30,10 @@
                    </li>
                 {% endif %}
          
-
+              
         </ul>
-
+                {% endif %}
+            {% endfor %}
         {% endfor %}
 
         <h1>Galerie photos</h1> <br>

@@ -39,9 +39,14 @@ class ProduitController extends Controller
                         ->getRepository('emhcmsPrincipalBundle:Sites')
                         ->findOneBySlug($slug);
         
+        $rsAchats = $this->getDoctrine()
+                          ->getManager()
+                          ->getRepository('emhEcommerceBundle:Achats')
+                          ->findByVendu(0);
+        
         
         return $this->render('emhEcommerceBundle:Produits:liste.html.twig', 
-                              array('produits' => $rsProduits, 'sites'=>$rsSites,
+                              array('produits' => $rsProduits, 'sites'=>$rsSites, 'achats'=>$rsAchats
                                     ));
     }
     

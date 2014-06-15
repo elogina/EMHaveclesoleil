@@ -34,6 +34,14 @@ class Achats
      * @ORM\Column(name="paye", type="boolean", length=1, nullable=true)
      */
     private $paye;
+    
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="vendu", type="boolean", length=1, nullable=true)
+     */
+    private $vendu;
 
     /**
      * @var string
@@ -113,6 +121,29 @@ class Achats
     public function getPaye()
     {
         return $this->paye;
+    }
+    
+      /**
+     * Set vendu
+     *
+     * @param boolean $vendu
+     * @return Achats
+     */
+    public function setVendu($vendu)
+    {
+        $this->vendu = $vendu;
+
+        return $this;
+    }
+
+    /**
+     * Get vendu
+     *
+     * @return boolean 
+     */
+    public function getVendu()
+    {
+        return $this->vendu;
     }
 
     /**

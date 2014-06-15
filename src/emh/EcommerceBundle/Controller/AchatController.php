@@ -65,6 +65,7 @@ class AchatController extends Controller
        $achat->setProduits($rProduits);                    
        $achat->setPaye(false);
        $achat->setDate(new \DateTime('now'));
+       $achat->setVendu (true);
     
        foreach($rAchat as $i){
              
