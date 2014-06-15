@@ -65,7 +65,7 @@ class AchatController extends Controller
        $achat->setProduits($rProduits);                    
        $achat->setPaye(false);
        $achat->setDate(new \DateTime('now'));
-       $achat->setVendu (true);
+       $rProduits->setOnOff(false);
     
        foreach($rAchat as $i){
              
@@ -76,6 +76,7 @@ class AchatController extends Controller
        }
        
        $modelManager->persist($achat);
+       $modelManager->persist($rProduits);
        $modelManager->flush();
            
         $rAchat = $modelManager->getRepository('emhEcommerceBundle:Achats')

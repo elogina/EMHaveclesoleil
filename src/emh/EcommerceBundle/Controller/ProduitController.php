@@ -42,7 +42,7 @@ class ProduitController extends Controller
         $rsAchats = $this->getDoctrine()
                           ->getManager()
                           ->getRepository('emhEcommerceBundle:Achats')
-                          ->findByVendu(0);
+                          ->findAll();
         
         
         return $this->render('emhEcommerceBundle:Produits:liste.html.twig', 
